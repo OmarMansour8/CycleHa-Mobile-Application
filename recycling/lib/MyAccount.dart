@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:recycling/EditProfile.dart';
 
 class myaccount extends StatefulWidget {
   String Email = '';
@@ -88,13 +89,15 @@ class _myaccountState extends State<myaccount> {
             children: [
               Container(
                 width: 400,
-                height: 200,
+                height: MediaQuery.of(context).size.height*0.25,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(60),
                       bottomRight: Radius.circular(60)),
                   color: Colors.green,
+
                 ),
+
                 child: Column(
                   children: [
                     SizedBox(
@@ -113,38 +116,31 @@ class _myaccountState extends State<myaccount> {
                               Icons.chevron_left,
                               size: 35,
                               color: Colors.white,
-                            ))
+                            )),
+                  SizedBox(width: MediaQuery.of(context).size.width*0.67,),
+                  SizedBox(height: 30, child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.green,elevation: 0),
+                      onPressed: (){
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => editProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+
+                      }, child:Text('Edit',style: TextStyle(color: Colors.white,fontSize: 16),)),),
                       ],
+
                     ),
-                    Row(children: [
-                      SizedBox(
-                        width: 145,
-                      ),
-                      Container(
-                        width: 115,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("images/user.png"),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.circular(100)),
-                        height: 115,
-                      ),
-                    ]),
                     Row(
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.only(left: 132, top: 0),
-                          child: Text(
-                            "Account info",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                            ),
-                          ),
+                      children: [
+                        SizedBox(width: MediaQuery.of(context).size.width*0.33,),
+                        CircleAvatar(
+
+                          backgroundImage:
+                          NetworkImage('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',),
+                          radius: 70,
+
                         )
                       ],
-                    )
+                    ),
+
                   ],
                 ),
               ),

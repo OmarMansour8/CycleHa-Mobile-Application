@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBKTmpheHTkWUrXpheq1GZDw0vC-m87XME',
-    appId: '1:233440441678:android:d8242f8b034973c9d39a1f',
+    appId: '1:233440441678:android:f3e59ec776136d05d39a1f',
     messagingSenderId: '233440441678',
     projectId: 'recycling-2d743',
     storageBucket: 'recycling-2d743.appspot.com',

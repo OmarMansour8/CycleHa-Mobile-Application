@@ -229,7 +229,7 @@ class _Sign_UpState extends State<Sign_Up> {
                         child:ClipRRect(
                           borderRadius: BorderRadius.circular(29),
                           child:SizedBox(height: 60, child:  ElevatedButton(
-                              style: ElevatedButton.styleFrom(primary: Colors.green),
+                              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                               onPressed:buttonEnabled ? ()async{
                                 try{
                                   final newUser = await _auth.createUserWithEmailAndPassword(email: Email, password: Password).catchError((err){
