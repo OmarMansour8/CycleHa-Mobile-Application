@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:recycling/MainMenu.dart';
 import 'package:recycling/SignIn.dart';
+import 'package:http/http.dart'as http;
 
 class Sign_Up extends StatefulWidget {
   const Sign_Up({Key? key}) : super(key: key);
@@ -11,15 +14,33 @@ class Sign_Up extends StatefulWidget {
   State<Sign_Up> createState() => _Sign_UpState();
 }
 class _Sign_UpState extends State<Sign_Up> {
-  String Email='';
-  String Password='';
-  String fullName = '';
-  String mobileNumber = '';
-  String gender='';
-  String dateOfBirth = '';
-  double totalAmount = 0;
+  TextEditingController  Email=new TextEditingController ();
+  TextEditingController  Password= new TextEditingController() ;
+  TextEditingController  fullName = new TextEditingController ();
+  TextEditingController  mobileNumber = new TextEditingController() ;
+  String  gender='';
+  TextEditingController  dateOfBirth = new TextEditingController ();
+  TextEditingController  totalAmount = new TextEditingController ();
+  int user_points=0;
   List<String> orders=[];
   bool buttonEnabled = false;
+
+  Future<List> SendDate() async {
+    final response = await http.post(
+        Uri.parse('https://phlegmier-marches.000webhostapp.com/server.php'),
+        body: {
+          "name": fullName,
+          "email": Email,
+          "mobile": mobileNumber,
+          "password" : Password,
+          "dot": dateOfBirth,
+          "admin_username" : "omar mansour",
+          "user_points" : user_points,
+        });
+
+    var datauser = json.decode(response.body);
+    return datauser;
+  }
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   List<Widget> cart=[];
@@ -31,7 +52,9 @@ class _Sign_UpState extends State<Sign_Up> {
     if(picked!=null && picked!= date1){
       setState((){
         date1=picked;
-        print(date1.toString());});}}
+        print(date1.toString());
+        dateOfBirth=picked as TextEditingController;
+      });}}
   enableButton(){
     buttonEnabled = true;
   }
@@ -39,9 +62,13 @@ class _Sign_UpState extends State<Sign_Up> {
   disableButton(){
     buttonEnabled = false;
   }
+  String? _verificationCode;
+  bool loading = false;
+  final phoneNumberController = TextEditingController();
+  final auth = FirebaseAuth.instance ;
   @override
   Widget build(BuildContext context) {
-    dateOfBirth='${date1.year} - ${date1.month} - ${date1.day}'.toString();
+    dateOfBirth='${date1.year} - ${date1.month} - ${date1.day}'.toString() as TextEditingController;
     Size size = MediaQuery.of(context).size;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -75,6 +102,7 @@ class _Sign_UpState extends State<Sign_Up> {
                             ),]),
                       padding: EdgeInsets.all(1),
                       child: TextField(
+                          controller: fullName,
                         decoration: InputDecoration(
                             focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
                             focusColor: Colors.green,
@@ -84,7 +112,7 @@ class _Sign_UpState extends State<Sign_Up> {
                         ),
                         onChanged: (String value){
                           setState(() {
-                            fullName = value;
+                            fullName = value as TextEditingController;
                           });
                         },
                       ),
@@ -103,6 +131,7 @@ class _Sign_UpState extends State<Sign_Up> {
                             ),]),
                       padding: EdgeInsets.all(1),
                       child: TextField(
+                          controller: Email,
                         decoration: InputDecoration(focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
                             focusColor: Colors.green,
                             labelStyle: TextStyle(color: Colors.green),
@@ -111,7 +140,7 @@ class _Sign_UpState extends State<Sign_Up> {
                         ),
                         onChanged: (String value){
                           setState(() {
-                            Email = value;
+                            Email = value as TextEditingController;
                           });
                         },
                       ),
@@ -129,6 +158,7 @@ class _Sign_UpState extends State<Sign_Up> {
                             ),]),
                       padding: EdgeInsets.all(1),
                       child: TextField(
+                          controller: mobileNumber,
                         decoration: InputDecoration(
                             focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
                             focusColor: Colors.green,
@@ -139,7 +169,7 @@ class _Sign_UpState extends State<Sign_Up> {
                         onChanged: (String value){
 
                           setState(() {
-                            mobileNumber = value;
+                            mobileNumber = value as TextEditingController;
                           });
                         },
                       ),
@@ -159,6 +189,7 @@ class _Sign_UpState extends State<Sign_Up> {
                       padding: EdgeInsets.all(1),
 
                       child: TextField(
+                        controller: Password,
                         obscureText: true,
                         cursorColor: Colors.green,
 
@@ -171,7 +202,7 @@ class _Sign_UpState extends State<Sign_Up> {
                         ),
                         onChanged: (String value){
                           setState(() {
-                            Password = value;
+                            Password = value as TextEditingController;
 
                           });
                         },
@@ -216,7 +247,7 @@ class _Sign_UpState extends State<Sign_Up> {
                       ],
                     ),
                     Text((() {
-                      if(fullName!=''&&Email!=''&&mobileNumber!=''&&Password!=''&&gender!=''&&mobileNumber.length==11){
+                      if(fullName!=''&&Email!=''&&mobileNumber!=''&&Password!=''&&gender!=''){
                         enableButton();
                         return "";}
                       else{
@@ -230,53 +261,118 @@ class _Sign_UpState extends State<Sign_Up> {
                           borderRadius: BorderRadius.circular(29),
                           child:SizedBox(height: 60, child:  ElevatedButton(
                               style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                              onPressed:buttonEnabled ? ()async{
-                                try{
-                                  final newUser = await _auth.createUserWithEmailAndPassword(email: Email, password: Password).catchError((err){
-                                    showDialog(
-                                      context: context,builder: (BuildContext context){
-                                      return AlertDialog(
-                                        title: Text('error'),
-                                        content: Text(err.message),
-                                        actions: [
-                                          ElevatedButton(onPressed: (){
-                                            Navigator.pop(context);
-                                          }, child: Text('Ok'))
-                                        ],
-                                      ) ;
+                              onPressed:()async{
+                                await FirebaseAuth.instance.verifyPhoneNumber(
+                                    phoneNumber: '+201550083829',
+                                    verificationCompleted: (
+                                        PhoneAuthCredential credential) async {
+                                      await FirebaseAuth.instance
+                                          .signInWithCredential(credential)
+                                          .then((value) async {
+                                        if (value.user != null) {
+                                          // Navigator.pushAndRemoveUntil(
+                                          //     context,
+                                          //     MaterialPageRoute(
+                                          //         builder: (context) =>
+                                          //             homePage(Email: Email,
+                                          //                 Password: Password,
+                                          //                 fullName: fullName,
+                                          //                 mobileNumber: mobileNumber,
+                                          //                 gender: gender,
+                                          //                 dateOfBirth: dateOfBirth,
+                                          //                 cart: cart,
+                                          //                 totalAmount: totalAmount,
+                                          //                 orders: orders)),
+                                          //         (route) => false);
+                                        }
+                                      });
                                     },
-                                    );
-                                  });
-                                  if(newUser != null){
-                                    print('Account has been successfuly created');
-                                    FirebaseFirestore.instance.collection('Users').doc('$Email').set( {
-                                      'Full Name':'$fullName',
-                                      'Email':'$Email',
-                                      'Mobile Number':'$mobileNumber',
-                                      'Password':'$Password',
-                                      'Date Of Birth':'$dateOfBirth',
-                                      'Gender':'$gender',
-                                    });
-                                    print(Email);
-                                    print(Password);
-                                    print(gender);
-                                    print(dateOfBirth);
-                                    print(fullName);
-                                    print(mobileNumber);
+                                    verificationFailed: (
+                                        FirebaseAuthException e) {
+                                      print(e.message);
+                                    },
+                                    codeSent: (String? verficationID,
+                                        int? resendToken) {
+                                      setState(() {
+                                        _verificationCode = verficationID;
+                                      });
+                                    },
+                                    codeAutoRetrievalTimeout: (
+                                        String verificationID) {
+                                      setState(() {
+                                        _verificationCode = verificationID;
+                                      });
+                                    },
+                                    timeout: Duration(seconds: 120));
+                              },
+                              child:Text('Sign Up',style: TextStyle(color: Colors.white,fontSize: 19),)
 
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                                //   setState (() {
+                                //   loading = true;
+                                //   });
+                                //   final crendital = PhoneAuthProvider.credential(
+                                //   verificationId: widget.verificationId,
+                                //   smsCode: verificationCodeController.text.toString()
+                                //   );
+                                //   try{
+                                // await auth.signInWithCredential(crendital);
+                                // Navigator.push(context MaterialPageRoute (builder
+                                // }catch(e){
+                                // setState (() {
+                                // loading = false;
+                                // });
+                                // Utils ().toastMessage(e.toString());
 
+                                // try{
+                                //   final newUser = await _auth.verifyPhoneNumber.catchError((err){
+                                //     showDialog(
+                                //       context: context,builder: (BuildContext context){
+                                //       return AlertDialog(
+                                //         title: Text('error'),
+                                //         content: Text(err.message),
+                                //         actions: [
+                                //           ElevatedButton(onPressed: (){
+                                //             Navigator.pop(context);
+                                //           }, child: Text('Ok'))
+                                //         ],
+                                //       ) ;
+                                //     },
+                                //     );
+                                //   });
+                                //   if(newUser != null){
+                                //     print('Account has been successfuly created');
+                                //     FirebaseFirestore.instance.collection('Users').doc('$Email').set( {
+                                //       'Full Name':'$fullName',
+                                //       'Email':'$Email',
+                                //       'Mobile Number':'$mobileNumber',
+                                //       'Password':'$Password',
+                                //       'Date Of Birth':'$dateOfBirth',
+                                //       'Gender':'$gender',
+                                //     });
+                                //     print(Email);
+                                //     print(Password);
+                                //     print(gender);
+                                //     print(dateOfBirth);
+                                //     print(fullName);
+                                //     print(mobileNumber);
+                                //
+                                //     Navigator.push(context, MaterialPageRoute(builder: (context)=>homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                                //
+                                //
+                                //
+                                //   }
+                                //
+                                // }
+                                // catch(e){
+                                //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e'),backgroundColor: Colors.black26,));
+                                //
+                                //   print(e);
+                                // }
 
-
-                                  }
-
-                                }
-                                catch(e){
-                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e'),backgroundColor: Colors.black26,));
-
-                                  print(e);
-                                }
-                              }:null, child:Text('Sign Up',style: TextStyle(color: Colors.white,fontSize: 19),))),)),
+  )
+  ),
+  )
+  ),
                     TextButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Sign_In()));

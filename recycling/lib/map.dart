@@ -8,6 +8,7 @@ import 'package:recycling/MainMenu.dart';
 import 'package:recycling/MyAccount.dart';
 import 'package:recycling/MyProfile.dart';
 import 'package:recycling/Settings.dart';
+import 'package:custom_info_window/custom_info_window.dart';
 
 
 
@@ -71,21 +72,24 @@ class _mapsState extends State<maps> {
     LatLng(30.0766, 31.2845),
     LatLng(30.0202, 31.4991),
   ];
-int lCounter = 0;
+  int lCounter = 0;
 
   List<Marker> _marker = [];
   final List<Marker> _list = const [
   Marker(
-  markerId: MarkerId("Stomache"),
+  markerId: MarkerId("omar"),
   position: const LatLng(30.0272, 31.4917),
-  infoWindow: InfoWindow(title: "Fue"),),
+  infoWindow: InfoWindow(title: "Fue"),
+
+  ),
+
   Marker(
-      markerId: MarkerId("Stomache"),
+      markerId: MarkerId("omar"),
       position: const LatLng(30.0766, 31.2845),
       infoWindow: InfoWindow(title: "Ain Shams"),
       ),
   Marker(
-      markerId: MarkerId("Stomache"),
+      markerId: MarkerId("omar"),
       position: const LatLng(30.0202, 31.4991),
       infoWindow: InfoWindow(title: "Auc"),
      )
@@ -94,8 +98,8 @@ int lCounter = 0;
 
 
   List<LatLng> location = [const LatLng(30.0272, 31.4917),const LatLng(30.0202, 31.4991), const LatLng(30.0766, 31.2845),];
-List places=["x","y","z"];
-int counter = 0;
+  List places=["x","y","z"];
+  int counter = 0;
   Uint8List? marketimages;
   List<String> images = [
     'images/basket.png',
@@ -110,6 +114,19 @@ int counter = 0;
     return(await fi.image.toByteData(format: ui.ImageByteFormat.png))!.buffer.asUint8List();
 
   }
+
+  void showAlertDialog(BuildContext context,String text){
+    var alertDialog = AlertDialog(
+        content: Text(text),
+            actions: [
+        ElevatedButton(onPressed: (){
+      Navigator.pop(context);},
+    child: Text('Done')),],);
+    showDialog(context: context,
+    builder: (BuildContext context){return
+    alertDialog;});}
+
+
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -117,7 +134,24 @@ int counter = 0;
     loadData();
     _marker.addAll(_list);
   }
+  List<String> _info = const["Future University Of Egypt\nCapacity: 100","Ain Shams University\nCapacity: 300","American University in Cairo\nCapacity: 200" ];
+  List<Widget> _information = [
+    SnackBar(
+      content: const Text('Future University Of Egypt\nCapacity: 100"'),
+      duration: Duration(seconds: 3),
+    )
+    ,
+    SnackBar(
+      content: const Text('"American University in Cairo\nCapacity: 200"'),
+      duration: Duration(seconds: 3),
+    )
+    ,
+    SnackBar(
+      content: const Text('Ain Shams University\nCapacity: 300'),
+      duration: Duration(seconds: 3),
+    )
 
+  ];
   // created method for displaying custom markers according to index
   loadData() async{
     for(int i=0 ;i<images.length; i++){
@@ -132,8 +166,16 @@ int counter = 0;
             // given position
             position: _latLen[i],
             infoWindow: InfoWindow(
+
               // given title for marker
-              title: 'Location: '+i.toString(),
+              title: _info[i].toString(),
+              onTap: (){
+
+                  showAlertDialog(context,_info[i]);
+                // _information[i];
+                //     print("omar");
+              }
+
             ),
           )
       );
@@ -217,22 +259,7 @@ int counter = 0;
                 IconButton(
                     onPressed: () {
                       setState(() async{
-                        if(counter==places.length-1){
-                          counter =0;
-                          GoogleMapController controller = await _controller.future;
-                          controller.animateCamera(CameraUpdate.newCameraPosition(
-                            // on below line we have given positions of Location 5
-                              CameraPosition(
-                                target: LatLng(30.0272, 31.4917),
-                                zoom: 14,
-                              )
-                          ));
-                          setState(() {
-                          });
-                          _location = const LatLng(30.0272, 31.4917);
-                          print(_location);
 
-                        }
                         if(counter==0) {
                           counter++;
                           GoogleMapController controller = await _controller.future;
@@ -266,7 +293,26 @@ int counter = 0;
 
 
 
-                        }                      });
+                        }
+
+                        else if(counter==2){
+                          counter =0;
+                          GoogleMapController controller = await _controller.future;
+                          controller.animateCamera(CameraUpdate.newCameraPosition(
+                            // on below line we have given positions of Location 5
+                              CameraPosition(
+                                target: LatLng(30.0272, 31.4917),
+                                zoom: 14,
+                              )
+                          ));
+                          setState(() {
+                          });
+                          _location = const LatLng(30.0272, 31.4917);
+                          print(_location);
+
+                        }
+
+                      });
 
                     },
                     icon: Icon(
@@ -301,7 +347,7 @@ int counter = 0;
 
     ),
     ),
-       
+
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             items: [
@@ -358,5 +404,6 @@ int counter = 0;
 
     );
   }
+
 }
 

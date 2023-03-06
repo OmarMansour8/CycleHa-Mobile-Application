@@ -51,6 +51,9 @@ dependencies:
   liquid_progress_indicator: ^0.4.0
   curved_navigation_bar: ^1.0.3
   tab_container: ^2.0.0
+  custom_info_window: ^1.0.1
+  flutter_custom_clippers: ^2.1.0
+  http:
 #  flutter_advanced_progress: ^1.0.0+1
 
 
@@ -62,12 +65,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  date_utils: ^0.2.0
+  intl: ^0.17.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

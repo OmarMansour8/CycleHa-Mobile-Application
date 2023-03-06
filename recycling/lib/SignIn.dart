@@ -97,7 +97,7 @@ class _Sign_InState extends State<Sign_In> {
                           focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
                           focusColor: Colors.green,
                           labelStyle: TextStyle(color: Colors.green),
-                          labelText: 'Email',
+                          labelText: 'Phone Number',
                           prefixIcon: Icon(Icons.account_circle,color: Colors.green,),),
                       ),
                     ),
