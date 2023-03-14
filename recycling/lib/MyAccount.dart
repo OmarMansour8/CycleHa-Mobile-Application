@@ -9,9 +9,9 @@ class myaccount extends StatefulWidget {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders = [];
+  var user_points;
+  var data;
+  var items_recycled;
 
   myaccount(
       {required this.Email,
@@ -20,20 +20,16 @@ class myaccount extends StatefulWidget {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart,
-        required this.totalAmount,
-        required this.orders});
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+
+
+      });
   @override
   State<myaccount> createState() => _myaccountState(
-      Email: Email,
-      Password: Password,
-      fullName: fullName,
-      mobileNumber: mobileNumber,
-      gender: gender,
-      dateOfBirth: dateOfBirth,
-      cart: cart,
-      totalAmount: totalAmount,
-      orders: orders);
+      Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data
+     );
 }
 
 class _myaccountState extends State<myaccount> {
@@ -43,12 +39,9 @@ class _myaccountState extends State<myaccount> {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  String name = 'Juicy Burger';
-  String image = "images/image4.jpeg";
-  double totalAmount = 0;
-  List<String> orders = [];
-
+  var data;
+  var user_points;
+  var items_recycled;
   _myaccountState(
       {required this.Email,
         required this.Password,
@@ -56,9 +49,11 @@ class _myaccountState extends State<myaccount> {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart,
-        required this.totalAmount,
-        required this.orders});
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+
+      });
   void getData() {
     FirebaseFirestore.instance
         .collection('Users')
@@ -122,7 +117,7 @@ class _myaccountState extends State<myaccount> {
                       style: ElevatedButton.styleFrom(backgroundColor: Colors.green,elevation: 0),
                       onPressed: (){
                         Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => editProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                            context, MaterialPageRoute(builder: (context) => editProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, data: data)));
 
                       }, child:Text('Edit',style: TextStyle(color: Colors.white,fontSize: 16),)),),
                       ],

@@ -1,7 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:recycling/MainMenu.dart';
+import 'package:recycling/SignUp.dart';
+import 'package:recycling/main.dart';
 // import 'HomePage.dart';
 
 class Sign_In extends StatefulWidget {
@@ -11,36 +14,195 @@ class Sign_In extends StatefulWidget {
 }
 
 class _Sign_InState extends State<Sign_In> {
-  String Email = '';
-  String Password = '';
-  String fullName = '';
-  String mobileNumber = '';
-  String gender = '';
-  String dateOfBirth = '';
-  double totalAmount = 0;
-  List<String> orders=[];
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  TextEditingController _controller = new TextEditingController();
-  CollectionReference users = FirebaseFirestore.instance.collection('Users');
+  var Email ;
+  var Password ;
+  var fullName ;
+  var mobileNumber ;
+  var gender ;
+  var dateOfBirth ;
+  var data;
+  var user_points;
+  var items_recycled;
   bool checkCondition = true;
+  TextEditingController mobile = new TextEditingController();
+  TextEditingController pass = new TextEditingController();
+  static var metalCount;
+  static var plasticCount;
+  static var metalPoints;
+  static var plasticPoints;
 
-  void getData() {
-    FirebaseFirestore.instance
-        .collection('Users')
-        .doc(Email)
-        .get()
-        .then((value) {
-      fullName = value.get('Full Name');
-      mobileNumber = value.get('Mobile Number');
-      gender = value.get('Gender');
-      dateOfBirth = value.get('Date Of Birth');
-      print(fullName);
-      print(mobileNumber);
-      print(gender);
-      print(dateOfBirth);
-    });
+  Future getUserData(String mobile) async{
+    var url =  Uri.parse(
+        'https://phlegmier-marches.000webhostapp.com/getUserData.php');
+    var response = await http.post(url,body:{
+      "mobile": mobile,
+    }
+    );
+
+    // print(json.decode(response.body));
+    var data1 = await json.decode(response.body);
+    getData(mobile, data1);
+    print(data1);
+    data=data1;
+
+    print("mamaos ${data1.runtimeType}");
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) =>
+              homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)
+      ), // MaterialPageRoute
+    );
+    return data1;
+
+    // return json.decode(response.body);
+  }
+   getData(String mobile,var data)  {
+    Email = data[0]["User_Email"];
+    fullName = data[0]["User_Name"];
+    mobileNumber = data[0]["User_MobileNumber"];
+    dateOfBirth = data[0]["USer_DateofBirth"];
+    Password = data[0]["User_Password"];
+    getMetalCountData(mobile);
+    getMetalPointsData(mobile);
+    getPlasticCountData(mobile);
+    getPlasticPointsData(mobile);
+    getUserPoints();
+    getItemCount();
+    // user_points = await getUserData("User_Points",mobile);
+
+    // print(Email);
+    // print(fullName);
+    // print(mobileNumber);
+    // print(dateOfBirth);
+    // print(Password);
+    // print(user_points);
+
+
+
+
   }
 
+  Future getMetalPoints(String name,String mobile) async{
+    var url =  Uri.parse(
+        'https://phlegmier-marches.000webhostapp.com/getMetalPoints.php');
+    var response = await http.post(url,body:{
+      "mobile": mobile,
+    }
+    );
+
+    // print(json.decode(response.body));
+    var data = await json.decode(response.body);
+    print(data);
+    return data[0][name];
+    // return json.decode(response.body);
+  }
+  Future<void> getMetalPointsData(String mobile) async {
+    metalPoints = await getMetalPoints("Item_Points",mobile);
+    print("hoda ${int.parse(metalPoints)}");
+  }
+
+
+
+  Future getMetalCount(String name,String mobile) async{
+    var url =  Uri.parse(
+        'https://phlegmier-marches.000webhostapp.com/getMetalCount.php');
+    var response = await http.post(url,body:{
+      "mobile": mobile,
+    }
+    );
+
+    // print(json.decode(response.body));
+    var data = await json.decode(response.body);
+    print(data);
+    return data[0][name];
+    // return json.decode(response.body);
+  }
+  Future<void> getMetalCountData(String mobile) async {
+    metalCount = await getMetalCount("Item_Amount",mobile);
+    print("omar ${int.parse(metalCount)}");
+  }
+
+
+  Future getPlasticPoints(String name,String mobile) async{
+    var url =  Uri.parse(
+        'https://phlegmier-marches.000webhostapp.com/getPlasticPoints.php');
+    var response = await http.post(url,body:{
+      "mobile": mobile,
+    }
+    );
+
+    // print(json.decode(response.body));
+    var data = await json.decode(response.body);
+    print(data);
+    return data[0][name];
+    // return json.decode(response.body);
+  }
+  Future<void> getPlasticPointsData(String mobile) async {
+    plasticPoints = await getPlasticPoints("Item_Points",mobile);
+    print("hoda ${int.parse(plasticPoints)}");
+  }
+
+
+
+  Future getPlasticCount(String name,String mobile) async{
+    var url =  Uri.parse(
+        'https://phlegmier-marches.000webhostapp.com/getPlasticCount.php');
+    var response = await http.post(url,body:{
+      "mobile": mobile,
+    }
+    );
+
+    // print(json.decode(response.body));
+    var data = await json.decode(response.body);
+    print(data);
+    return data[0][name];
+    // return json.decode(response.body);
+  }
+  Future<void> getPlasticCountData(String mobile) async {
+    plasticCount = await getPlasticCount("Item_Amount",mobile);
+    print("omar ${int.parse(plasticCount)}");
+  }
+
+
+  void getUserPoints(){
+    var userpoints = (int.parse(metalCount)*int.parse(metalPoints)+int.parse(plasticPoints)*int.parse(plasticCount));
+    print("this is user points $userpoints");
+    user_points = userpoints.toString();
+    }
+  void getItemCount(){
+    getPlasticCountData(mobileNumber);
+    getMetalCountData(mobileNumber);
+    var itemCount1= (int.parse(metalCount)+int.parse(plasticCount));
+    items_recycled = itemCount1.toString();
+  }
+
+
+  Future Login() async {
+    var url = Uri.parse('https://phlegmier-marches.000webhostapp.com/login.php') ;
+    var response = await http.post(url, body: {
+      "mobile": mobile.text,
+      "pass": pass.text,
+    });
+    var data = json.decode (response.body);
+    if (data.toString() == "Success") {
+        getUserData(mobile.text);
+        await Fluttertoast.showToast (
+        msg: 'Login Successful',
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        toastLength: Toast.LENGTH_SHORT,
+      );
+
+    } else {
+      Fluttertoast.showToast (
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        msg: 'Username and password invalid',
+        toastLength: Toast.LENGTH_SHORT,
+      );
+    }
+  }
   List<Widget> cart=[];
   // String gender = FirebaseFirestore.instance.collection('Users').;
 
@@ -91,8 +253,8 @@ class _Sign_InState extends State<Sign_In> {
                           setState(() {
                             Email = value;
                           });
-                          getData();
                         },
+                        controller: mobile,
                         decoration: InputDecoration(
                           focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
                           focusColor: Colors.green,
@@ -120,10 +282,9 @@ class _Sign_InState extends State<Sign_In> {
                         onChanged: (value) {
                           setState(() {
                             Password = value;
-                            getData();
                           });
                         },
-                        controller: _controller,
+                        controller: pass,
                         decoration: InputDecoration(
                             focusColor: Colors.green,
                             labelStyle: TextStyle(color: Colors.green),
@@ -142,46 +303,10 @@ class _Sign_InState extends State<Sign_In> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(29),
                           child: SizedBox(height: 60, child:  ElevatedButton(
-                            // padding: EdgeInsets.symmetric(vertical: 18,horizontal: 38),
-                            // color: Colors.deepOrange,
-                            // onPressed: (){},
-                            onPressed: () async {
-                              try {
-                                final newUser =
-                                await _auth.signInWithEmailAndPassword(
-                                    email: Email, password: Password).catchError((err){
-                                  showDialog(
-                                    context: context,builder: (BuildContext context){
-                                    return AlertDialog(
-                                      title: Text('error'),
-                                      content: Text(err.message),
-                                      actions: [
-                                        ElevatedButton(onPressed: (){
-                                          Navigator.pop(context);
-                                        }, child: Text('Ok'))
-                                      ],
-                                    ) ;
-                                  },
-                                  );
-                                });
 
-                                if (newUser != null) {
-                                  print('Account has been successfuly created');
+                            onPressed: () {
+                              Login();
 
-
-
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
-                                  _controller.clear();
-
-                                }
-
-                              }
-                              catch (e) {
-                                print(e);
-                              }
                             },
                             child: Text(
                               'Sign In',
@@ -203,10 +328,10 @@ class _Sign_InState extends State<Sign_In> {
                                 fontSize: 20, color: Colors.green),
                           ),
                           onPressed: () {
-                           /* Navigator.push(
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Sign_Up()));*/
+                                    builder: (context) => Sign_Up()));
                           },
                         )
                       ],

@@ -10,22 +10,23 @@ class PointsServices extends StatefulWidget {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
-
+  var data;
+  var user_points;
+  var items_recycled;
   PointsServices(
-      {required this.Email,
-        required this.Password,
-        required this.fullName,
-        required this.mobileNumber,
-        required this.gender,
-        required this.dateOfBirth,
-        required this.cart
-        ,required this.totalAmount,required this.orders});
+  {required this.Email,
+    required this.Password,
+    required this.fullName,
+    required this.mobileNumber,
+    required this.gender,
+    required this.dateOfBirth,
+    required this.user_points,
+    required this.items_recycled,
+    required this.data
+  });
 
   @override
-  State<PointsServices> createState() => _PointsServicesState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders);
+  State<PointsServices> createState() => _PointsServicesState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
 }
 
 class _PointsServicesState extends State<PointsServices> {
@@ -35,10 +36,9 @@ class _PointsServicesState extends State<PointsServices> {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
-
+ var data;
+  var user_points;
+  var items_recycled;
   _PointsServicesState(
       {required this.Email,
         required this.Password,
@@ -46,8 +46,11 @@ class _PointsServicesState extends State<PointsServices> {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart
-        ,required this.totalAmount,required this.orders}); //  late WebViewController controller;
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+
+      }); //  late WebViewController controller;
   var _index = 2;
   var color = const Color(0xFF228B22);
 
@@ -80,7 +83,7 @@ class _PointsServicesState extends State<PointsServices> {
 
                           IconButton(onPressed: (){
                             Navigator.push(
-                                context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                                context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                           }, icon: Icon(Icons.chevron_left,color: Colors.black45,size: 25,))
 
                         ],
@@ -132,7 +135,7 @@ class _PointsServicesState extends State<PointsServices> {
                   SizedBox(width: MediaQuery.of(context).size.width *0.05,),
                   Text("Current Points",style: TextStyle(fontWeight: FontWeight.bold),),
                   SizedBox(width: MediaQuery.of(context).size.width *0.42,),
-                  Text("3145",style: TextStyle(fontWeight: FontWeight.bold,color:color,fontSize: 20 ),)
+                  Text("$user_points",style: TextStyle(fontWeight: FontWeight.bold,color:color,fontSize: 20 ),)
                 ],
               ),
 
@@ -224,15 +227,15 @@ class _PointsServicesState extends State<PointsServices> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 if (_index == 1)
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 if (_index == 2)
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                      context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
 
                 // if (_index == 3)
                 //   Navigator.push(

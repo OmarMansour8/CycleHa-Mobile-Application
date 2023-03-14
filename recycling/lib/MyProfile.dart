@@ -5,7 +5,6 @@ import 'package:recycling/Settings.dart';
 import 'package:recycling/map.dart';
 import 'package:recycling/points_services.dart';
 
-
 // void main() {
 //   runApp(homePage());
 // }
@@ -17,9 +16,9 @@ class MyProfile extends StatefulWidget {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
+  var user_points;
+  var data;
+  var items_recycled;
 
   MyProfile(
       {required this.Email,
@@ -28,11 +27,14 @@ class MyProfile extends StatefulWidget {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart
-        ,required this.totalAmount,required this.orders});
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+
+      });
 
   @override
-  State<MyProfile> createState() => _MyProfileState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders);
+  State<MyProfile> createState() => _MyProfileState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
 }
 
 class _MyProfileState extends State<MyProfile> {
@@ -42,9 +44,9 @@ class _MyProfileState extends State<MyProfile> {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
+  var data;
+  var user_points;
+  var items_recycled;
 
   _MyProfileState(
       {required this.Email,
@@ -53,9 +55,13 @@ class _MyProfileState extends State<MyProfile> {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart
-        ,required this.totalAmount,required this.orders}); //  late WebViewController controller;
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+      }); //  late WebViewController controller;
   var _index = 2;
+
+
 
   // This widget is the root of your application.
   @override
@@ -80,7 +86,7 @@ class _MyProfileState extends State<MyProfile> {
               children: [
                 IconButton(onPressed: (){
                  Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => setting(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                            MaterialPageRoute(builder: (context) => setting(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 }, icon: Icon(Icons.settings,size: 25,))
 
 
@@ -111,7 +117,7 @@ class _MyProfileState extends State<MyProfile> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 },
                 contentPadding: EdgeInsets.fromLTRB(15, 0, 20, 0),
                 // leading:Image(image:NetworkImage("https://www.pngitem.com/pimgs/m/248-2486809_transparent-vegetable-pizza-png-png-download.png"),
@@ -127,7 +133,8 @@ class _MyProfileState extends State<MyProfile> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => myaccount(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => myaccount(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)
+                      ));
                 },
                 contentPadding: EdgeInsets.fromLTRB(15, 0, 20, 0),
                 title: Text(
@@ -141,7 +148,7 @@ class _MyProfileState extends State<MyProfile> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => setting(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => setting(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 },
                 contentPadding: EdgeInsets.fromLTRB(15, 0, 20, 20),
                 title: Text(
@@ -178,7 +185,7 @@ class _MyProfileState extends State<MyProfile> {
                   Container(width: MediaQuery.of(context).size.width*0.5,
                   height: MediaQuery.of(context).size.height*0.03,
                     child: Center(
-                      child: Text("Omar Mansour",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+                      child: Text("$fullName",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
                     ),
                   ),
 
@@ -212,7 +219,7 @@ class _MyProfileState extends State<MyProfile> {
                       Container(
                         width: MediaQuery.of(context).size.width*0.5,
                         child: Center(
-                          child:Text("30",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,)),
+                          child:Text("$items_recycled",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,)),
                         ),
                       ),
                       SizedBox(height:MediaQuery.of(context).size.height*0.009, ),
@@ -230,7 +237,7 @@ class _MyProfileState extends State<MyProfile> {
                       Container(
                         width: MediaQuery.of(context).size.width*0.5,
                         child: Center(
-                          child:Text("30",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,)),
+                          child:Text("$user_points",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,)),
                         ),
                       ),
                       SizedBox(height:MediaQuery.of(context).size.height*0.009, ),
@@ -260,7 +267,7 @@ class _MyProfileState extends State<MyProfile> {
                 hoverColor: Colors.black26,
                 onTap: (){
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => PointsServices(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                      context, MaterialPageRoute(builder: (context) => PointsServices(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
 
 
                 },
@@ -302,15 +309,15 @@ class _MyProfileState extends State<MyProfile> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 if (_index == 1)
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 if (_index == 2)
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                      context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
 
                 // if (_index == 3)
                 //   Navigator.push(

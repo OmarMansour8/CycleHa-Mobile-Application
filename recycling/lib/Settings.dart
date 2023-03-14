@@ -17,11 +17,9 @@ class setting extends StatefulWidget {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-
-  double totalAmount = 0;
-  List<String> orders = [];
-
+  var data;
+  var user_points;
+  var items_recycled;
   setting(
       {required this.Email,
         required this.Password,
@@ -29,20 +27,14 @@ class setting extends StatefulWidget {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart,
-        required this.totalAmount,
-        required this.orders});
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+
+      });
   @override
   State<setting> createState() => _settingState(
-      Email: Email,
-      Password: Password,
-      fullName: fullName,
-      mobileNumber: mobileNumber,
-      gender: gender,
-      dateOfBirth: dateOfBirth,
-      cart: cart,
-      totalAmount: totalAmount,
-      orders: orders);
+      Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
 }
 
 class _settingState extends State<setting> {
@@ -52,12 +44,9 @@ class _settingState extends State<setting> {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  String name = 'Juicy Burger';
-  String image = "images/image4.jpeg";
-  bool swVal = false;
-  double totalAmount = 0;
-  List<String> orders = [];
+  var data;
+  var user_points;
+  var items_recycled;
   _settingState(
       {required this.Email,
         required this.Password,
@@ -65,9 +54,11 @@ class _settingState extends State<setting> {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart,
-        required this.totalAmount,
-        required this.orders});
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+
+      });
 
   ThemeData _liteTheme = ThemeData(
     brightness: Brightness.light,
@@ -88,7 +79,7 @@ class _settingState extends State<setting> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                              builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                     },
                     icon: Icon(Icons.arrow_back_ios),
                     alignment: Alignment.topLeft,
@@ -114,16 +105,7 @@ class _settingState extends State<setting> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Change_Password(
-                                    Email: Email,
-                                    Password: Password,
-                                    fullName: fullName,
-                                    mobileNumber: mobileNumber,
-                                    gender: gender,
-                                    dateOfBirth: dateOfBirth,
-                                    cart: cart,
-                                    totalAmount: totalAmount,
-                                    orders: orders)));
+                                builder: (context) => Change_Password(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                       }),
                   SizedBox(height: 10, width: 10),
 

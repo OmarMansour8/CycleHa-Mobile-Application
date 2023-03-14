@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -7,6 +9,7 @@ import 'package:recycling/MyProfile.dart';
 import 'package:recycling/Settings.dart';
 import 'package:recycling/map.dart';
 import 'package:recycling/start.dart';
+import 'package:http/http.dart' as http;
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:tab_container/tab_container.dart';
 
@@ -23,9 +26,9 @@ class homePage extends StatefulWidget {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
+  var user_points;
+  var data;
+  var items_recycled;
 
   homePage(
       {required this.Email,
@@ -34,11 +37,13 @@ class homePage extends StatefulWidget {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart
-        ,required this.totalAmount,required this.orders});
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+      });
 
   @override
-  State<homePage> createState() => _homePageState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders);
+  State<homePage> createState() => _homePageState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
 }
 
 class _homePageState extends State<homePage> {
@@ -48,9 +53,17 @@ class _homePageState extends State<homePage> {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
+  var user_points;
+  var data;
+  var items_recycled;
+
+
+  //   void initState(){
+  //   getMetalCountData(mobileNumber);
+  //   getMetalPointsData(mobileNumber);
+  // getUserPoints();
+  //
+  // }
 
   _homePageState(
       {required this.Email,
@@ -59,13 +72,22 @@ class _homePageState extends State<homePage> {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart
-        ,required this.totalAmount,required this.orders}); //  late WebViewController controller;
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+      }); //  late WebViewController controller;
   var _index = 0;
   var color = const Color(0xFF228B22);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    print(Email);
+    print(fullName);
+    print(mobileNumber);
+    print(dateOfBirth);
+    print(Password);
+    print(user_points);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -487,7 +509,7 @@ class _homePageState extends State<homePage> {
                               Container(
                                 width: MediaQuery.of(context).size.width,
                                 child :Center(
-                                  child: Text("3145",style:TextStyle(fontSize: 70,fontWeight: FontWeight.bold,color: Colors.black26)),
+                                  child: Text("${user_points.toString()}",style:TextStyle(fontSize: 70,fontWeight: FontWeight.bold,color: Colors.black26)),
 
                                 )
                               )
@@ -519,7 +541,7 @@ class _homePageState extends State<homePage> {
                                     child:ElevatedButton(
                                       style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,shadowColor: Colors.transparent,),
 
-                                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));},
+                                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));},
                                       child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
 
                                   )
@@ -614,15 +636,15 @@ class _homePageState extends State<homePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 if (_index == 1)
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 if (_index == 2)
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                      context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
 
                 // if (_index == 3)
                 //   Navigator.push(

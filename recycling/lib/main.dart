@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:recycling/AdminMainMenu.dart';
 import 'package:recycling/MainMenu.dart';
 import 'package:recycling/start.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:recycling/test.dart';
-import 'firebase_options.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
-void main()
-async{
+void main() {
 
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform
-  );
+
   runApp( MyHomePage());
 }
 
@@ -35,7 +31,8 @@ double totalAmount=0;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home:start()
+      home:AdminHomePage()
+      // home:start()
       // home:homePage(Email: "Email", Password: "Password", fullName: "fullName", mobileNumber: "mobileNumber", gender: "gender", dateOfBirth: "dateOfBirth", cart: cart, totalAmount: totalAmount, orders: orders)
       // home :testo(),
     );

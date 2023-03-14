@@ -10,9 +10,9 @@ class editProfile extends StatefulWidget {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders = [];
+ var data;
+  var user_points;
+  var items_recycled;
 
   editProfile(
       {required this.Email,
@@ -21,20 +21,11 @@ class editProfile extends StatefulWidget {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart,
-        required this.totalAmount,
-        required this.orders});
+        required this.user_points,
+        required this.data});
   @override
   State<editProfile> createState() => _editProfileState(
-      Email: Email,
-      Password: Password,
-      fullName: fullName,
-      mobileNumber: mobileNumber,
-      gender: gender,
-      dateOfBirth: dateOfBirth,
-      cart: cart,
-      totalAmount: totalAmount,
-      orders: orders);
+      Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
 }
 
 class _editProfileState extends State<editProfile> {
@@ -44,11 +35,9 @@ class _editProfileState extends State<editProfile> {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  String name = 'Juicy Burger';
-  String image = "images/image4.jpeg";
-  double totalAmount = 0;
-  List<String> orders = [];
+  var data;
+  var user_points;
+  var items_recycled;
 
   _editProfileState(
       {required this.Email,
@@ -57,9 +46,11 @@ class _editProfileState extends State<editProfile> {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart,
-        required this.totalAmount,
-        required this.orders});
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+
+      });
   String newEmail = '';
   String newfullName = '';
   String newmobileNumber = '';
@@ -118,7 +109,7 @@ class _editProfileState extends State<editProfile> {
                 .then((_) => print('Success'))
                 .catchError((error) => print('Failed: $error'));}
 
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>myaccount(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>myaccount(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
 
           print('thanks');
           ScaffoldMessenger.of(context).showSnackBar(

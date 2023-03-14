@@ -28,13 +28,13 @@ class testo extends StatelessWidget {
     // employeeDataSource = EmployeeDataSource(_users);
     return _users;
   }
-  db = FirebaseDatabase.instance.ref().child("UltraSonic");
-  db.once().then((DataSnapshot snapshot){
-  Map<dynamic, dynamic> values = snapshot.value;
-  values.forEach((key,values) {
-  print(values["Email"]);
-  });
-  });
+  // db = FirebaseDatabase.instance.ref().child("UltraSonic");
+  // db.once().then((DataSnapshot snapshot){
+  // Map<dynamic, dynamic> values = snapshot.value;
+  // values.forEach((key,values) {
+  // print(values["Email"]);
+  // });
+  // });
   Future getData() async{
     var url = Uri.parse('https://phlegmier-marches.000webhostapp.com/get.php') ;
     http.Response response = await http.get(url);
@@ -42,7 +42,7 @@ class testo extends StatelessWidget {
     print (data.toString());
   }
  void initState(){
-    getData();
+    // getData();
  }
   // This widget is the root of your application.
   @override
@@ -50,6 +50,11 @@ class testo extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         body: Center(
+          child: ElevatedButton(onPressed: (){
+            getData();
+
+
+          },child: Text('omar'),),
             // children: <Widget>[
             //
             //   Column(
@@ -65,97 +70,97 @@ class testo extends StatelessWidget {
                     // ),
 
 
-                      child:Container(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            CarouselSlider(
-                              items: [
-                                Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: CircularPercentIndicator(
-                                    radius: 90.0,
-                                    lineWidth: 15.0,
-                                    percent: 0.7,
-                                    animation: true,
-                                    animationDuration: 1200,
-                                    center: new Text("50"),
-                                    circularStrokeCap: CircularStrokeCap.butt,
-                                    backgroundColor: Colors.black26,
-                                    progressColor: Colors.black,
-                                    footer: new Text(
-                                      "المرتبات",
-                                      style: new TextStyle(
-                                          fontWeight: FontWeight.bold, fontSize: 15.0),
-                                    ),
-                                    // progressColor: Colors.green,
-                                  ),
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: CircularPercentIndicator(
-                                    radius: 90.0,
-                                    lineWidth: 15.0,
-                                    percent: 0.7,
-                                    animation: true,
-                                    animationDuration: 1200,
-                                    center: new Text("50"),
-                                    circularStrokeCap: CircularStrokeCap.butt,
-                                    backgroundColor: Colors.black26,
-                                    progressColor: Colors.black,
-                                    footer: new Text(
-                                      "الايجار",
-                                      style: new TextStyle(
-                                          fontWeight: FontWeight.bold, fontSize: 15.0),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: CircularPercentIndicator(
-                                    radius: 90.0,
-                                    lineWidth: 15.0,
-                                    percent: 0.7,
-                                    animation: true,
-                                    animationDuration: 1200,
-                                    center: new Text("50"),
-                                    circularStrokeCap: CircularStrokeCap.butt,
-                                    backgroundColor: Colors.black26,
-                                    progressColor: Colors.black,
-                                    footer: new Text(
-                                      "البضاعة",
-                                      style: new TextStyle(
-                                          fontWeight: FontWeight.bold, fontSize: 15.0),
-                                    ),
-                                    // progressColor: Colors.green,
-                                  ),
-                                ),
-                              ],
-                              options: CarouselOptions(
-                                height: 300.0,
-                                enlargeCenterPage: true,
-                                autoPlay: true,
-                                aspectRatio: 16 / 9,
-                                autoPlayCurve: Curves.fastOutSlowIn,
-                                enableInfiniteScroll: true,
-                                autoPlayAnimationDuration: Duration(milliseconds: 800),
-                                viewportFraction: 0.8,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                      // // child:Container(
+                      // //   child: Column(
+                      // //     children: [
+                      // //       SizedBox(
+                      // //         height: MediaQuery.of(context).size.height * 0.02,
+                      // //       ),
+                      // //       CarouselSlider(
+                      // //         items: [
+                      // //           Container(
+                      // //             width: MediaQuery.of(context).size.width,
+                      // //             decoration: BoxDecoration(
+                      // //               borderRadius: BorderRadius.circular(8.0),
+                      // //             ),
+                      // //             child: CircularPercentIndicator(
+                      // //               radius: 90.0,
+                      // //               lineWidth: 15.0,
+                      // //               percent: 0.7,
+                      // //               animation: true,
+                      // //               animationDuration: 1200,
+                      // //               center: new Text("50"),
+                      // //               circularStrokeCap: CircularStrokeCap.butt,
+                      // //               backgroundColor: Colors.black26,
+                      // //               progressColor: Colors.black,
+                      // //               footer: new Text(
+                      // //                 "المرتبات",
+                      // //                 style: new TextStyle(
+                      // //                     fontWeight: FontWeight.bold, fontSize: 15.0),
+                      // //               ),
+                      // //               // progressColor: Colors.green,
+                      // //             ),
+                      // //           ),
+                      // //           Container(
+                      // //             width: MediaQuery.of(context).size.width,
+                      // //             decoration: BoxDecoration(
+                      // //               borderRadius: BorderRadius.circular(8.0),
+                      // //             ),
+                      // //             child: CircularPercentIndicator(
+                      // //               radius: 90.0,
+                      // //               lineWidth: 15.0,
+                      // //               percent: 0.7,
+                      // //               animation: true,
+                      // //               animationDuration: 1200,
+                      // //               center: new Text("50"),
+                      // //               circularStrokeCap: CircularStrokeCap.butt,
+                      // //               backgroundColor: Colors.black26,
+                      // //               progressColor: Colors.black,
+                      // //               footer: new Text(
+                      // //                 "الايجار",
+                      // //                 style: new TextStyle(
+                      // //                     fontWeight: FontWeight.bold, fontSize: 15.0),
+                      // //               ),
+                      // //             ),
+                      // //           ),
+                      // //           Container(
+                      // //             width: MediaQuery.of(context).size.width,
+                      // //             decoration: BoxDecoration(
+                      // //               borderRadius: BorderRadius.circular(8.0),
+                      // //             ),
+                      // //             child: CircularPercentIndicator(
+                      // //               radius: 90.0,
+                      // //               lineWidth: 15.0,
+                      // //               percent: 0.7,
+                      // //               animation: true,
+                      // //               animationDuration: 1200,
+                      // //               center: new Text("50"),
+                      // //               circularStrokeCap: CircularStrokeCap.butt,
+                      // //               backgroundColor: Colors.black26,
+                      // //               progressColor: Colors.black,
+                      // //               footer: new Text(
+                      // //                 "البضاعة",
+                      // //                 style: new TextStyle(
+                      // //                     fontWeight: FontWeight.bold, fontSize: 15.0),
+                      // //               ),
+                      // //               // progressColor: Colors.green,
+                      // //             ),
+                      // //           ),
+                      // //         ],
+                      // //         options: CarouselOptions(
+                      // //           height: 300.0,
+                      // //           enlargeCenterPage: true,
+                      // //           autoPlay: true,
+                      // //           aspectRatio: 16 / 9,
+                      // //           autoPlayCurve: Curves.fastOutSlowIn,
+                      // //           enableInfiniteScroll: true,
+                      // //           autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      // //           viewportFraction: 0.8,
+                      // //         ),
+                      // //       )
+                      // //     ],
+                      // //   ),
+                      // ),
         //           ]
         //       )
         //     ]

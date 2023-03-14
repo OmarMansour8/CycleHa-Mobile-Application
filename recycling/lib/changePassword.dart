@@ -10,18 +10,27 @@ class Change_Password extends StatefulWidget {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
+  var user_points;
+ var data;
+  var items_recycled;
 
 
 
 
 
-  Change_Password({required this.Email,required this.Password,required this.fullName,required this.mobileNumber,
-    required this.gender,required this.dateOfBirth,required this.cart,required this.totalAmount,required this.orders});
+  Change_Password({required this.Email,
+    required this.Password,
+    required this.fullName,
+    required this.mobileNumber,
+    required this.gender,
+    required this.dateOfBirth,
+    required this.user_points,
+    required this.items_recycled,
+    required this.data
+
+  });
   @override
-  State<Change_Password> createState() => _Change_PasswordState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, totalAmount: totalAmount, orders: orders);
+  State<Change_Password> createState() => _Change_PasswordState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
 }
 class _Change_PasswordState extends State<Change_Password> {
   String Email='';
@@ -34,11 +43,11 @@ class _Change_PasswordState extends State<Change_Password> {
   String currentPassword='';
   String confirmPassword='';
   bool buttonEnabled = false;
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
   final currentUser = FirebaseAuth.instance.currentUser;
   final newPasswordContoller =TextEditingController();
+  var data;
+  var user_points;
+  var items_recycled;
   //method to enable save button
   enableButton(){
     buttonEnabled = true;
@@ -46,8 +55,17 @@ class _Change_PasswordState extends State<Change_Password> {
 
 //constructor
 
-  _Change_PasswordState({required this.Email,required this.Password,required this.fullName,required this.mobileNumber,
-    required this.gender,required this.dateOfBirth,required this.totalAmount,required this.orders});
+  _Change_PasswordState({required this.Email,
+    required this.Password,
+    required this.fullName,
+    required this.mobileNumber,
+    required this.gender,
+    required this.dateOfBirth,
+    required this.user_points,
+    required this.items_recycled,
+    required this.data
+
+  });
 
   //change password in user document(optional)
   updateData(val){

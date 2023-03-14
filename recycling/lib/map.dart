@@ -20,9 +20,9 @@ class maps extends StatefulWidget {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
+var data;
+  var user_points;
+  var items_recycled;
   maps(
       {required this.Email,
         required this.Password,
@@ -30,12 +30,15 @@ class maps extends StatefulWidget {
         required this.mobileNumber,
         required this.gender,
         required this.dateOfBirth,
-        required this.cart,
-        required this.totalAmount,required this.orders});
+        required this.user_points,
+        required this.items_recycled,
+        required this.data
+
+      });
 
 
   @override
-  State<maps> createState() => _mapsState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders);
+  State<maps> createState() => _mapsState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
 
 }
 
@@ -46,9 +49,9 @@ class _mapsState extends State<maps> {
   String mobileNumber = '';
   String gender = '';
   String dateOfBirth = '';
-  List<Widget> cart = [];
-  double totalAmount = 0;
-  List<String> orders=[];
+  var data;
+  var user_points;
+  var items_recycled;
 
 
   _mapsState({required this.Email,
@@ -57,9 +60,10 @@ class _mapsState extends State<maps> {
     required this.mobileNumber,
     required this.gender,
     required this.dateOfBirth,
-    required this.cart,
-    required this.totalAmount
-    ,required this.orders});
+    required this.user_points,
+    required this.items_recycled,
+    required this.data
+  });
   var _index = 1;
   LatLng _location = const LatLng(30.0272, 31.4917);
   late GoogleMapController mapController;
@@ -382,15 +386,15 @@ class _mapsState extends State<maps> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 if (_index == 1)
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                          builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
                 if (_index == 2)
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+                      context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
 
                 // if (_index == 3)
                 //   Navigator.push(
