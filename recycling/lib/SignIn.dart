@@ -34,10 +34,11 @@ class _Sign_InState extends State<Sign_In> {
   Future getUserData(String mobile) async{
     var url =  Uri.parse(
         'https://phlegmier-marches.000webhostapp.com/getUserData.php');
-    var response = await http.post(url,body:{
-      "mobile": mobile,
-    }
-    );
+
+      var response = await http.post(url, body: {
+        "mobile": mobile,
+      }
+      );
 
     // print(json.decode(response.body));
     var data1 = await json.decode(response.body);
@@ -57,126 +58,70 @@ class _Sign_InState extends State<Sign_In> {
 
     // return json.decode(response.body);
   }
-   getData(String mobile,var data)  {
+  Future SendData(var x) async {
+    var url = Uri.parse('https://phlegmier-marches.000webhostapp.com/register.php') ;
+    var data1 = {"points": x,};
+    final response = await http.post(url, body:{
+     data1
+    });
+    try {
+      var data = json.decode(response.body);
+      //  print("omar1");
+      print(data);
+      if (data == "Error") {
+        Fluttertoast.showToast(
+            msg: "Something Went Wrong Please Try Again Later",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.9
+        );
+      }
+      else if (data == "Success") {
+        getData(mobile.text,data);
+        Fluttertoast.showToast(
+            msg: "Registration Successful",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.green,
+            textColor: Colors.white,
+            fontSize: 16.0);
+
+
+      }
+      if (data == "Already Exists") {
+        Fluttertoast.showToast(
+            msg: "This User Already Exit!",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.9
+        );
+      }
+      else {
+        print("error");
+      }
+    }
+    catch (e) {
+      print(e);
+    }
+  }
+
+
+  getData(String mobile,var data)  {
     Email = data[0]["User_Email"];
     fullName = data[0]["User_Name"];
     mobileNumber = data[0]["User_MobileNumber"];
     dateOfBirth = data[0]["USer_DateofBirth"];
     Password = data[0]["User_Password"];
-    getMetalCountData(mobile);
-    getMetalPointsData(mobile);
-    getPlasticCountData(mobile);
-    getPlasticPointsData(mobile);
-    getUserPoints();
-    getItemCount();
-    // user_points = await getUserData("User_Points",mobile);
-
-    // print(Email);
-    // print(fullName);
-    // print(mobileNumber);
-    // print(dateOfBirth);
-    // print(Password);
-    // print(user_points);
-
-
 
 
   }
-
-  Future getMetalPoints(String name,String mobile) async{
-    var url =  Uri.parse(
-        'https://phlegmier-marches.000webhostapp.com/getMetalPoints.php');
-    var response = await http.post(url,body:{
-      "mobile": mobile,
-    }
-    );
-
-    // print(json.decode(response.body));
-    var data = await json.decode(response.body);
-    print(data);
-    return data[0][name];
-    // return json.decode(response.body);
-  }
-  Future<void> getMetalPointsData(String mobile) async {
-    metalPoints = await getMetalPoints("Item_Points",mobile);
-    print("hoda ${int.parse(metalPoints)}");
-  }
-
-
-
-  Future getMetalCount(String name,String mobile) async{
-    var url =  Uri.parse(
-        'https://phlegmier-marches.000webhostapp.com/getMetalCount.php');
-    var response = await http.post(url,body:{
-      "mobile": mobile,
-    }
-    );
-
-    // print(json.decode(response.body));
-    var data = await json.decode(response.body);
-    print(data);
-    return data[0][name];
-    // return json.decode(response.body);
-  }
-  Future<void> getMetalCountData(String mobile) async {
-    metalCount = await getMetalCount("Item_Amount",mobile);
-    print("omar ${int.parse(metalCount)}");
-  }
-
-
-  Future getPlasticPoints(String name,String mobile) async{
-    var url =  Uri.parse(
-        'https://phlegmier-marches.000webhostapp.com/getPlasticPoints.php');
-    var response = await http.post(url,body:{
-      "mobile": mobile,
-    }
-    );
-
-    // print(json.decode(response.body));
-    var data = await json.decode(response.body);
-    print(data);
-    return data[0][name];
-    // return json.decode(response.body);
-  }
-  Future<void> getPlasticPointsData(String mobile) async {
-    plasticPoints = await getPlasticPoints("Item_Points",mobile);
-    print("hoda ${int.parse(plasticPoints)}");
-  }
-
-
-
-  Future getPlasticCount(String name,String mobile) async{
-    var url =  Uri.parse(
-        'https://phlegmier-marches.000webhostapp.com/getPlasticCount.php');
-    var response = await http.post(url,body:{
-      "mobile": mobile,
-    }
-    );
-
-    // print(json.decode(response.body));
-    var data = await json.decode(response.body);
-    print(data);
-    return data[0][name];
-    // return json.decode(response.body);
-  }
-  Future<void> getPlasticCountData(String mobile) async {
-    plasticCount = await getPlasticCount("Item_Amount",mobile);
-    print("omar ${int.parse(plasticCount)}");
-  }
-
-
-  void getUserPoints(){
-    var userpoints = (int.parse(metalCount)*int.parse(metalPoints)+int.parse(plasticPoints)*int.parse(plasticCount));
-    print("this is user points $userpoints");
-    user_points = userpoints.toString();
-    }
-  void getItemCount(){
-    getPlasticCountData(mobileNumber);
-    getMetalCountData(mobileNumber);
-    var itemCount1= (int.parse(metalCount)+int.parse(plasticCount));
-    items_recycled = itemCount1.toString();
-  }
-
 
   Future Login() async {
     var url = Uri.parse('https://phlegmier-marches.000webhostapp.com/login.php') ;

@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:recycling/EditProfile.dart';
 
@@ -54,26 +54,26 @@ class _myaccountState extends State<myaccount> {
         required this.data
 
       });
-  void getData() {
-    FirebaseFirestore.instance
-        .collection('Users')
-        .doc(Email)
-        .get()
-        .then((value) {
-      fullName = value.get('Full Name');
-      mobileNumber = value.get('Mobile Number');
-      gender = value.get('Gender');
-      dateOfBirth = value.get('Date Of Birth');
-      print(fullName);
-      print(mobileNumber);
-      print(gender);
-      print(dateOfBirth);
-    });
-  }
+  // void getData() {
+  //   FirebaseFirestore.instance
+  //       .collection('Users')
+  //       .doc(Email)
+  //       .get()
+  //       .then((value) {
+  //     fullName = value.get('Full Name');
+  //     mobileNumber = value.get('Mobile Number');
+  //     gender = value.get('Gender');
+  //     dateOfBirth = value.get('Date Of Birth');
+  //     print(fullName);
+  //     print(mobileNumber);
+  //     print(gender);
+  //     print(dateOfBirth);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
-    getData();
+    // getData();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

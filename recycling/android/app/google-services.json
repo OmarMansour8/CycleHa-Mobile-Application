@@ -1,113 +1,35 @@
 {
   "project_info": {
-    "project_number": "233440441678",
-    "project_id": "recycling-2d743",
-    "storage_bucket": "recycling-2d743.appspot.com"
+    "project_number": "178280760819",
+    "firebase_url": "https://hardware-ultrasonic-default-rtdb.firebaseio.com",
+    "project_id": "hardware-ultrasonic",
+    "storage_bucket": "hardware-ultrasonic.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:233440441678:android:f3e59ec776136d05d39a1f",
+        "mobilesdk_app_id": "1:178280760819:android:da508393b2529c991afe86",
         "android_client_info": {
           "package_name": "com.example.rbj"
         }
       },
       "oauth_client": [
         {
-          "client_id": "233440441678-if9j3bjqcbk770n0osvg8ocg2jlvib5h.apps.googleusercontent.com",
+          "client_id": "178280760819-5m24bdmp3a4jqu5mfuqfmabsu5io1idt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBKTmpheHTkWUrXpheq1GZDw0vC-m87XME"
+          "current_key": "AIzaSyAqaa5tkvxBu1qN4GdvVFM6JWL2JdRczaE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "233440441678-if9j3bjqcbk770n0osvg8ocg2jlvib5h.apps.googleusercontent.com",
+              "client_id": "178280760819-5m24bdmp3a4jqu5mfuqfmabsu5io1idt.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "233440441678-4mai88cg1cnag8t2imvmseq4g47gd95s.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.recycling"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:233440441678:android:d8242f8b034973c9d39a1f",
-        "android_client_info": {
-          "package_name": "com.example.recycling"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "233440441678-if9j3bjqcbk770n0osvg8ocg2jlvib5h.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBKTmpheHTkWUrXpheq1GZDw0vC-m87XME"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "233440441678-if9j3bjqcbk770n0osvg8ocg2jlvib5h.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "233440441678-4mai88cg1cnag8t2imvmseq4g47gd95s.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.recycling"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:233440441678:android:368cc6d5ee90c6bfd39a1f",
-        "android_client_info": {
-          "package_name": "com.example.recycling_peoject"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "233440441678-if9j3bjqcbk770n0osvg8ocg2jlvib5h.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBKTmpheHTkWUrXpheq1GZDw0vC-m87XME"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "233440441678-if9j3bjqcbk770n0osvg8ocg2jlvib5h.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "233440441678-4mai88cg1cnag8t2imvmseq4g47gd95s.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.recycling"
-              }
             }
           ]
         }

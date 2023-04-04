@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:recycling/MyAccount.dart';
@@ -56,22 +56,22 @@ class _editProfileState extends State<editProfile> {
   String newmobileNumber = '';
   String newgender = '';
   String newdateOfBirth='';
-  void getData() {
-    FirebaseFirestore.instance
-        .collection('Users')
-        .doc(Email)
-        .get()
-        .then((value) {
-      fullName = value.get('Full Name');
-      mobileNumber = value.get('Mobile Number');
-      gender = value.get('Gender');
-      dateOfBirth = value.get('Date Of Birth');
-      print(fullName);
-      print(mobileNumber);
-      print(gender);
-      print(dateOfBirth);
-    });
-  }
+  // void getData() {
+  //   // FirebaseFirestore.instance
+  //   //     .collection('Users')
+  //   //     .doc(Email)
+  //   //     .get()
+  //   //     .then((value) {
+  //     fullName = value.get('Full Name');
+  //     mobileNumber = value.get('Mobile Number');
+  //     gender = value.get('Gender');
+  //     dateOfBirth = value.get('Date Of Birth');
+  //     print(fullName);
+  //     print(mobileNumber);
+  //     print(gender);
+  //     print(dateOfBirth);
+  //   });
+  // }
   DateTime date1=DateTime.now();
   Future<Null>selectDate(BuildContext context) async{
     final DateTime? picked=await showDatePicker(
@@ -88,26 +88,26 @@ class _editProfileState extends State<editProfile> {
       actions: [
         ElevatedButton(onPressed: (){
           if(newfullName!=''){
-            fullName = newfullName;
-            FirebaseFirestore.instance.collection('Users')
-                .doc('$Email')
-                .update({'Full Name' : newfullName}) // <-- Updated data
-                .then((_) => print('Success'))
-                .catchError((error) => print('Failed: $error'));}
+            fullName = newfullName;}
+            // FirebaseFirestore.instance.collection('Users')
+            //     .doc('$Email')
+            //     .update({'Full Name' : newfullName}) // <-- Updated data
+            //     .then((_) => print('Success'))
+            //     .catchError((error) => print('Failed: $error'));}
           if(newdateOfBirth!=''){
-            dateOfBirth=newdateOfBirth;
-            FirebaseFirestore.instance.collection('Users')
-                .doc('$Email')
-                .update({'Date Of Birth' : newdateOfBirth}) // <-- Updated data
-                .then((_) => print('Success'))
-                .catchError((error) => print('Failed: $error'));}
+            dateOfBirth=newdateOfBirth;}
+            // FirebaseFirestore.instance.collection('Users')
+            //     .doc('$Email')
+            //     .update({'Date Of Birth' : newdateOfBirth}) // <-- Updated data
+            //     .then((_) => print('Success'))
+            //     .catchError((error) => print('Failed: $error'));}
           if(newgender!=''){
-            gender = newgender;
-            FirebaseFirestore.instance.collection('Users')
-                .doc('$Email')
-                .update({'Gender' : newgender}) // <-- Updated data
-                .then((_) => print('Success'))
-                .catchError((error) => print('Failed: $error'));}
+            gender = newgender;}
+            // FirebaseFirestore.instance.collection('Users')
+            //     .doc('$Email')
+            //     .update({'Gender' : newgender}) // <-- Updated data
+            //     .then((_) => print('Success'))
+            //     .catchError((error) => print('Failed: $error'));}
 
           Navigator.push(context, MaterialPageRoute(builder: (context)=>myaccount(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
 
@@ -134,7 +134,7 @@ class _editProfileState extends State<editProfile> {
   @override
   Widget build(BuildContext context) {
 
-    getData();
+    // getData();
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return MaterialApp(

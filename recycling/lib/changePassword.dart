@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:recycling/start.dart';
 
 class Change_Password extends StatefulWidget {
@@ -43,7 +43,7 @@ class _Change_PasswordState extends State<Change_Password> {
   String currentPassword='';
   String confirmPassword='';
   bool buttonEnabled = false;
-  final currentUser = FirebaseAuth.instance.currentUser;
+  // final currentUser = FirebaseAuth.instance.currentUser;
   final newPasswordContoller =TextEditingController();
   var data;
   var user_points;
@@ -67,15 +67,15 @@ class _Change_PasswordState extends State<Change_Password> {
 
   });
 
-  //change password in user document(optional)
-  updateData(val){
-    FirebaseFirestore.instance.collection('Users').doc(Email).update({'Password': '$val'});
-  }
+  // //change password in user document(optional)
+  // updateData(val){
+  //   FirebaseFirestore.instance.collection('Users').doc(Email).update({'Password': '$val'});
+  // }
   //change password from fire base authentication
   changePassword(newPassword) async{
     try{
-      await currentUser!.updatePassword(newPassword);
-      FirebaseAuth.instance.signOut();
+      // await currentUser!.updatePassword(newPassword);
+      // FirebaseAuth.instance.signOut();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>start()));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Your Password Has Been Changed , Login Again'),backgroundColor: Colors.black26,));
 
@@ -223,7 +223,7 @@ class _Change_PasswordState extends State<Change_Password> {
                       SizedBox(height: 60, child: ElevatedButton(onPressed:buttonEnabled ? (){
 
 
-                        updateData(newPassword);
+                        // updateData(newPassword);
                         changePassword(newPassword);
 
 

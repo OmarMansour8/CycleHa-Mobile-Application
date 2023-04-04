@@ -46,8 +46,7 @@ class _MyProfileState extends State<MyProfile> {
   String dateOfBirth = '';
   var data;
   var user_points;
-  var items_recycled;
-
+  var items_recycled ;
   _MyProfileState(
       {required this.Email,
         required this.Password,
@@ -66,7 +65,6 @@ class _MyProfileState extends State<MyProfile> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 

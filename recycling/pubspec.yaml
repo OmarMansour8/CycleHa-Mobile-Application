@@ -33,10 +33,10 @@ dependency_overrides:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^1.21.0
-  firebase_auth: ^3.6.4
-  firebase_database: ^9.1.2
-  cloud_firestore: ^3.4.5
+#  firebase_core: ^1.21.0
+#  firebase_auth: ^3.6.4
+#  firebase_database: ^9.1.2
+#  cloud_firestore: ^3.4.5
   grouped_buttons: ^1.0.2
   google_maps_flutter: ^2.1.12
   geolocator: ^9.0.1
@@ -102,6 +102,8 @@ flutter:
     - images/omar4.jpg
     - images/omar3.jpg
     - images/recycling.jpg
+    - images/omar8.jpg
+    - images/avatar.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

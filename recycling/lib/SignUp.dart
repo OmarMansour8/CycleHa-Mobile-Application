@@ -19,11 +19,11 @@ class _Sign_UpState extends State<Sign_Up> {
    var  gender;
    var  dateOfBirth;
    String  totalAmount =  '' ;
-  var user_points;
+   var user_points;
    var items_recycled;
-  var data;
-  bool buttonEnabled = false;
-  TextEditingController name = new TextEditingController();
+   var data;
+   bool buttonEnabled = false;
+   TextEditingController name = new TextEditingController();
    TextEditingController email = new TextEditingController();
    TextEditingController mobile = new TextEditingController();
    TextEditingController pass = new TextEditingController();
