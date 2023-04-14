@@ -33,6 +33,194 @@ class _TruckState extends State<Truck> {
   // final databaseReference = FirebaseDatabase.instance.ref();
   var _index = 1;
   var color = const Color.fromRGBO(220, 238, 255, 1);
+  var truckData1;
+  List _driverName = [];
+  List _ID = [];
+  List Location = [];
+  List Bin = [];
+  List<Widget> Widg =[];
+  int enter = 0;
+  Future getTruckData() async{
+    var url =  Uri.parse(
+        'https://phlegmier-marches.000webhostapp.com/getTruck.php');
+    var response = await http.post(url,body:{
+    }
+    );
+
+    // print(json.decode(response.body));
+    var data1 = await json.decode(response.body);
+    print(data1);
+    truckData1=data1;
+    print("length ${truckData1.length}");
+
+    print("mamaos ${data1.runtimeType}");
+    if(enter == 0){
+      getInformation();
+      enter++;
+    }
+    return data1;
+
+    // return json.decode(response.body);
+  }
+
+  getInformation(){
+    for(int i = 0 ; i<truckData1.length;i++){
+      // _driverName.add(truckData1[i]["Bin_Location"]);
+      _ID.add(truckData1[i]["Truck_ID"]);
+      Bin.add(truckData1[i]["Truck_Location"]);
+
+
+    }
+    // print("bin area $Bin_Area");
+    // var Areaname = Bin_Area1.toSet().toList();
+    // items=Areaname;
+
+    // for(int i = 0 ; i<binData1.length;i++){
+    //   print("dkhlt $i");
+    //   Widg.add(
+    //     Container(
+    //       // color:Colors.white,
+    //       height: MediaQuery.of(context).size.height * 0.35,
+    //       width: MediaQuery.of(context).size.width,
+    //       margin:
+    //       EdgeInsets.all(MediaQuery.of(context).size.height * 0.015),
+    //       decoration: BoxDecoration(
+    //           borderRadius: BorderRadius.all(Radius.circular(25)),
+    //           color: Colors.white,
+    //           gradient: LinearGradient(
+    //             begin: Alignment.bottomCenter,
+    //             end: Alignment.topCenter,
+    //             stops: [
+    //               0.3,
+    //
+    //               // 0.6,
+    //               0.7,
+    //             ],
+    //             colors: [Colors.redAccent, Colors.deepOrangeAccent],
+    //           )),
+    //
+    //       child: Column(
+    //         children: [
+    //           SizedBox(
+    //             height: MediaQuery.of(context).size.height * 0.035,
+    //           ),
+    //           Row(
+    //             children: [
+    //               SizedBox(
+    //                 width: MediaQuery.of(context).size.width * 0.1,
+    //               ),
+    //
+    //               Text("Top Achievers:",
+    //                 style: TextStyle(fontSize: 20, color: Colors.white60),),
+    //               SizedBox(
+    //                 width: MediaQuery.of(context).size.width * 0.15,
+    //               ),
+    //
+    //               buildExpandedBox(
+    //                 color: Colors.transparent,
+    //                 children: [
+    //                   buildStackedImages(),
+    //                   // const SizedBox(height: 16),
+    //                   // buildStackedImages(direction: TextDirection.rtl),
+    //                 ],
+    //               ),
+    //
+    //               // SizedBox(width:MediaQuery.of(context).size.width*0.04 ,),
+    //               // Icon(
+    //               //   Icons.info_outline_rounded,color: Colors.white,size: 25,
+    //               //
+    //               // )
+    //             ],
+    //           ),
+    //           SizedBox(
+    //             height: MediaQuery.of(context).size.height * 0.035,
+    //           ),
+    //           Row(
+    //             children: [
+    //               SizedBox(
+    //                 width: MediaQuery.of(context).size.width * 0.1,
+    //               ),
+    //               Text(
+    //                 "${_name[i]}",
+    //                 style: TextStyle(
+    //                     fontWeight: FontWeight.bold,
+    //                     color: Colors.white,
+    //                     fontSize: 27),
+    //               )
+    //             ],
+    //           ),
+    //           SizedBox(
+    //             height: MediaQuery.of(context).size.height * 0.005,
+    //           ),
+    //           Row(
+    //             children: [
+    //               SizedBox(
+    //                 width: MediaQuery.of(context).size.width * 0.1,
+    //               ),
+    //               Text(
+    //                 "${Bin_Area[i]}",
+    //                 style: TextStyle(fontSize: 20, color: Colors.white60),
+    //               )
+    //             ],
+    //           ),
+    //           SizedBox(
+    //             height: MediaQuery.of(context).size.height * 0.025,
+    //           ),
+    //           Row(
+    //             children: [
+    //               SizedBox(
+    //                 width: MediaQuery.of(context).size.width * 0.1,
+    //               ),
+    //               Text(
+    //                 "Plastic Capacity : ",
+    //                 style: TextStyle(color: Colors.white, fontSize: 16),
+    //               ),
+    //               SizedBox(
+    //                 width: MediaQuery.of(context).size.width * 0.28,
+    //               ),
+    //               Text(
+    //                 "${PlasticCapacity[i]}",
+    //                 style: new TextStyle(
+    //                     fontSize: 18.0, color: Colors.white,fontWeight: FontWeight.bold),
+    //               ),
+    //             ],
+    //           ),
+    //           SizedBox(
+    //             height: MediaQuery.of(context).size.height * 0.019,
+    //           ),
+    //           Row(
+    //             children: [
+    //               SizedBox(
+    //                 width: MediaQuery.of(context).size.width * 0.1,
+    //               ),
+    //               Text(
+    //                 "Metal Capacity   : ",
+    //                 style: TextStyle(color: Colors.white, fontSize: 16),
+    //               ),
+    //               SizedBox(
+    //                 width: MediaQuery.of(context).size.width * 0.28,
+    //               ),
+    //               Text(
+    //                 "${MetalCapacity[i]}",
+    //                 style: new TextStyle(
+    //                     fontSize: 18.0, color: Colors.white,fontWeight: FontWeight.bold),
+    //               ),
+    //             ],
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   );
+    //   print("widg ${Widg.length}");
+    //
+    // }
+
+
+
+  }
+
+
+
   final List<String> items = [
     'Item1',
     'Item2',

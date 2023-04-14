@@ -82,7 +82,7 @@ class _homePageState extends State<homePage> {
 
     var response1 = await http.post(Uri.parse(
         'https://phlegmier-marches.000webhostapp.com/getItemsCount.php'),body:{
-      'mobile' : "01550083829",
+      'mobile' : mobile,
       'type' : "metal"
     }
     );
@@ -110,7 +110,7 @@ class _homePageState extends State<homePage> {
   @override
   void initState()  {
     super.initState();
-    getItemCount("01550083829");
+    getItemCount(mobileNumber);
   }
 
 
@@ -133,7 +133,7 @@ class _homePageState extends State<homePage> {
   Widget build(BuildContext context) {
 
     return FutureBuilder(
-    future: getItemCount("01550083829"),
+    future: getItemCount(mobileNumber),
     builder: (context, snapshot) {
       if (!snapshot.hasData) {
         // Future hasn't finished yet, return a placeholder
@@ -414,7 +414,7 @@ class _homePageState extends State<homePage> {
                               SizedBox(
                                 width:MediaQuery.of(context).size.width*0.08,
                               ),
-                              Text("My Points",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold)),
+                              Text("Your Points",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold)),
                             ],
 
                           ),
@@ -777,7 +777,7 @@ class _homePageState extends State<homePage> {
                               SizedBox(
                                 width:MediaQuery.of(context).size.width*0.08,
                               ),
-                              Text("My Points",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold)),
+                              Text("Your Points",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold)),
                             ],
 
                           ),
