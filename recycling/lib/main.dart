@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:recycling/AdminMainMenu.dart';
+import 'package:recycling/AdminUserProfile.dart';
+import 'package:recycling/SignUp.dart';
 import 'package:recycling/Truck.dart';
 import 'package:recycling/MainMenu.dart';
+import 'package:recycling/Welcome.dart';
+import 'package:recycling/map.dart';
+import 'package:recycling/sSignInPage.dart';
 import 'package:recycling/start.dart';
 import 'package:recycling/test.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
-// import 'firebase_options.dart';
+import "package:recycling/SignUpPage.dart";
+
 void main(){
-// async{
-//
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp(
-//     name: 'hardware proj1',
-//       options: DefaultFirebaseOptions.currentPlatform
-//   );
 
   runApp( MyHomePage());
 }
@@ -39,11 +38,13 @@ double totalAmount=0;
       debugShowCheckedModeBanner: false,
 
       // home:AdminBin()
-      // home:AdminBin()
+      // home:maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)
+      // home:AdminUserProfile()
       // home:Truck()
-      home:start()
+      // home:start()
+      // home:Wel/come()
       // home:homePage(Email: "Email", Password: "Password", fullName: "fullName", mobileNumber: "mobileNumber", gender: "gender", dateOfBirth: 'dateOfBirth', user_points: "user_points", items_recycled: "items_recycled", data: "data")
-      // home :testo(),
+      home :Sign_In1(),
     );
   }
 }

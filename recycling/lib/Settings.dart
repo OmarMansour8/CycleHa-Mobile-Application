@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recycling/MainMenu.dart';
 import 'package:recycling/changePassword.dart';
+import 'package:recycling/sSignInPage.dart';
 import 'package:recycling/start.dart';
 // import 'package:recycling_peoject/ChangePassword.dart';
 // import 'package:recycling_peoject/HomePage.dart';
@@ -116,7 +117,7 @@ class _settingState extends State<setting> {
                       trailing: Icon(Icons.arrow_forward_ios, color: Colors.green),
                       onTap: () {
                         Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => start()));
+                            context, MaterialPageRoute(builder: (context) => Sign_In1()));
                       }),
                   SizedBox(height: 10, width: 10),
                 ]))));

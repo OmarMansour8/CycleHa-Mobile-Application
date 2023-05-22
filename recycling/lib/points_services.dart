@@ -68,7 +68,7 @@ class _PointsServicesState extends State<PointsServices> {
 
             Container(
               // color: Colors.white,
-              height: MediaQuery.of(context).size.height*0.16,
+              height: MediaQuery.of(context).size.height*0.2,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(30),bottomLeft: Radius.circular(30)),
                 color: Colors.white

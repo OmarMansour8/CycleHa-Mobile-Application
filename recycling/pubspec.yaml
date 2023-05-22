@@ -39,6 +39,8 @@ dependencies:
 #  cloud_firestore: ^3.4.5
   grouped_buttons: ^1.0.2
   google_maps_flutter: ^2.1.12
+  loading_indicator: ^3.1.0
+  screen_loader: ^4.0.1
   geolocator: ^9.0.1
   webview_flutter: ^3.0.4
   sqflite: any

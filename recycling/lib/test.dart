@@ -1,137 +1,103 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-// Future ItemCount() async{
-//   var user_points ;
-//   int plasticCount = 0;
-//   int plasticPoints = 5;
-//   var url =  Uri.parse(
-//       'https://phlegmier-marches.000webhostapp.com/omar.php');
-//   var response = await http.post(Uri.parse(
-//       'https://phlegmier-marches.000webhostapp.com/omar.php'),body:{
-//     'mobile' : "01550083829",
-//     'type' : "plastic"
-//   }
-//   );
-//
-//   // print(json.decode(response.body));
-//   var data1 = await json.decode(response.body);
-//   print(data1);
-//   // plasticData = getPlasticCount(mobileNumber);
-//   // print("mahmoud $plasticData");
-//   // metalData = getMetalCount(mobileNumber);
-//   // getData(mobile, data1);
-//   print("data $data1");
-//   plasticCount=0;
-//   for(int i =0; i<data1.length;i++){
-//     plasticCount+=int.parse(data1[0]["Item_Amount"]);
-//   }
-//   user_points = (plasticCount*plasticPoints);
-//   print(user_points);
-//   // user_points = (metalCount*metalPoints)+(plasticCount*plasticPoints);
-//
-//   return user_points;
-// }
-//
-// var data;
-// var Email ;
-// var Password ;
-// var fullName ;
-// var mobileNumber ;
-// var gender ;
-// var dateOfBirth ;
-// var user_points;
-// Future getUserData(String mobile) async{
-//   var url =  Uri.parse(
-//       'https://phlegmier-marches.000webhostapp.com/getUserData.php');
-//
-//   var response = await http.post(url, body: {
-//     "mobile": mobile,
-//   }
-//   );
-//
-//   // print(json.decode(response.body));
-//   var data1 = await json.decode(response.body);
-//   getData(mobile, data1);
-//   print(data1);
-//   data=data1;
-//
-//
-//   return data1;
-//
-//   // return json.decode(response.body);
-// }
-//
-// getData(String mobile,var data)  {
-//   Email = data[0]["User_Email"];
-//   fullName = data[0]["User_Name"];
-//   mobileNumber = data[0]["User_MobileNumber"];
-//   dateOfBirth = data[0]["USer_DateofBirth"];
-//   Password = data[0]["User_Password"];
-//
-//
-// }
-// Future getSpecificBinData()async{
-//   var url =  Uri.parse(
-//       'https://phlegmier-marches.000webhostapp.com/getSpecificBin.php');
-//   var response = await http.post( Uri.parse(
-//       'https://phlegmier-marches.000webhostapp.com/getSpecificBin.php'),body:{
-//     "area" : "5th Sattlement"
-//
-//   }
-//   );
-//
-//   // print(json.decode(response.body));
-//   var data1 = await json.decode(response.body);
-//   print(data1);
-//   // binData = data1;
-//   // print("length ${binData.length}");
-//
-//   print("mamaos ${data1.runtimeType}");
-//   // if(enter == 0){
-//   //   getInformation();
-//   //   enter++;
-//   // }
-//   return data1;
-// }
 
-Future getTruckData() async{
+var Email ;
+var Password ;
+var fullName ;
+var mobileNumber ;
+var gender ;
+var location ;
+var dateOfBirth ;
+var data;
+var user_points;
+var items_recycled;
+List<List> binUsedList=[];
+
+var metalCount;
+var plasticCount ;
+int plasticPoints = 5;
+int metalPoints = 10;
+var plasticData;
+var metalData;
+Future getItemCount(String mobile) async{
   var url =  Uri.parse(
-      'https://phlegmier-marches.000webhostapp.com/getTruck.php');
-  var response = await http.post(url,body:{
+      'https://phlegmier-marches.000webhostapp.com/getPlasticCount.php');
+  var response = await http.post(Uri.parse(
+      'https://phlegmier-marches.000webhostapp.com/getItemsCount.php'),body:{
+    'mobile' : mobile,
+    'type' : "plastic"
   }
   );
 
   // print(json.decode(response.body));
   var data1 = await json.decode(response.body);
   print(data1);
-  truckData1=data1;
-  print("length ${truckData1.length}");
+
+  var response1 = await http.post(Uri.parse(
+      'https://phlegmier-marches.000webhostapp.com/getItemsCount.php'),body:{
+    'mobile' : mobile,
+    'type' : "metal"
+  }
+  );
+
+  // print(json.decode(response.body));
+  var data2 = await json.decode(response1.body);
+  print(data2);
+
+  // return json.decode(response.body);
+  plasticCount=0;
+  metalCount=0;
+  for(int i =0; i<data1.length;i++){
+    plasticCount+=int.parse(data1[i]["Item_Amount"]);
+    metalCount+=int.parse(data2[i]["Item_Amount"]);
+  }
+  items_recycled = plasticCount+metalCount;
+  // user_points = (plasticCount*plasticPoints);
+  user_points = (metalCount*metalPoints)+(plasticCount*plasticPoints);
+
+  return user_points;
+
+  // return json.decode(response.body);
+}
+Future getUserData(String mobile) async{
+  await getItemCount(mobile);
+  var url =  Uri.parse(
+      'https://phlegmier-marches.000webhostapp.com/getUserData.php');
+
+  var response = await http.post(url, body: {
+    "mobile": mobile,
+  }
+  );
+
+  // print(json.decode(response.body));
+  var data1 = await json.decode(response.body);
+  getData(mobile, data1);
+  print(data1);
+  data=data1;
 
   print("mamaos ${data1.runtimeType}");
-  if(enter == 0){
-    getInformation();
-    enter++;
-  }
+
   return data1;
 
   // return json.decode(response.body);
 }
-var truckData1;
-List _driverName = [];
-List _ID = [];
-List Location = [];
-List Bin = [];
-int enter = 0;
-getInformation(){
-  for(int i = 0 ; i<truckData1.length;i++){
-    // _driverName.add(truckData1[i]["Bin_Location"]);
-    _ID.add(truckData1[i]["Truck_ID"]);
-    Bin.add(truckData1[i]["Truck_Location"]);
+getData(String mobile,var data)  {
+  Email = data[0]["User_Email"];
+  fullName = data[0]["User_Name"];
+  mobileNumber = data[0]["User_MobileNumber"];
+  dateOfBirth = data[0]["User_DateofBirth"];
+  Password = data[0]["User_Password"];
+  location = data[0]["User_Location"];
 
 
-  }}
+}
+
 void main() {
-  print(getTruckData());
+getUserData("01016606186");
+  // var x =
+  // [{"Truck_ID": "124 - أ ي ج", "Truck_Capacity": "150"},{"Truck_ID": "124 - أ ي ج", "Truck_Capacity": "150"}, {"Truck_ID": "TST - 1",' Truck_Capacity': "150"}];
+  // print(x.toSet().toList());
+
   // return json.decode(response.body);
 }

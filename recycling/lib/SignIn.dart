@@ -94,7 +94,7 @@ class _Sign_InState extends State<Sign_In> {
       }
       if (data == "Already Exists") {
         Fluttertoast.showToast(
-            msg: "This User Already Exit!",
+            msg: "This User Already Exist!",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
@@ -143,7 +143,7 @@ class _Sign_InState extends State<Sign_In> {
       Fluttertoast.showToast (
         backgroundColor: Colors.red,
         textColor: Colors.white,
-        msg: 'Username and password invalid',
+        msg: 'Incorrect Username or Password',
         toastLength: Toast.LENGTH_SHORT,
       );
     }

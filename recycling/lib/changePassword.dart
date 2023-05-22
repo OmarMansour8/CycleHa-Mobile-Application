@@ -1,4 +1,8 @@
+import 'dart:convert';
+import "package:http/http.dart" as http;
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:recycling/sSignInPage.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:recycling/start.dart';
@@ -72,16 +76,55 @@ class _Change_PasswordState extends State<Change_Password> {
   //   FirebaseFirestore.instance.collection('Users').doc(Email).update({'Password': '$val'});
   // }
   //change password from fire base authentication
-  changePassword(newPassword) async{
-    try{
-      // await currentUser!.updatePassword(newPassword);
-      // FirebaseAuth.instance.signOut();
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>start()));
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Your Password Has Been Changed , Login Again'),backgroundColor: Colors.black26,));
 
+  Future changePassword(newPassword) async{
+
+    var url = Uri.parse('https://phlegmier-marches.000webhostapp.com/cahngePassword.php') ;
+    var data1 = {"password": newPassword.toString(),
+      "mobile": mobileNumber.toString(),
+    };
+    final response = await http.post(url, body:{"password": newPassword.toString(),
+      "mobile": mobileNumber.toString(),
+    });
+    try {
+      var data = json.decode(response.body);
+      print("omar1");
+      print(data);
+      if (data == "Error") {
+        Navigator.pop(context);
+        Fluttertoast.showToast(
+            msg: "Something Went Wrong Please Try Again Later",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.9
+        );
+      }
+      else if (data == "Success") {
+        Fluttertoast.showToast(
+            msg: "Password Changed Successfully",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.green,
+            textColor: Colors.white,
+            fontSize: 16.0);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Sign_In1()));
+
+
+      }
+
+      else {
+        print("error");
+      }
     }
-    catch(error){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$error'),backgroundColor: Colors.black26,));
+    catch (e) {
+      print(e);
     }
   }
   disableButton(){
@@ -91,8 +134,24 @@ class _Change_PasswordState extends State<Change_Password> {
     newPasswordContoller.dispose();
     super.dispose();
   }
+  void showAlertDialog(BuildContext context){
+    var alertDialog = AlertDialog(
+      backgroundColor: Colors. transparent, elevation: 0,
+      content: Container(
+        decoration: BoxDecoration(),
+        alignment: Alignment.center,
+        child: CircularProgressIndicator(
+          strokeWidth: 4,
+          color: Colors.green,
+        ),
+      ),
+    );
+    showDialog(context: context,
+        builder: (BuildContext context){return
+          alertDialog;});}
   @override
   Widget build(BuildContext context) {
+    print("data $Password");
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -137,6 +196,13 @@ class _Change_PasswordState extends State<Change_Password> {
                           onChanged: (val){
                             setState(() {
                               currentPassword = val;
+                              if(currentPassword==Password&&newPassword==confirmPassword&&newPassword!=''&&confirmPassword!=''&&newPassword!=currentPassword){
+                                enableButton();
+                                }
+                              else{
+                                disableButton();
+                               }
+
                             });
                           }
 
@@ -222,13 +288,13 @@ class _Change_PasswordState extends State<Change_Password> {
 
                       SizedBox(height: 60, child: ElevatedButton(onPressed:buttonEnabled ? (){
 
-
+                        showAlertDialog(context);
                         // updateData(newPassword);
                         changePassword(newPassword);
 
 
 
-                      }:null, child: Text('Save'),style: ElevatedButton.styleFrom(primary: Colors.green),),
+                      }:null, child: Text('Confirm'),style: ElevatedButton.styleFrom(primary: Colors.green),),
                       )]
                 )
 

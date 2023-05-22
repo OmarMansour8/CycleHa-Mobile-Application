@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:recycling/MainMenu.dart';
 import 'package:recycling/MyAccount.dart';
 import 'package:recycling/Settings.dart';
@@ -169,7 +170,7 @@ class _MyProfileState extends State<MyProfile> {
                   CircleAvatar(
 
                     backgroundImage:
-                    NetworkImage('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',),
+                    AssetImage("images/avatar.jpg"),
                     radius: 70,
 
                   )
@@ -273,57 +274,82 @@ class _MyProfileState extends State<MyProfile> {
             )
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                label: "Home",
-                icon: Icon(Icons.home),
-              ),
-              /*  BottomNavigationBarItem(
-                label: "Offers",
-                icon: Icon(Icons.local_offer),
-              ),*/
-              BottomNavigationBarItem(
-                label: "Map",
-                icon: Icon(Icons.location_on),
-              ),
-              BottomNavigationBarItem(
-                label: "More",
-                icon: Icon(Icons.more_horiz),
-              ),
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 20,
+                color: Colors.black.withOpacity(.1),
+              )
             ],
-            currentIndex: _index,
-            unselectedItemColor: Colors.black54,
-            selectedItemColor: Colors.green,
-            unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-            selectedLabelStyle:
-            TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            backgroundColor: Colors.white,
-            onTap: (index) {
-              setState(() {
-                _index = index;
-                if (_index == 0)
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
-                if (_index == 1)
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
-                if (_index == 2)
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+          ),
+          child: SafeArea(
+            child: Padding(
+              padding:
+              const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+              child: GNav(
+                rippleColor: Colors.grey[300]!,
+                hoverColor: Colors.grey[100]!,
+                gap: 8,
+                activeColor: Colors.black,
+                iconSize: 24,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                duration: Duration(milliseconds: 400),
+                tabBackgroundColor: Colors.grey[100]!,
+                color: Colors.black,
+                tabs: [
+                  GButton(
+                    icon: Icons.home,
+                    text: 'Home',
+                  ),
+                  GButton(
+                    icon: Icons.location_on_outlined,
+                    text: 'Map',
+                  ),
+                  GButton(
+                    icon: Icons.more_horiz,
+                    text: 'More',
+                  ),
 
-                // if (_index == 3)
-                //   Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //           builder: (context) => AddToCart(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
-              });
-            }),
+                ],
+                selectedIndex: _index,
+                onTabChange: (index) {
+                  setState(() {
+                    _index = index;
+                    if (_index == 0)
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                    if (_index == 1)
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                    if (_index == 2)
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                    // Navigator.push(
+                    //     context, MaterialPageRoute(builder: (context) =>
+                    //     MyProfile(Email: Email,
+                    //         Password: Password,
+                    //         fullName: fullName,
+                    //         mobileNumber: mobileNumber,
+                    //         gender: gender,
+                    //         dateOfBirth: dateOfBirth,
+                    //         user_points: user_points,
+                    //         items_recycled: items_recycled,
+                    //         data: data)));
+                  });
+                  // if (_index == 3)                    });
+                },
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
