@@ -724,7 +724,8 @@ class _AdminBinState extends State<AdminBin> {
                 });
               },
             ),
-          ),Container(
+          ),
+          Container(
             margin: EdgeInsets.all(10),
             decoration: BoxDecoration(
                 color: Colors.white,

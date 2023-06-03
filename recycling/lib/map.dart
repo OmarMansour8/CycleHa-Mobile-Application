@@ -263,7 +263,7 @@ class _mapsState extends State<maps> {
             // Future hasn't finished yet, return a placeholder
            return Scaffold(
              appBar: AppBar(
-               title: Text('Our Branch'),
+               title: Text('Our Bins'),
                // leading: IconButton(onPressed: (){Navigator.pop(context);}, icon:Icon(Icons.arrow_back_ios)),
                backgroundColor: Colors.green,
                actions: [
@@ -517,7 +517,7 @@ class _mapsState extends State<maps> {
           }
           return Scaffold(
             appBar: AppBar(
-              title: Text('Our Branch'),
+              title: Text('Our Bins'),
               // leading: IconButton(onPressed: (){Navigator.pop(context);}, icon:Icon(Icons.arrow_back_ios)),
               backgroundColor: Colors.green,
               actions: [

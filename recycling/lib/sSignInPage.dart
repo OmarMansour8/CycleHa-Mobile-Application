@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
+import 'package:recycling/AdminBin.dart';
+import 'package:recycling/AdminMainMenu.dart';
 import 'package:recycling/MainMenu.dart';
 import 'package:recycling/SignUp.dart';
 import 'package:recycling/main.dart';
@@ -121,6 +123,36 @@ class _Sign_In1State extends State<Sign_In1> {
     Password = data[0]["User_Password"];
 
 
+  }
+
+
+  Future AdminLogin() async {
+    var url = Uri.parse('https://phlegmier-marches.000webhostapp.com/admin.php') ;
+    var response = await http.post(Uri.parse('https://phlegmier-marches.000webhostapp.com/admin.php'), body: {
+      "mobile": mobile.text,
+      "pass": pass.text,
+    });
+    var data = json.decode (response.body);
+    print("3amoura $data");
+    if (data.toString() == "Success") {
+      await Fluttertoast.showToast (
+        msg: 'Login Successful',
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        toastLength: Toast.LENGTH_SHORT,
+
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                AdminBin()
+        ), // MaterialPageRoute
+      );
+
+    } else {
+     await Login();
+    }
   }
 
   Future Login() async {
@@ -326,7 +358,7 @@ class _Sign_In1State extends State<Sign_In1> {
                         child: SizedBox(height: 60, child:  ElevatedButton(
                           onPressed: () {
                             showAlertDialog(context);
-                            Login();
+                            AdminLogin();
                           },
                           child: Text(
                             'Sign In',

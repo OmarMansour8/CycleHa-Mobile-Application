@@ -414,7 +414,7 @@ class _homePageState extends State<homePage> {
                                                 child:ElevatedButton(
                                                     style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,shadowColor: Colors.transparent,),
 
-                                                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>AdminBin()));},
+                                                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));},
                                                     child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
 
                                               )
@@ -822,7 +822,7 @@ class _homePageState extends State<homePage> {
                                     child:ElevatedButton(
                                       style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,shadowColor: Colors.transparent,),
 
-                                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>AdminBin()));},
+                                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));},
                                       child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
 
                                   )

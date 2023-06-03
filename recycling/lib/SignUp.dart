@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
@@ -90,15 +91,17 @@ class _Sign_UpState extends State<Sign_Up> {
       "mobile": mobile.text,
       "password": pass.text,
       "dot": dateOfBirth,
+      "location": TruckIDValue.toString(),
       "admin_username": "om",
       "user_points": "0"
     };
-    final response = await http.post(url, body: {
+    final response = await http.post(Uri.parse('https://phlegmier-marches.000webhostapp.com/register.php'), body: {
       "name": name.text,
       "email": email.text,
       "mobile": mobile.text,
       "password": pass.text,
       "dot": dateOfBirth,
+      "location": TruckIDValue.toString(),
       "admin_username": "01550083829",
     });
     try {
@@ -127,8 +130,9 @@ class _Sign_UpState extends State<Sign_Up> {
             fontSize: 16.0);
       }
       if (data == "Already Exists") {
+        Navigator.pop(context);
         Fluttertoast.showToast(
-            msg: "This User Already Exit!",
+            msg: "This Mobile Number Already Exist!",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
@@ -142,6 +146,8 @@ class _Sign_UpState extends State<Sign_Up> {
       print(e);
     }
   }
+  String? TruckIDValue;
+
 
   // final FirebaseAuth _auth = FirebaseAuth.instance;
   List<Widget> cart = [];
@@ -162,6 +168,65 @@ class _Sign_UpState extends State<Sign_Up> {
       });
     }
   }
+
+  var truckId = [
+    '6th of October City',
+    'Abbasiya',
+    'Ain Shams',
+    'Al Rehab City',
+    'Ard El Lewa',
+    'Bab El Louk',
+    'Badr City',
+    'Boulak',
+    'Cairo',
+    'Dokki',
+    'Down Town Cairo',
+    'El Ahram',
+    'El Basatin',
+    'El Gamaleya',
+    'El Maadi',
+    'El Mokattam',
+    'El Nozha',
+    'El Sahel',
+    'El Sayeda Zeinab',
+    'El Shorouk City',
+    'El Tagamu El Khames',
+    'El Warraq',
+    'El Zaytoun',
+    'Faisal',
+    'Garden City',
+    'Giza',
+    'Haram',
+    'Heliopolis',
+    'Helmeya',
+    'Imbaba',
+    'Khalifa City',
+    'Maadi',
+    'Manial',
+    'Masr El Gedida',
+    'Matare',
+    'Mohandessin',
+    'Mokattam',
+    'Nasr City',
+    'New Cairo',
+    'Obour City',
+    'Old Cairo',
+    'QasrEl Nil',
+    'Ramses',
+    'Rehab',
+    'Rod El Farag',
+    'Rod El Farag Axis',
+    'Saf',
+    'Shoubra',
+    'Shoubra El Kheima',
+    'Smart Village',
+    'Tagamo El Awal',
+    'Tahrir Square',
+    'Zamalek',
+    'Madinty', // added Madinty to the list
+  ];
+
+  String? _selectedLocation;
 
   enableButton() {
     buttonEnabled = true;
@@ -482,6 +547,129 @@ class _Sign_UpState extends State<Sign_Up> {
                                 .toString(),
                             style: TextStyle(color: Colors.black87),
                           )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.04,
+                    ),
+                    Container(
+                      // height: MediaQuery.of(context).size.height*0.8,
+                      margin: EdgeInsets.fromLTRB(
+                          MediaQuery.of(context).size.width * 0.04,
+                          0,
+                          MediaQuery.of(context).size.width * 0.04,
+                          0),
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(246, 248, 252, 5),
+                        borderRadius: BorderRadius.circular(20),
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //       color: Colors.black26,
+                        //       // blurRadius: 6,
+                        //       offset: Offset(2, 2),
+                        //
+                        //
+                        //   ),
+
+                        // ],
+                      ),
+                      padding: EdgeInsets.all(1),
+                      child: Row(
+                        children: [
+                          Text('  Location :  ',
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                          DropdownButtonHideUnderline(
+                            child: DropdownButton2(
+                              isExpanded: true,
+                              hint: Row(
+                                children: const [
+                                  Center(
+                                    child: Text(
+                                      'Choose Your Location',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              items: truckId
+                                  .map((item) => DropdownMenuItem<String>(
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    // fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
+                                  .toList(),
+                              value: TruckIDValue,
+                              onChanged: (value) {
+                                setState(() {
+                                  TruckIDValue = value as String;
+                                  // truck = TruckIDValue.toString();
+
+                                });
+                              },
+                              buttonStyleData: ButtonStyleData(
+                                height:
+                                MediaQuery.of(context).size.height * 0.07,
+                                width: MediaQuery.of(context).size.width * 0.53,
+                                padding:
+                                const EdgeInsets.only(left: 14, right: 14),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(14),
+                                  // border: Border.all(
+                                  //   color: Colors.black26,
+                                  // ),
+                                  color: Colors.white,
+                                ),
+                                elevation: 0,
+                              ),
+                              iconStyleData: const IconStyleData(
+                                icon: Icon(
+                                  Icons.keyboard_arrow_down,
+                                ),
+                                iconSize: 25,
+                                iconEnabledColor: Colors.black,
+                                iconDisabledColor: Colors.grey,
+                              ),
+                              dropdownStyleData: DropdownStyleData(
+                                maxHeight:
+                                MediaQuery.of(context).size.height * 0.2,
+                                width: MediaQuery.of(context).size.width * 0.47,
+                                padding: null,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(14),
+                                  color: Colors.white,
+                                ),
+                                elevation: 8,
+                                offset: const Offset(0, 0),
+                                scrollbarTheme: ScrollbarThemeData(
+                                  radius: const Radius.circular(40),
+                                  thickness:
+                                  MaterialStateProperty.all<double>(6),
+                                  thumbVisibility:
+                                  MaterialStateProperty.all<bool>(true),
+                                ),
+                              ),
+                              menuItemStyleData: const MenuItemStyleData(
+                                height: 40,
+                                padding: EdgeInsets.only(left: 14, right: 14),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),

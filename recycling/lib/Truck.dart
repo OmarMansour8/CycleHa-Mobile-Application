@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 // import 'package:firebase_database/firebase_database.dart';
 
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
@@ -53,6 +54,8 @@ class _TruckState extends State<Truck> {
   TextEditingController truckId = new TextEditingController();
   TextEditingController truckCapacity = new TextEditingController();
   TextEditingController truckLocation = new TextEditingController();
+  TextEditingController drivername1 = new TextEditingController();
+  TextEditingController drivermobileNumber = new TextEditingController();
 
 
   Future addNewTruck()async{
@@ -85,6 +88,71 @@ class _TruckState extends State<Truck> {
         );
       }
       else if (data1 == "Truck Succefully Added") {
+        Fluttertoast.showToast(
+            msg: "Truck Succefully Added",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.green,
+            textColor: Colors.white,
+            fontSize: 16.0);
+
+        Navigator.pop(context);
+
+
+      }
+      if (data1 == "Truck ID Already Exist") {
+        Fluttertoast.showToast(
+            msg: "Truck ID Already Exist",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.9
+        );
+      }
+      else {
+        print("error");
+      }
+    }
+    catch (e) {
+      print(e);
+    }
+
+    return data1;
+  }
+  Future addNewDriver()async{
+    Random random = new Random();
+    int randomNumber = random.nextInt(10000);
+    var response = await http.post( Uri.parse(
+        'https://phlegmier-marches.000webhostapp.com/addDriver.php'),body:{
+
+      "DriverName" : drivername1.text.toString(),
+      "DriverMobileNumber" : drivermobileNumber.text,
+      "DriverID":randomNumber.toString()
+
+
+    }
+    );
+    var data1;
+    try {
+      data1 = await json.decode(response.body);
+      print("Driversssssss $data1");
+      //  print("omar1");
+      print(data1);
+      if (data1 == "Something Went Wrong") {
+        Fluttertoast.showToast(
+            msg: "Something Went Wrong Please Try Again Later",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.9
+        );
+      }
+      else if (data1 == "Driver Succefully Added") {
         Fluttertoast.showToast(
             msg: "Truck Succefully Added",
             toastLength: Toast.LENGTH_SHORT,
@@ -406,6 +474,99 @@ class _TruckState extends State<Truck> {
     showDialog(context: context,
         builder: (BuildContext context){return
           alertDialog;});}
+  void driverAlertDialog1(BuildContext context){
+    var alertDialog = AlertDialog(
+      content: Text("Are you sure you want to add this item?"),
+      scrollable: true,
+      actions: [
+        ElevatedButton(onPressed: (){
+        addNewDriver();
+
+          Navigator.pop(context);
+
+
+        },
+            style: ElevatedButton.styleFrom(backgroundColor: color1),
+            child: Text('Yes')),
+        ElevatedButton(onPressed: (){
+          Navigator.pop(context);
+        },
+            style: ElevatedButton.styleFrom(backgroundColor: color1),
+            child: Text('No')),
+      ],
+    );
+    showDialog(context: context,
+        builder: (BuildContext context){return
+          alertDialog;});}
+
+
+
+  void showAlertDialog2(BuildContext context){
+    var alertDialog = AlertDialog(
+      content: Center(
+        child:Column(
+            children:[
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width*0.15,
+                  ),
+                  Icon(Icons.fire_truck),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width*0.22,
+                  ),
+                  Icon(Icons.person)
+                ],
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+              Row(
+            children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width*0.1,
+            ),
+            ElevatedButton(onPressed: (){
+              showAlertDialog(context);
+
+
+            },
+                style: ElevatedButton.styleFrom(backgroundColor: color1),
+                child: Text('Truck')),
+            SizedBox(
+              width: MediaQuery.of(context).size.width*0.1,
+            ),
+            ElevatedButton(onPressed: (){
+              addNewTruck();
+
+              Navigator.pop(context);
+
+
+            },
+                style: ElevatedButton.styleFrom(backgroundColor: color1),
+                child: Text('Driver')),
+          ],
+        ),]),
+      ),
+      scrollable: true,
+      // actions: [
+      //   ElevatedButton(onPressed: (){
+      //     addNewTruck();
+      //
+      //     Navigator.pop(context);
+      //
+      //
+      //   },
+      //       style: ElevatedButton.styleFrom(backgroundColor: color1),
+      //       child: Text('Yes')),
+      //   ElevatedButton(onPressed: (){
+      //     Navigator.pop(context);
+      //   },
+      //       style: ElevatedButton.styleFrom(backgroundColor: color1),
+      //       child: Text('No')),
+      // ],
+    );
+    showDialog(context: context,
+        builder: (BuildContext context){return
+          alertDialog;});}
 
 
   String? selectedValue;
@@ -604,6 +765,100 @@ class _TruckState extends State<Truck> {
         ElevatedButton(onPressed: (){
           if(truckId.text!=""&&truckCapacity.text!=""&&truckLocation.text!=""&&driver!="") {
             showAlertDialog1(context);
+          }
+          else{
+            Fluttertoast.showToast(
+                msg: "Please fill all the fields",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.9
+            );
+
+          }
+        },
+            style: ElevatedButton.styleFrom(backgroundColor: color1),
+            child: Text('Add')),],);
+    showDialog(context: context,
+        builder: (BuildContext context){return
+          alertDialog;});}
+  void driverAlertDialog(BuildContext context){
+    var alertDialog = AlertDialog(
+      content:
+
+      Column(
+        children: [
+          Container(
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 6,
+                      offset: Offset(0,2)
+                  ),]),
+            padding: EdgeInsets.all(1),
+            child: TextField(
+              controller: drivername1,
+              // controller: name,
+              decoration: InputDecoration(
+                  focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: color1)),
+                  focusColor: color1,
+                  labelStyle: TextStyle(color: color1),
+                  hintText: 'Driver Name',
+                  prefixIcon:Icon(Icons.delete,color: color1,)
+              ),
+              onChanged: (String value){
+                setState(() {
+                  // fullName = value ;
+                });
+              },
+            ),
+          ),
+
+          Container(
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 6,
+                      offset: Offset(0,2)
+                  ),]),
+            padding: EdgeInsets.all(1),
+            child: TextField(
+              controller: drivermobileNumber,
+
+              decoration: InputDecoration(focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: color1)),
+                  focusColor: color1,
+                  labelStyle: TextStyle(color: color1),
+                  hintText: 'Driver Mobile Number',
+                  prefixIcon:Icon(Icons.fire_truck,color:color1)
+              ),
+              onChanged: (String value){
+                setState(() {
+                  // Email = value;
+                });
+              },
+            ),
+          ),
+
+
+
+
+        ],
+      ),
+      scrollable: true,
+      actions: [
+        ElevatedButton(onPressed: (){
+          if(drivername1.text!=""&&drivermobileNumber.text!="") {
+            driverAlertDialog1(context);
           }
           else{
             Fluttertoast.showToast(
@@ -1080,7 +1335,7 @@ class _TruckState extends State<Truck> {
                                         width:MediaQuery.of(context).size.width * 0.1 ,
                                       ),
                                       IconButton(onPressed: (){
-                                        showAlertDialog(context);
+                                        driverAlertDialog(context);
                                       }, icon: Icon(Icons.add))
                                     ],
                                   )),

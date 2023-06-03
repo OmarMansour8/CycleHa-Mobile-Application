@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:recycling/AdminMainMenu.dart';
 import 'package:recycling/Truck.dart';
+import 'package:recycling/sSignInPage.dart';
 import 'package:recycling/test.dart';
 import 'package:recycling/utils/stacked_widgets.dart';
 import 'package:flutter/material.dart';
@@ -421,6 +422,26 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
                                           Icons.person,
                                           size: 38,
                                         ),
+
+                                      SizedBox(
+                                        width:
+                                        MediaQuery.of(context).size.width *
+                                            0.15,
+                                      ),
+                                      IconButton(
+                                        onPressed:(){
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Sign_In1()
+                                            ), // MaterialPageRoute
+                                          );
+                                        },
+                                        icon:
+                                        Icon(Icons.login,
+                                        size: 38,
+                                      ),)
 
                                     ],
                                   )),

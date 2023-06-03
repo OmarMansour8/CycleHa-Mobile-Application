@@ -24,12 +24,12 @@ import 'package:tab_container/tab_container.dart';
 //   runApp(homePage());
 // }
 
-class AdminBin extends StatefulWidget {
+class AdminBin1 extends StatefulWidget {
   @override
-  State<AdminBin> createState() => _AdminBinState();
+  State<AdminBin1> createState() => _AdminBin1State();
 }
 
-class _AdminBinState extends State<AdminBin> {
+class _AdminBin1State extends State<AdminBin1> {
   // final databaseReference = FirebaseDatabase.instance.ref();
   var _index = 1;
   var color = const Color.fromRGBO(220, 238, 255, 1);
@@ -300,12 +300,12 @@ class _AdminBinState extends State<AdminBin> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AdminBin()));
+                                builder: (context) => AdminBin1()));
                       if (_index == 1)
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AdminBin()));
+                                builder: (context) => AdminBin1()));
                       // if (_index == 2)
                       // Navigator.push(
                       //     context, MaterialPageRoute(builder: (context) =>
