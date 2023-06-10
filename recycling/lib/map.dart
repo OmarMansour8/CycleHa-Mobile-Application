@@ -27,6 +27,8 @@ class maps extends StatefulWidget {
 var data;
   var user_points;
   var items_recycled;
+  var metalCount;
+  var plasticCount ;
 
   maps(
       {required this.Email,
@@ -37,13 +39,15 @@ var data;
         required this.dateOfBirth,
         required this.user_points,
         required this.items_recycled,
-        required this.data
+        required this.data,
+        required this.metalCount,
+        required this.plasticCount
 
       });
 
 
   @override
-  State<maps> createState() => _mapsState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
+  State<maps> createState() => _mapsState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount);
 
 }
 
@@ -66,6 +70,8 @@ class _mapsState extends State<maps> {
   List Location = [];
   List lt=[];
   List lng = [];
+  var metalCount;
+  var plasticCount ;
   _mapsState({required this.Email,
     required this.Password,
     required this.fullName,
@@ -74,7 +80,9 @@ class _mapsState extends State<maps> {
     required this.dateOfBirth,
     required this.user_points,
     required this.items_recycled,
-    required this.data
+    required this.data,
+    required this.metalCount,
+    required this.plasticCount
   });
   var _index = 1;
   LatLng _location = const LatLng(30.0272, 31.4917);
@@ -487,10 +495,10 @@ class _mapsState extends State<maps> {
                            Navigator.push(
                                context,
                                MaterialPageRoute(
-                                   builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                                   builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
                          if (_index == 2)
                            Navigator.push(
-                               context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                               context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
                          // Navigator.push(
                          //     context, MaterialPageRoute(builder: (context) =>
                          //     MyProfile(Email: Email,
@@ -752,10 +760,10 @@ class _mapsState extends State<maps> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                                  builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
                         if (_index == 2)
                           Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                              context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
                         // Navigator.push(
                         //     context, MaterialPageRoute(builder: (context) =>
                         //     MyProfile(Email: Email,

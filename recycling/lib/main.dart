@@ -40,11 +40,11 @@ double totalAmount=0;
       // home:AdminBin()
       // home:maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)
       // home:AdminUserProfile()
-      home:Truck()
-      // home:start()
+      // home:Truck()
+      // home:testo(Email: "Email", Password: "Password", fullName: "fullName", mobileNumber: "mobileNumber", gender: "gender", dateOfBirth: 'dateOfBirth', user_points: "user_points", items_recycled: "items_recycled", data: "data")
       // home:MyApp()
       // home:homePage(Email: "Email", Password: "Password", fullName: "fullName", mobileNumber: "mobileNumber", gender: "gender", dateOfBirth: 'dateOfBirth', user_points: "user_points", items_recycled: "items_recycled", data: "data")
-      // home :Sign_In1(),
+      home :Sign_In1(),
     );
   }
 }

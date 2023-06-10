@@ -167,23 +167,24 @@ class _homePageState extends State<homePage> {
                 width: MediaQuery.of(context).size.width ,
                 height: MediaQuery.of(context).size.height*0.49,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      stops: [
-                        0.3,
-
-                        // 0.6,
-                        0.7,
-                      ],
-                      colors: [
-                        color,
-
-                        Colors.green
-
-
-                      ],
-                    )
+                  color:Colors.green
+                    // gradient: LinearGradient(
+                    //   begin: Alignment.topCenter,
+                    //   end: Alignment.bottomCenter,
+                    //   stops: [
+                    //     0.3,
+                    //
+                    //     // 0.6,
+                    //     0.7,
+                    //   ],
+                    //   colors: [
+                    //     color,
+                    //
+                    //     Colors.green
+                    //
+                    //
+                    //   ],
+                    // )
                 ),
 
                 child:Column(
@@ -396,25 +397,27 @@ class _homePageState extends State<homePage> {
                                           child: Center(
                                               child: Container(
                                                 width: MediaQuery.of(context).size.width*0.8,
-                                                decoration: BoxDecoration(gradient: LinearGradient(
-                                                    colors: [
-                                                      Colors.green,
-                                                      Colors.lightGreen
-                                                    ],
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    stops:[
-                                                      0.1,
-                                                      0.7
-                                                    ]
-                                                ),
+                                                decoration: BoxDecoration(
+                                                  color:Colors.green,
+                                                //     gradient: LinearGradient(
+                                                //     colors: [
+                                                //       Colors.green,
+                                                //       Colors.lightGreen
+                                                //     ],
+                                                //     begin: Alignment.topLeft,
+                                                //     end: Alignment.bottomRight,
+                                                //     stops:[
+                                                //       0.1,
+                                                //       0.7
+                                                //     ]
+                                                // ),
                                                     borderRadius: BorderRadius.circular(10)
 
                                                 ),
                                                 child:ElevatedButton(
-                                                    style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,shadowColor: Colors.transparent,),
+                                                    style: ElevatedButton.styleFrom(backgroundColor: Colors.green,shadowColor: Colors.transparent,),
 
-                                                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));},
+                                                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));},
                                                     child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
 
                                               )
@@ -491,10 +494,10 @@ class _homePageState extends State<homePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                                builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
                       if (_index == 2)
                         Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                            context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
                       // Navigator.push(
                       //     context, MaterialPageRoute(builder: (context) =>
                       //     MyProfile(Email: Email,
@@ -580,23 +583,24 @@ class _homePageState extends State<homePage> {
                   width: MediaQuery.of(context).size.width ,
                   height: MediaQuery.of(context).size.height*0.49,
                   decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: [
-                          0.3,
-
-                          // 0.6,
-                          0.7,
-                        ],
-                        colors: [
-                        color,
-
-                        Colors.green
-
-
-                        ],
-                      )
+                    color:Colors.green
+                      // gradient: LinearGradient(
+                      //   begin: Alignment.topCenter,
+                      //   end: Alignment.bottomCenter,
+                      //   stops: [
+                      //     0.3,
+                      //
+                      //     // 0.6,
+                      //     0.7,
+                      //   ],
+                      //   colors: [
+                      //   color,
+                      //
+                      //   Colors.green
+                      //
+                      //
+                      //   ],
+                      // )
                   ),
 
                   child:Column(
@@ -804,25 +808,27 @@ class _homePageState extends State<homePage> {
                                 child: Center(
                                  child: Container(
                                      width: MediaQuery.of(context).size.width*0.8,
-                                   decoration: BoxDecoration(gradient: LinearGradient(
-                                       colors: [
-                                         Colors.green,
-                                         Colors.lightGreen
-                                       ],
-                                       begin: Alignment.topLeft,
-                                       end: Alignment.bottomRight,
-                                       stops:[
-                                         0.1,
-                                         0.7
-                                       ]
-                                   ),
+                                   decoration: BoxDecoration(
+                                     color:Colors.green,
+                                   //     gradient: LinearGradient(
+                                   //     colors: [
+                                   //       Colors.green,
+                                   //       Colors.lightGreen
+                                   //     ],
+                                   //     begin: Alignment.topLeft,
+                                   //     end: Alignment.bottomRight,
+                                   //     stops:[
+                                   //       0.1,
+                                   //       0.7
+                                   //     ]
+                                   // ),
                                      borderRadius: BorderRadius.circular(10)
 
                                    ),
                                     child:ElevatedButton(
                                       style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,shadowColor: Colors.transparent,),
 
-                                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));},
+                                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));},
                                       child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
 
                                   )
@@ -900,10 +906,10 @@ class _homePageState extends State<homePage> {
                        Navigator.push(
                            context,
                            MaterialPageRoute(
-                               builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                               builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
                      if (_index == 2)
                        Navigator.push(
-                           context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                           context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
                      // Navigator.push(
                      //     context, MaterialPageRoute(builder: (context) =>
                      //     MyProfile(Email: Email,

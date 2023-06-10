@@ -21,6 +21,8 @@ class setting extends StatefulWidget {
   var data;
   var user_points;
   var items_recycled;
+  var metalCount;
+  var plasticCount ;
   setting(
       {required this.Email,
         required this.Password,
@@ -30,12 +32,13 @@ class setting extends StatefulWidget {
         required this.dateOfBirth,
         required this.user_points,
         required this.items_recycled,
-        required this.data
+        required this.data,
+        required this.metalCount,
+        required this.plasticCount
 
       });
   @override
-  State<setting> createState() => _settingState(
-      Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
+  State<setting> createState() => _settingState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount);
 }
 
 class _settingState extends State<setting> {
@@ -48,6 +51,8 @@ class _settingState extends State<setting> {
   var data;
   var user_points;
   var items_recycled;
+  var metalCount;
+  var plasticCount ;
   _settingState(
       {required this.Email,
         required this.Password,
@@ -57,7 +62,9 @@ class _settingState extends State<setting> {
         required this.dateOfBirth,
         required this.user_points,
         required this.items_recycled,
-        required this.data
+        required this.data,
+        required this.metalCount,
+        required this.plasticCount
 
       });
 
