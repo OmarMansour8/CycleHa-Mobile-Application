@@ -47,13 +47,13 @@ class _Sign_InState extends State<Sign_In> {
     data=data1;
 
     print("mamaos ${data1.runtimeType}");
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) =>
-              homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)
-      ), // MaterialPageRoute
-    );
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //       builder: (context) =>
+    //           homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)
+    //   ), // MaterialPageRoute
+    // );
     return data1;
 
     // return json.decode(response.body);

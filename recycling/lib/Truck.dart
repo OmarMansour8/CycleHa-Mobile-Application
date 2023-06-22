@@ -41,6 +41,7 @@ class _TruckState extends State<Truck> {
   var truckData1=[];
   var driverData;
   var _driverID=[] ;
+  var _driverIDRefrence=[] ;
   List _driverName = [];
   List _ID = [];
   List Location = [];
@@ -154,7 +155,7 @@ class _TruckState extends State<Truck> {
       }
       else if (data1 == "Driver Succefully Added") {
         Fluttertoast.showToast(
-            msg: "Truck Succefully Added",
+            msg: "Driver Succefully Added",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
@@ -166,9 +167,9 @@ class _TruckState extends State<Truck> {
 
 
       }
-      if (data1 == "Truck ID Already Exist") {
+      if (data1 == "Driver Already Exist") {
         Fluttertoast.showToast(
-            msg: "Truck ID Already Exist",
+            msg: "Driver Already Exist",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
@@ -264,8 +265,17 @@ class _TruckState extends State<Truck> {
           _driverID.add(truckData1[i]["Driver_Id"]);
           binUsedList.add([]);
         }
+        else if(truckData1[i]["Truck_ID"]=="Not Yet")
+        {
+          _driverID.add(truckData1[i]["Driver_Id"]);
+        }
     }
-    print("bin data leb]ngth ${binUsedList.length}");
+    for (int i = 0; i < driversData.length; i++) {
+      _driverIDRefrence.add(driversData[i]["Driver_Id"]);
+    }
+    print("omar123321 $_driverIDRefrence");
+
+    print("bin data length ${binUsedList.length}");
     print(_ID);
     print(Bin);
     print(_driverID);
@@ -452,7 +462,7 @@ class _TruckState extends State<Truck> {
   var color2 = const Color(0xFF95d3c5);
   void showAlertDialog1(BuildContext context){
     var alertDialog = AlertDialog(
-      content: Text("Are you sure you want to add this item?"),
+      content: Text("Are you sure you want to add this Truck?"),
       scrollable: true,
       actions: [
         ElevatedButton(onPressed: (){
@@ -476,7 +486,7 @@ class _TruckState extends State<Truck> {
           alertDialog;});}
   void driverAlertDialog1(BuildContext context){
     var alertDialog = AlertDialog(
-      content: Text("Are you sure you want to add this item?"),
+      content: Text("Are you sure you want to add this Driver?"),
       scrollable: true,
       actions: [
         ElevatedButton(onPressed: (){
@@ -507,23 +517,19 @@ class _TruckState extends State<Truck> {
         child:Column(
             children:[
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround ,
                 children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width*0.15,
-                  ),
-                  Icon(Icons.fire_truck),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width*0.22,
-                  ),
-                  Icon(Icons.person)
+
+                  Icon(Icons.fire_truck,size: 30,),
+
+                  Icon(Icons.person,size: 30,)
                 ],
               ),
               SizedBox(height: MediaQuery.of(context).size.height*0.03,),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width*0.1,
-            ),
+
             ElevatedButton(onPressed: (){
               showAlertDialog(context);
 
@@ -531,13 +537,11 @@ class _TruckState extends State<Truck> {
             },
                 style: ElevatedButton.styleFrom(backgroundColor: color1),
                 child: Text('Truck')),
-            SizedBox(
-              width: MediaQuery.of(context).size.width*0.1,
-            ),
-            ElevatedButton(onPressed: (){
-              addNewTruck();
 
-              Navigator.pop(context);
+            ElevatedButton(onPressed: (){
+              showAlertDialog5(context);
+
+              // Navigator.pop(context);
 
 
             },
@@ -688,7 +692,7 @@ class _TruckState extends State<Truck> {
                   ),
                 ],
               ),
-              items: _driverID
+              items: _driverIDRefrence
                   .map((item) => DropdownMenuItem<String>(
                 value: item,
                 child: Text(
@@ -784,7 +788,7 @@ class _TruckState extends State<Truck> {
     showDialog(context: context,
         builder: (BuildContext context){return
           alertDialog;});}
-  void driverAlertDialog(BuildContext context){
+  void showAlertDialog5(BuildContext context){
     var alertDialog = AlertDialog(
       content:
 
@@ -878,6 +882,100 @@ class _TruckState extends State<Truck> {
     showDialog(context: context,
         builder: (BuildContext context){return
           alertDialog;});}
+  // void driverAlertDialog(BuildContext context){
+  //   var alertDialog = AlertDialog(
+  //     content:
+  //
+  //     Column(
+  //       children: [
+  //         Container(
+  //           margin: EdgeInsets.all(10),
+  //           decoration: BoxDecoration(
+  //               color: Colors.white,
+  //               borderRadius: BorderRadius.circular(20),
+  //               boxShadow: [
+  //                 BoxShadow(
+  //                     color: Colors.black26,
+  //                     blurRadius: 6,
+  //                     offset: Offset(0,2)
+  //                 ),]),
+  //           padding: EdgeInsets.all(1),
+  //           child: TextField(
+  //             controller: drivername1,
+  //             // controller: name,
+  //             decoration: InputDecoration(
+  //                 focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: color1)),
+  //                 focusColor: color1,
+  //                 labelStyle: TextStyle(color: color1),
+  //                 hintText: 'Driver Name',
+  //                 prefixIcon:Icon(Icons.delete,color: color1,)
+  //             ),
+  //             onChanged: (String value){
+  //               setState(() {
+  //                 // fullName = value ;
+  //               });
+  //             },
+  //           ),
+  //         ),
+  //
+  //         Container(
+  //           margin: EdgeInsets.all(10),
+  //           decoration: BoxDecoration(
+  //               color: Colors.white,
+  //               borderRadius: BorderRadius.circular(20),
+  //               boxShadow: [
+  //                 BoxShadow(
+  //                     color: Colors.black26,
+  //                     blurRadius: 6,
+  //                     offset: Offset(0,2)
+  //                 ),]),
+  //           padding: EdgeInsets.all(1),
+  //           child: TextField(
+  //             controller: drivermobileNumber,
+  //
+  //             decoration: InputDecoration(focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: color1)),
+  //                 focusColor: color1,
+  //                 labelStyle: TextStyle(color: color1),
+  //                 hintText: 'Driver Mobile Number',
+  //                 prefixIcon:Icon(Icons.fire_truck,color:color1)
+  //             ),
+  //             onChanged: (String value){
+  //               setState(() {
+  //                 // Email = value;
+  //               });
+  //             },
+  //           ),
+  //         ),
+  //
+  //
+  //
+  //
+  //       ],
+  //     ),
+  //     scrollable: true,
+  //     actions: [
+  //       ElevatedButton(onPressed: (){
+  //         if(drivername1.text!=""&&drivermobileNumber.text!="") {
+  //           driverAlertDialog1(context);
+  //         }
+  //         else{
+  //           Fluttertoast.showToast(
+  //               msg: "Please fill all the fields",
+  //               toastLength: Toast.LENGTH_SHORT,
+  //               gravity: ToastGravity.CENTER,
+  //               timeInSecForIosWeb: 1,
+  //               backgroundColor: Colors.red,
+  //               textColor: Colors.white,
+  //               fontSize: 16.9
+  //           );
+  //
+  //         }
+  //       },
+  //           style: ElevatedButton.styleFrom(backgroundColor: color1),
+  //           child: Text('Add')),],);
+  //   showDialog(context: context,
+  //       builder: (BuildContext context){return
+  //         alertDialog;});}
 
   @override
   Widget build(BuildContext context) {
@@ -947,20 +1045,7 @@ class _TruckState extends State<Truck> {
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width *
-                                              0.28,
-                                        ),
-                                        Text(
-                                          "Truck",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 34,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.1,
+                                              0.2,
                                         ),
                                         IconButton(
                                           onPressed: () {},
@@ -970,9 +1055,22 @@ class _TruckState extends State<Truck> {
                                           ),
                                         ),
                                         SizedBox(
-                                          width:MediaQuery.of(context).size.width * 0.1 ,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.1,
                                         ),
-                                        IconButton(onPressed: (){}, icon: Icon(Icons.add))
+                                        Text(
+                                          "Truck",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 34,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          width:MediaQuery.of(context).size.width * 0.18 ,
+                                        ),
+                                        IconButton(onPressed: (){}, icon: Icon(Icons.add,size: 38,))
                                       ],
                                     )),
                                 SizedBox(
@@ -1310,19 +1408,7 @@ class _TruckState extends State<Truck> {
                                       SizedBox(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.28,
-                                      ),
-                                      Text(
-                                        "Truck",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 34,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.1,
+                                                0.2,
                                       ),
                                       IconButton(
                                         onPressed: () {},
@@ -1332,11 +1418,24 @@ class _TruckState extends State<Truck> {
                                         ),
                                       ),
                                       SizedBox(
-                                        width:MediaQuery.of(context).size.width * 0.1 ,
+                                        width: MediaQuery.of(context)
+                                            .size
+                                            .width *
+                                            0.1,
+                                      ),
+                                      Text(
+                                        "Truck",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 34,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(
+                                        width:MediaQuery.of(context).size.width * 0.18 ,
                                       ),
                                       IconButton(onPressed: (){
-                                        driverAlertDialog(context);
-                                      }, icon: Icon(Icons.add))
+                                        showAlertDialog2(context);
+                                      }, icon: Icon(Icons.add,size: 38,))
                                     ],
                                   )),
                               SizedBox(

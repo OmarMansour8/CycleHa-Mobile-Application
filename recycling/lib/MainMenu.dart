@@ -34,6 +34,7 @@ class homePage extends StatefulWidget {
   var user_points;
   var data;
   var items_recycled;
+  var location;
 
   homePage(
       {required this.Email,
@@ -44,11 +45,12 @@ class homePage extends StatefulWidget {
         required this.dateOfBirth,
         required this.user_points,
         required this.items_recycled,
-        required this.data
+        required this.data,
+        required this.location
       });
 
   @override
-  State<homePage> createState() => _homePageState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data);
+  State<homePage> createState() => _homePageState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth,user_points: user_points,items_recycled: items_recycled, data:data,location: location);
 }
 
 class _homePageState extends State<homePage> {
@@ -69,6 +71,8 @@ class _homePageState extends State<homePage> {
   var metalData;
   bool plasticEnter = false;
   bool metalEnter =false;
+  var location;
+
 
 
   Future getItemCount(String mobile) async{
@@ -80,15 +84,12 @@ class _homePageState extends State<homePage> {
       'type' : "plastic"
     }
     );
-
     // print(json.decode(response.body));
     var data1 = await json.decode(response.body);
     print(data1);
     if(data1.toString() != "Empty"){
       plasticEnter = true;
     }
-
-
     var response1 = await http.post(Uri.parse(
         'https://phlegmier-marches.000webhostapp.com/getItemsCount.php'),body:{
       'mobile' : mobile,
@@ -141,8 +142,9 @@ class _homePageState extends State<homePage> {
         required this.dateOfBirth,
         required this.user_points,
         required this.items_recycled,
-        required this.data
-      }); //  late WebViewController controller;
+        required this.data,
+        required this.location
+      });
   var _index = 0;
   var color = const Color(0xFF228B22);
 
@@ -417,7 +419,7 @@ class _homePageState extends State<homePage> {
                                                 child:ElevatedButton(
                                                     style: ElevatedButton.styleFrom(backgroundColor: Colors.green,shadowColor: Colors.transparent,),
 
-                                                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));},
+                                                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));},
                                                     child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
 
                                               )
@@ -489,15 +491,15 @@ class _homePageState extends State<homePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                                builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)));
                       if (_index == 1)
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
+                                builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));
                       if (_index == 2)
                         Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
+                            context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location: location)));
                       // Navigator.push(
                       //     context, MaterialPageRoute(builder: (context) =>
                       //     MyProfile(Email: Email,
@@ -828,7 +830,7 @@ class _homePageState extends State<homePage> {
                                     child:ElevatedButton(
                                       style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,shadowColor: Colors.transparent,),
 
-                                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));},
+                                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));},
                                       child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
 
                                   )
@@ -901,15 +903,15 @@ class _homePageState extends State<homePage> {
                        Navigator.push(
                            context,
                            MaterialPageRoute(
-                               builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                               builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)));
                      if (_index == 1)
                        Navigator.push(
                            context,
                            MaterialPageRoute(
-                               builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
+                               builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));
                      if (_index == 2)
                        Navigator.push(
-                           context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
+                           context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location: location)));
                      // Navigator.push(
                      //     context, MaterialPageRoute(builder: (context) =>
                      //     MyProfile(Email: Email,

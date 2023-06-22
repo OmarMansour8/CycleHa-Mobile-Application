@@ -26,6 +26,7 @@ class _Sign_UpState extends State<Sign_Up> {
   var items_recycled;
   var data;
   bool buttonEnabled = false;
+
   TextEditingController name = new TextEditingController();
   TextEditingController email = new TextEditingController();
   TextEditingController mobile = new TextEditingController();
@@ -66,20 +67,10 @@ class _Sign_UpState extends State<Sign_Up> {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => homePage(
-              Email: Email,
-              Password: Password,
-              fullName: fullName,
-              mobileNumber: mobileNumber,
-              gender: gender,
-              dateOfBirth: dateOfBirth,
-              user_points: user_points,
-              items_recycled: items_recycled,
-              data: data)), // MaterialPageRoute
+          builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)), // MaterialPageRoute
     );
     return data1;
 
-    // return json.decode(response.body);
   }
 
   Future SendData() async {
@@ -91,7 +82,7 @@ class _Sign_UpState extends State<Sign_Up> {
       "mobile": mobile.text,
       "password": pass.text,
       "dot": dateOfBirth,
-      "location": TruckIDValue.toString(),
+      "location": location.toString(),
       "admin_username": "om",
       "user_points": "0"
     };
@@ -101,7 +92,7 @@ class _Sign_UpState extends State<Sign_Up> {
       "mobile": mobile.text,
       "password": pass.text,
       "dot": dateOfBirth,
-      "location": TruckIDValue.toString(),
+      "location": location.toString(),
       "admin_username": "01550083829",
     });
     try {
@@ -146,7 +137,7 @@ class _Sign_UpState extends State<Sign_Up> {
       print(e);
     }
   }
-  String? TruckIDValue;
+  String? location;
 
 
   // final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -202,6 +193,7 @@ class _Sign_UpState extends State<Sign_Up> {
     'Imbaba',
     'Khalifa City',
     'Maadi',
+    'Madinty',
     'Manial',
     'Masr El Gedida',
     'Matare',
@@ -223,7 +215,7 @@ class _Sign_UpState extends State<Sign_Up> {
     'Tagamo El Awal',
     'Tahrir Square',
     'Zamalek',
-    'Madinty', // added Madinty to the list
+    // added Madinty to the list
   ];
 
   String? _selectedLocation;
@@ -245,6 +237,7 @@ class _Sign_UpState extends State<Sign_Up> {
     mobileNumber = data[0]["User_MobileNumber"];
     dateOfBirth = data[0]["USer_DateofBirth"];
     Password = data[0]["User_Password"];
+    location = data[0]["User_Location"];
   }
   // Future<void> getData(String mobile) async {
   //   Email = await getUserData("User_Email",mobile);
@@ -614,10 +607,10 @@ class _Sign_UpState extends State<Sign_Up> {
                                 ),
                               ))
                                   .toList(),
-                              value: TruckIDValue,
+                              value: location,
                               onChanged: (value) {
                                 setState(() {
-                                  TruckIDValue = value as String;
+                                  location = value as String;
                                   // truck = TruckIDValue.toString();
 
                                 });

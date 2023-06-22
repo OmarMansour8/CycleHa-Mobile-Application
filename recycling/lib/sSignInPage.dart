@@ -25,6 +25,7 @@ class _Sign_In1State extends State<Sign_In1> {
   var data;
   var user_points;
   var items_recycled;
+  var location;
   bool checkCondition = true;
   TextEditingController mobile = new TextEditingController();
   TextEditingController pass = new TextEditingController();
@@ -53,7 +54,7 @@ class _Sign_In1State extends State<Sign_In1> {
       context,
       MaterialPageRoute(
           builder: (context) =>
-              homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)
+              homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)
       ), // MaterialPageRoute
     );
     return data1;
@@ -119,8 +120,9 @@ class _Sign_In1State extends State<Sign_In1> {
     Email = data[0]["User_Email"];
     fullName = data[0]["User_Name"];
     mobileNumber = data[0]["User_MobileNumber"];
-    dateOfBirth = data[0]["USer_DateofBirth"];
+    dateOfBirth = data[0]["User_DateofBirth"];
     Password = data[0]["User_Password"];
+    location = data[0]["User_Location"];
 
 
   }
@@ -212,7 +214,7 @@ class _Sign_In1State extends State<Sign_In1> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(64, 168, 88, 1)
+            color: Color.fromRGBO(64, 168, 88, 1)
         ),
         child: Column(
           children: [

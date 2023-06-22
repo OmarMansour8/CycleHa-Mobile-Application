@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:recycling/MainMenu.dart';
 import 'package:recycling/MyAccount.dart';
+import 'package:recycling/Personal_Info.dart';
 import 'package:recycling/Settings.dart';
+import 'package:recycling/SignIn.dart';
 import 'package:recycling/map.dart';
 import 'package:recycling/points_services.dart';
+import 'package:recycling/sSignInPage.dart';
 
 // void main() {
 //   runApp(homePage());
@@ -22,6 +25,8 @@ class MyProfile extends StatefulWidget {
   var items_recycled;
   var metalCount;
   var plasticCount ;
+  var location;
+
 
   MyProfile(
       {required this.Email,
@@ -34,12 +39,14 @@ class MyProfile extends StatefulWidget {
         required this.items_recycled,
         required this.data,
         required this.metalCount,
-        required this.plasticCount
+        required this.plasticCount,
+        required this.location
+
 
       });
 
   @override
-  State<MyProfile> createState() => _MyProfileState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount);
+  State<MyProfile> createState() => _MyProfileState(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location: location);
 }
 
 class _MyProfileState extends State<MyProfile> {
@@ -54,6 +61,8 @@ class _MyProfileState extends State<MyProfile> {
   var items_recycled ;
   var metalCount;
   var plasticCount ;
+  var location;
+
   _MyProfileState(
       {required this.Email,
         required this.Password,
@@ -65,7 +74,9 @@ class _MyProfileState extends State<MyProfile> {
         required this.items_recycled,
         required this.data,
         required this.metalCount,
-        required this.plasticCount
+        required this.plasticCount,
+        required this.location
+
       }); //  late WebViewController controller;
   var _index = 2;
 
@@ -110,8 +121,9 @@ class _MyProfileState extends State<MyProfile> {
                     height: MediaQuery.of(context).size.height * 0.22,
                     width: MediaQuery.of(context).size.width,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(width: MediaQuery.of(context).size.width*0.33,),
+                        // SizedBox(width: MediaQuery.of(context).size.width*0.33,),
                         CircleAvatar(
 
                           backgroundImage:
@@ -240,6 +252,11 @@ class _MyProfileState extends State<MyProfile> {
                         ],
                       ),
                     ),
+                    onTap: (){
+
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => personal_info(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location: location)));
+                    },
                   ),
                   SizedBox(height: height*0.05,),
                   GestureDetector(
@@ -274,6 +291,10 @@ class _MyProfileState extends State<MyProfile> {
                         borderRadius: BorderRadius.circular(10),
                         child: SizedBox(height: 60, child:  ElevatedButton(
                           onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Sign_In1()));
                             // showAlertDialog(context);
                             // SendData();
                             // getUserData(mobile.text,mobile.text);
@@ -441,15 +462,15 @@ class _MyProfileState extends State<MyProfile> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+                            builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)));
                   if (_index == 1)
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
+                            builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));
                   if (_index == 2)
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
+                        context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location: location)));
                   // Navigator.push(
                   //     context, MaterialPageRoute(builder: (context) =>
                   //     MyProfile(Email: Email,

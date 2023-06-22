@@ -404,7 +404,16 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
                                       SizedBox(
                                         width:
                                         MediaQuery.of(context).size.width *
-                                            0.28,
+                                            0.2,
+                                      ),
+                                      Icon(
+                                        Icons.person,
+                                        size: 38,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                        MediaQuery.of(context).size.width *
+                                            0.1,
                                       ),
                                       Text(
                                         "Users",
@@ -413,20 +422,11 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
                                             fontSize: 34,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      SizedBox(
-                                        width:
-                                        MediaQuery.of(context).size.width *
-                                            0.1,
-                                      ),
-                                       Icon(
-                                          Icons.person,
-                                          size: 38,
-                                        ),
 
                                       SizedBox(
                                         width:
                                         MediaQuery.of(context).size.width *
-                                            0.15,
+                                            0.2,
                                       ),
                                       IconButton(
                                         onPressed:(){
@@ -442,7 +442,6 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
                                         Icon(Icons.login,
                                         size: 38,
                                       ),)
-
                                     ],
                                   )),
                               SizedBox(
@@ -456,11 +455,11 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
                                            controller: mobilenumber,
 
                                          decoration: InputDecoration(
-                                           focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
-                                           focusColor: Colors.green,
-                                           labelStyle: TextStyle(color: Colors.green),
+                                           focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent)),
+                                           focusColor: Colors.deepOrangeAccent,
+                                           labelStyle: TextStyle(color: Colors.deepOrangeAccent),
                                            labelText: 'User Mobile Number',
-                                           prefixIcon: Icon(Icons.account_circle,color: Colors.green,),),
+                                           prefixIcon: Icon(Icons.account_circle,color: Colors.deepOrangeAccent,),),
                                        ),),
 
 
@@ -498,7 +497,7 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
                                             TextStyle(color: Colors.white, fontSize: 18),
                                           ),
                                           style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.green,
+                                            backgroundColor: Colors.deepOrangeAccent,
                                           ),
                                         )),
                                       ))
@@ -545,7 +544,7 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
                                   // 0.6,
                                   0.7,
                                 ],
-                                colors: [color2, color1],
+                                colors: [Colors.redAccent, Colors.deepOrangeAccent],
                               )),
                           child: Column(
                             children: [

@@ -9,17 +9,13 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:http/http.dart' as http;
 
 
-// void main() {
-//   runApp(homePage());
-// }
-
 class AdminBin extends StatefulWidget {
   @override
   State<AdminBin> createState() => _AdminBinState();
 }
 
 class _AdminBinState extends State<AdminBin> {
-  // final databaseReference = FirebaseDatabase.instance.ref();
+
   var _index = 0;
   var color = const Color.fromRGBO(220, 238, 255, 1);
   var binData;
@@ -36,9 +32,9 @@ class _AdminBinState extends State<AdminBin> {
   int enter=0;
   var truckId=[];
   var driversId=[];
-
   var trucks;
   var drivers;
+  //[]
 
 
   Future getTruckData() async {
@@ -99,9 +95,9 @@ class _AdminBinState extends State<AdminBin> {
             fontSize: 16.9
         );
       }
-      else if (data1 == "Bin Succefully Added") {
+      else if (data1 == "Bin Sucessfully Added") {
         Fluttertoast.showToast(
-            msg: "Bin Succefully Added",
+            msg: "Bin Sucessfully Added",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
@@ -420,6 +416,12 @@ class _AdminBinState extends State<AdminBin> {
 
     var Areaname = Bin_Area1.toSet().toList();
     items=Areaname;
+    for(int i = 0 ; i<items.length;i++){
+      if(items[i]==""){
+        items.removeAt(i);
+
+      }
+    }
     print("b3do $items");
 
 
@@ -585,16 +587,16 @@ class _AdminBinState extends State<AdminBin> {
 
 
         },
-            child: Text('Yes')),
+            child: Text('Yes'),style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrangeAccent),),
         ElevatedButton(onPressed: (){
           Navigator.pop(context);
           },
-            child: Text('No')),
+            child: Text('No'),style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrangeAccent)),
       ],
     );
     showDialog(context: context,
-        builder: (BuildContext context){return
-          alertDialog;});}
+        builder: (BuildContext context){
+      return alertDialog;});}
   String dropdownvalue = 'Item 1';
   var Item ;
 
@@ -1030,15 +1032,15 @@ class _AdminBinState extends State<AdminBin> {
                                                 SizedBox(
                                                   width:MediaQuery.of(context).size.width * 0.1 ,
                                                 ),
-                                                IconButton(
-                                                  onPressed: (){
-
-                                                  },
-                                                  icon: Icon(Icons.account_circle,
-                                                    size: 38,),
-                                                ),
+                                                // IconButton(
+                                                //   onPressed: (){
+                                                //
+                                                //   },
+                                                //   icon: Icon(Icons.account_circle,
+                                                //     size: 38,),
+                                                // ),
                                                 SizedBox(
-                                                  width:MediaQuery.of(context).size.width * 0.1 ,
+                                                  width:MediaQuery.of(context).size.width * 0.2 ,
                                                 ),
                                                 IconButton(onPressed: (){showAlertDialog(context);}, icon: Icon(Icons.add,size: 38,))
                                               ],
@@ -1067,7 +1069,7 @@ class _AdminBinState extends State<AdminBin> {
                                                         style: TextStyle(
                                                           fontSize: 14,
                                                           fontWeight: FontWeight.bold,
-                                                          color: Colors.lightBlueAccent,
+                                                          color: Colors.black,
                                                         ),
                                                         overflow: TextOverflow.ellipsis,
                                                       ),
@@ -1148,9 +1150,7 @@ class _AdminBinState extends State<AdminBin> {
                                             ElevatedButton(onPressed: (){
                                               // showAlertDialog2(context);
                                               getSpecificBinData(selectedValue2);
-                                            }, child: Text("Search")),
-
-
+                                            }, child: Text("Search"),style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrangeAccent)),
 
                                           ],
                                         ),
@@ -1316,15 +1316,15 @@ class _AdminBinState extends State<AdminBin> {
                                                     fontWeight: FontWeight.bold),
                                               ),
                                               SizedBox(
-                                                width:MediaQuery.of(context).size.width * 0.1 ,
+                                                width:MediaQuery.of(context).size.width * 0.2 ,
                                               ),
-                                              IconButton(
-                                                onPressed: (){
-
-                                                },
-                                                icon: Icon(Icons.account_circle,
-                                                  size: 38,),
-                                              ),
+                                              // IconButton(
+                                              //   onPressed: (){
+                                              //
+                                              //   },
+                                              //   icon: Icon(Icons.account_circle,
+                                              //     size: 38,),
+                                              // ),
                                               SizedBox(
                                                 width:MediaQuery.of(context).size.width * 0.1 ,
                                               ),
@@ -1355,7 +1355,7 @@ class _AdminBinState extends State<AdminBin> {
                                                       style: TextStyle(
                                                         fontSize: 14,
                                                         fontWeight: FontWeight.bold,
-                                                        color: Colors.lightBlueAccent,
+                                                        color: Colors.black,
                                                       ),
                                                       overflow: TextOverflow.ellipsis,
                                                     ),
@@ -1436,7 +1436,7 @@ class _AdminBinState extends State<AdminBin> {
                                           ElevatedButton(onPressed: (){
                                             // showAlertDialog2(context);
                                             getSpecificBinData(selectedValue2);
-                                          }, child: Text("Search")),
+                                          }, child: Text("Search"),style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrangeAccent)),
 
                                         ],
                                       ),
