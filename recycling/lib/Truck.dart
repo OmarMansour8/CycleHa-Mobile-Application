@@ -347,7 +347,7 @@ class _TruckState extends State<Truck> {
                 Row(
                   children: [
                     SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                    Icon(Icons.map_sharp),
+                    Icon(Icons.place),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                     Text(
                       "${Bin[i]}, Cairo, Egypt",

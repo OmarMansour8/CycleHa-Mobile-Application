@@ -177,8 +177,8 @@ class _MyProfileState extends State<MyProfile> {
                         borderRadius: BorderRadius.all(Radius.circular(30))
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(width: width*0.1,),
                         Container(
                           child: Column(
                             children: [
@@ -191,7 +191,6 @@ class _MyProfileState extends State<MyProfile> {
                           ),
                         ),
 
-                        SizedBox(width: width*0.2,),
                         Container(
                           child: Column(
                             children: [
@@ -204,7 +203,6 @@ class _MyProfileState extends State<MyProfile> {
                           ),
                         ),
 
-                        SizedBox(width: width*0.2,),
                         Container(
                           child: Column(
                             children: [
