@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:usesCleartextTraffic="true"
-        android:label="Recycle"
+        android:label="E3ADA"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         android:name="io.flutter.app.FlutterApplication" android:label="googlemap1" android:icon="@mipmap/ic_launcher">

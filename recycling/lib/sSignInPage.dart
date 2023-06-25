@@ -247,14 +247,14 @@ class _Sign_In1State extends State<Sign_In1> {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width*0.15 ,),
-                Text("We are here to help you through",style: TextStyle(color: Colors.white,letterSpacing: 2),),
+                Text("Let's recycle smarter and make",style: TextStyle(color: Colors.white,letterSpacing: 2),),
 
               ],),
             Row(
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width*0.15 ,),
-                Text("waste recycling",style: TextStyle(color: Colors.white,letterSpacing: 2),),
+                Text("a positive impact on the planet",style: TextStyle(color: Colors.white,letterSpacing: 2),),
 
               ],),
 

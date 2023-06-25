@@ -231,7 +231,7 @@ class _MyProfileState extends State<MyProfile> {
               margin: EdgeInsets.only(left: 10,right : 10),
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
+                  borderRadius: BorderRadius.all(Radius.circular(30))
 
               ),
               child: Column(
@@ -278,7 +278,7 @@ class _MyProfileState extends State<MyProfile> {
                           context, MaterialPageRoute(builder: (context) => setting(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount)));
                     },
                   ),
-                  SizedBox(height: height*0.08,),
+                  SizedBox(height: height*0.06,),
                   Container(
                       margin: EdgeInsets.symmetric(vertical: 12),
                       width: width * 0.79,

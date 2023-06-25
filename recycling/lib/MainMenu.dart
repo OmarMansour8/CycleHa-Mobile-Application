@@ -167,7 +167,7 @@ class _homePageState extends State<homePage> {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width ,
-                height: MediaQuery.of(context).size.height*0.49,
+                height: MediaQuery.of(context).size.height*0.46,
                 decoration: BoxDecoration(
                   color:Colors.green
                     // gradient: LinearGradient(
@@ -240,14 +240,14 @@ class _homePageState extends State<homePage> {
                       ],
                     ),
                     SizedBox(height:MediaQuery.of(context).size.height*0.035 ,),
-                    Row(
-                      children: [
-                        SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                        Container(
-                            child:Text("our competitions:",style: TextStyle(fontSize: 12,color: Colors.white),)
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                    //     Container(
+                    //         child:Text("our competitions:",style: TextStyle(fontSize: 12,color: Colors.white),)
+                    //     ),
+                    //   ],
+                    // ),
                     SizedBox(height:MediaQuery.of(context).size.height*0.009 ,),
 
                     Container(
@@ -262,14 +262,14 @@ class _homePageState extends State<homePage> {
                         ),
                         child:CarouselSlider(
                           items: [
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Image.asset('images/recycling.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width,
+                            //   decoration: BoxDecoration(
+                            //     borderRadius: BorderRadius.circular(8.0),
+                            //   ),
+                            //   child: Image.asset('images/recycling.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                            //
+                            // ),
                             // Container(
                             //   width: MediaQuery.of(context).size.width,
                             //   decoration: BoxDecoration(
@@ -283,7 +283,7 @@ class _homePageState extends State<homePage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
-                              child:Image.asset('images/omar1.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                              child:Image.asset('images/quote1.jpg',height: 240,width: 330,fit: BoxFit.fitWidth,alignment: Alignment.center),
 
                             ),
                             Container(
@@ -291,7 +291,7 @@ class _homePageState extends State<homePage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
-                              child:Image.asset('images/omar2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                              child:Image.asset('images/quote2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
 
                             ),
                             Container(
@@ -299,17 +299,17 @@ class _homePageState extends State<homePage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
-                              child:Image.asset('images/omar4.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                              child:Image.asset('images/quote3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
 
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/omar3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width,
+                            //   decoration: BoxDecoration(
+                            //     borderRadius: BorderRadius.circular(8.0),
+                            //   ),
+                            //   child:Image.asset('images/omar3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                            //
+                            // ),
 
                           ],
                           options: CarouselOptions(
@@ -374,7 +374,7 @@ class _homePageState extends State<homePage> {
                                       ],
 
                                     ),
-                                    SizedBox(height: MediaQuery.of(context).size.height*0.05,),
+                                    SizedBox(height: MediaQuery.of(context).size.height*0.08,),
                                     Row(
                                       children: [
                                         Container(
@@ -391,7 +391,7 @@ class _homePageState extends State<homePage> {
                                         )
                                       ],
                                     ),
-                                    SizedBox(height: MediaQuery.of(context).size.height*0.07,),
+                                    SizedBox(height: MediaQuery.of(context).size.height*0.09,),
                                     Row(
                                       children: [
                                         Container(
@@ -438,6 +438,13 @@ class _homePageState extends State<homePage> {
 
                       ],
                     )
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height*0.04,
+                decoration: BoxDecoration(
+                    color: Colors.green
                 ),
               )
             ],
@@ -583,7 +590,7 @@ class _homePageState extends State<homePage> {
       children: [
                 Container(
                   width: MediaQuery.of(context).size.width ,
-                  height: MediaQuery.of(context).size.height*0.49,
+                  height: MediaQuery.of(context).size.height*0.46,
                   decoration: BoxDecoration(
                     color:Colors.green
                       // gradient: LinearGradient(
@@ -656,14 +663,14 @@ class _homePageState extends State<homePage> {
                         ],
                       ),
                       SizedBox(height:MediaQuery.of(context).size.height*0.035 ,),
-                      Row(
-                        children: [
-                          SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                          Container(
-                              child:Text("our competitions:",style: TextStyle(fontSize: 12,color: Colors.white),)
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                      //     Container(
+                      //         child:Text("our competitions:",style: TextStyle(fontSize: 12,color: Colors.white),)
+                      //     ),
+                      //   ],
+                      // ),
                       SizedBox(height:MediaQuery.of(context).size.height*0.009 ,),
 
                       Container(
@@ -678,14 +685,14 @@ class _homePageState extends State<homePage> {
                         ),
                         child:CarouselSlider(
                           items: [
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Image.asset('images/recycling.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width,
+                            //   decoration: BoxDecoration(
+                            //     borderRadius: BorderRadius.circular(8.0),
+                            //   ),
+                            //   child: Image.asset('images/recycling.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                            //
+                            // ),
                             // Container(
                             //   width: MediaQuery.of(context).size.width,
                             //   decoration: BoxDecoration(
@@ -699,7 +706,23 @@ class _homePageState extends State<homePage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
-                              child:Image.asset('images/omar1.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                              child:Image.asset('images/quote1.jpg',height: 240,width: 330,fit: BoxFit.fitWidth,alignment: Alignment.center),
+
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child:Image.asset('images/quote2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child:Image.asset('images/quote3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
 
                             ),
                             Container(
@@ -708,22 +731,6 @@ class _homePageState extends State<homePage> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child:Image.asset('images/omar2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/omar4.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/omar3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
 
                             ),
 
@@ -850,7 +857,13 @@ class _homePageState extends State<homePage> {
               ],
             )
         ),
-      )
+      ),Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height*0.028,
+          decoration: BoxDecoration(
+            color: Colors.green
+          ),
+        )
       ],
     ),),
 
