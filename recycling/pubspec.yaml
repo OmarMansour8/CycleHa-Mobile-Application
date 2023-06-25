@@ -108,9 +108,16 @@ flutter:
     - images/avatar.jpg
     - images/bottle.jpg
     - images/bottle1.jpg
+    - images/bottle3.jpg
+    - images/bottle6.jpg
+    - images/bottle3.png
     - images/can.jpg
     - images/can1.jpg
     - images/coin.jpg
+    - images/coin1.png
+    - images/coin3.jpg
+    - images/coin6.jpg
+    - images/can3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

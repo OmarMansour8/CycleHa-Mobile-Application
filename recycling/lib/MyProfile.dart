@@ -181,9 +181,10 @@ class _MyProfileState extends State<MyProfile> {
                       children: [
                         Container(
                           child: Column(
+
                             children: [
                               SizedBox(height: height*0.02,),
-                              Image.asset("images/coin.jpg",height: 50,width: 50,),
+                              Image.asset("images/coin6.jpg",height: 50,width: 45,),
                               SizedBox(height: height*0.01,),
                               Text("$user_points",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black38)),
 
@@ -195,7 +196,7 @@ class _MyProfileState extends State<MyProfile> {
                           child: Column(
                             children: [
                               SizedBox(height: height*0.02,),
-                              Image.asset("images/bottle1.jpg",height: 50,width: 60,),
+                              Image.asset("images/bottle6.jpg",height: 50,width:80,),
                               SizedBox(height: height*0.01,),
                               Text("$plasticCount",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black38)),
 
@@ -207,7 +208,7 @@ class _MyProfileState extends State<MyProfile> {
                           child: Column(
                             children: [
                               SizedBox(height: height*0.02,),
-                              Image.asset("images/can.jpg",height: 50,width: 50,),
+                              Image.asset("images/can3.jpg",height: 50,width: 50,),
                               SizedBox(height: height*0.01,),
                               Text("$metalCount",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black38)),
 

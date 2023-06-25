@@ -226,7 +226,7 @@ class _Sign_In1State extends State<Sign_In1> {
                   SizedBox(
                       width: MediaQuery.of(context).size.width*0.15 ,),
                 Text("Hello Again,",style: TextStyle(color: Colors.white,fontSize: 34,fontWeight: FontWeight.bold, letterSpacing: 1.5),),
-
+//Welcome to e3ada app! Let's recycle smarter and make a positive impact on the planet.
                 ],),
 
             SizedBox(

@@ -123,9 +123,11 @@ class _TruckState extends State<Truck> {
 
     return data1;
   }
+  //int rand = 2
+  //rand+=1
   Future addNewDriver()async{
     Random random = new Random();
-    int randomNumber = random.nextInt(10000);
+    int randomNumber = random.nextInt(1000000);
     var response = await http.post( Uri.parse(
         'https://phlegmier-marches.000webhostapp.com/addDriver.php'),body:{
 
