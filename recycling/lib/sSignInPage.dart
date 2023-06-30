@@ -153,7 +153,7 @@ class _Sign_In1State extends State<Sign_In1> {
       );
 
     } else {
-     await Login();
+      await Login();
     }
   }
 
@@ -187,7 +187,7 @@ class _Sign_In1State extends State<Sign_In1> {
   // String gender = FirebaseFirestore.instance.collection('Users').;
   void showAlertDialog(BuildContext context){
     var alertDialog = AlertDialog(
-        backgroundColor: Colors. transparent, elevation: 0,
+      backgroundColor: Colors. transparent, elevation: 0,
       content: Container(
         decoration: BoxDecoration(),
         alignment: Alignment.center,
@@ -196,7 +196,7 @@ class _Sign_In1State extends State<Sign_In1> {
           color: Colors.green,
         ),
       ),
-      );
+    );
     showDialog(context: context,
         builder: (BuildContext context){return
           alertDialog;});}
@@ -209,76 +209,76 @@ class _Sign_In1State extends State<Sign_In1> {
     return Scaffold(
 
       body:
-          SingleChildScrollView(
-            child: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            color: Color.fromRGBO(64, 168, 88, 1)
-        ),
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height*0.15,
-            ),
-            Row(
-              children: [
+      SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+              color: Color.fromRGBO(64, 168, 88, 1)
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.12,
+              ),
+              Row(
+                children: [
                   SizedBox(
-                      width: MediaQuery.of(context).size.width*0.15 ,),
-                Text("Hello Again,",style: TextStyle(color: Colors.white,fontSize: 34,fontWeight: FontWeight.bold, letterSpacing: 1.5),),
+                    width: MediaQuery.of(context).size.width*0.15 ,),
+                  Text("Hello Again,",style: TextStyle(color: Colors.white,fontSize: 34,fontWeight: FontWeight.bold, letterSpacing: 1.5),),
 //Welcome to e3ada app! Let's recycle smarter and make a positive impact on the planet.
                 ],),
 
-            SizedBox(
-              height: MediaQuery.of(context).size.height*0.008,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width*0.15 ,),
-                Text("Welcome Back",style: TextStyle(color: Colors.white,fontSize: 34,fontWeight: FontWeight.bold,letterSpacing: 1.5),),
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.008,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width*0.15 ,),
+                  Text("Welcome Back",style: TextStyle(color: Colors.white,fontSize: 34,fontWeight: FontWeight.bold,letterSpacing: 1.5),),
 
-              ],),
-            SizedBox(
-              height: MediaQuery.of(context).size.height*0.03,
-            ),
+                ],),
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.03,
+              ),
 
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width*0.15 ,),
-                Text("Let's recycle smarter and make",style: TextStyle(color: Colors.white,letterSpacing: 2),),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width*0.15 ,),
+                  Text("Let's recycle smarter and make",style: TextStyle(color: Colors.white,letterSpacing: 2),),
 
-              ],),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width*0.15 ,),
-                Text("a positive impact on the planet",style: TextStyle(color: Colors.white,letterSpacing: 2),),
+                ],),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width*0.15 ,),
+                  Text("a positive impact on the planet",style: TextStyle(color: Colors.white,letterSpacing: 2),),
 
-              ],),
+                ],),
 
-            SizedBox(
-              height: MediaQuery.of(context).size.height*0.09,
-            ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.09,
+              ),
 
-            Container(
+              Container(
                 width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.width*0.1,
                 height: MediaQuery.of(context).size.height*0.48,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30),bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
                 ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height*0.07,
-                  ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height*0.07,
+                    ),
 
-                  Container(
-                    // height: MediaQuery.of(context).size.height*0.8,
-                    margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.08, 0, MediaQuery.of(context).size.width*0.08, 0),
-                    decoration: BoxDecoration(
+                    Container(
+                      // height: MediaQuery.of(context).size.height*0.8,
+                      margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.08, 0, MediaQuery.of(context).size.width*0.08, 0),
+                      decoration: BoxDecoration(
                         color:Color.fromRGBO(246, 248, 252, 5),
                         borderRadius: BorderRadius.circular(20),
                         // boxShadow: [
@@ -293,118 +293,113 @@ class _Sign_In1State extends State<Sign_In1> {
                         // ],
 
 
+                      ),
+                      padding: EdgeInsets.all(1),
+                      child: TextField(
+                        cursorColor: Color.fromRGBO(64, 168, 88, 1),
+                        onChanged: (value) {
+                          setState(() {
+                            Email = value;
+                          });
+                        },
+                        controller: mobile,
+                        decoration: InputDecoration(
+                          focusColor:Color.fromRGBO(64, 168, 88, 1),
+                          labelStyle: TextStyle(color: Color.fromRGBO(64, 168, 88, 1)),
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          labelText: 'Phone Number',
+                          prefixIcon: Icon(Icons.account_circle_rounded, color:Color.fromRGBO(64, 168, 88, 1)),
+                        ),
+                      ),
                     ),
-                    padding: EdgeInsets.all(1),
-                    child: TextField(
-                      cursorColor: Colors.green,
-                      onChanged: (value) {
-                        setState(() {
-                          Email = value;
-                        });
-                      },
-                      controller: mobile,
-                      decoration: InputDecoration(
-                        focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
-                        focusColor: Colors.green,
-                        labelStyle: TextStyle(color: Colors.grey),
-                        labelText: 'Phone Number',
-                        prefixIcon: Icon(Icons.account_circle,color: Colors.green,),),
-                    ),
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height*0.03,),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.08, 0, MediaQuery.of(context).size.width*0.08, 0),
-                    decoration: BoxDecoration(
-                      color:Color.fromRGBO(246, 248, 252, 5),
-                      borderRadius: BorderRadius.circular(20),
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //       color: Colors.black26,
-                      //       // blurRadius: 6,
-                      //       offset: Offset(2, 2),
-                      //
-                      //
-                      //   ),
-
-                      // ],
-
-
-                    ),
-                    padding: EdgeInsets.all(1),
-                    child: TextField(
-                      obscureText: true,
-                      cursorColor: Colors.green,
-                      onChanged: (value) {
-                        setState(() {
-                          Password = value;
-                        });
-                      },
-                      controller: pass,
-                      decoration: InputDecoration(
-                          focusColor: Colors.green,
-                          labelStyle: TextStyle(color: Colors.green),
-                          focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
-
+                    SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(
+                        MediaQuery.of(context).size.width * 0.08,
+                        0,
+                        MediaQuery.of(context).size.width * 0.08,
+                        0,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(246, 248, 252, 5),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding: EdgeInsets.all(1),
+                      child: TextField(
+                        obscureText: true,
+                        cursorColor: Color.fromRGBO(64, 168, 88, 1),
+                        onChanged: (value) {
+                          setState(() {
+                            Password = value;
+                          });
+                        },
+                        controller: pass,
+                        decoration: InputDecoration(
+                          focusColor: Color.fromRGBO(64, 168, 88, 1),
+                          labelStyle: TextStyle(color: Color.fromRGBO(64, 168, 88, 1)),
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
                           labelText: 'Password',
-
-                          prefixIcon: Icon(Icons.password,color: Colors.green,)),
+                          prefixIcon: Icon(Icons.password, color: Color.fromRGBO(64, 168, 88, 1)),
+                        ),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height*0.05,),
 
-                  Container(
-                      margin: EdgeInsets.symmetric(vertical: 12),
-                      width: size.width * 0.49,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: SizedBox(height: 60, child:  ElevatedButton(
-                          onPressed: () {
-                            showAlertDialog(context);
-                            AdminLogin();
-                          },
-                          child: Text(
-                            'Sign In',
-                            style:
-                            TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromRGBO(64, 168, 88, 1),
-                          ),
+                    SizedBox(height: MediaQuery.of(context).size.height*0.05,),
+
+
+                    Container(
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        width: size.width * 0.49,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: SizedBox(height: 60, child:  ElevatedButton(
+                            onPressed: () {
+                              showAlertDialog(context);
+                              AdminLogin();
+                            },
+                            child: Text(
+                              'Sign In',
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:Color.fromRGBO(64, 168, 88, 1),
+
+                            ),
+                          )),
                         )),
-                      )),
+                  ],
+                ),
+
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+
+                  Text('Does not have an account?',style: TextStyle(color: Colors.white),),
+                  TextButton(
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                          fontSize: 20, color: Colors.white),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Sign_Up()));
+                    },
+                  )
                 ],
+                // mainAxisAlignment: MainAxisAlignment.center,
               ),
 
-            ),
-            Row(
-              children: <Widget>[
-                SizedBox(
-                  width: MediaQuery.of(context).size.width*0.1,
-                ),
-                 Text('Does not have an account?',style: TextStyle(color: Colors.white),),
-                TextButton(
-                  child: const Text(
-                    'Sign Up',
-                    style: TextStyle(
-                        fontSize: 20, color: Colors.white),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Sign_Up()));
-                  },
-                )
-              ],
-              // mainAxisAlignment: MainAxisAlignment.center,
-            ),
 
-
-
-
-          ],
-        ),
-      ),),
+            ],
+          ),
+        ),),
     );
 
   }

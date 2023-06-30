@@ -75,7 +75,7 @@ class _Sign_UpState extends State<Sign_Up> {
 
   Future SendData() async {
     var url =
-        Uri.parse('https://phlegmier-marches.000webhostapp.com/register.php');
+    Uri.parse('https://phlegmier-marches.000webhostapp.com/register.php');
     var data1 = {
       "name": name.text,
       "email": email.text,
@@ -296,71 +296,86 @@ class _Sign_UpState extends State<Sign_Up> {
     // Email = getUserData("User_Email").toString();
     // getData();
 
+
     dateOfBirth = '${date1.year} - ${date1.month} - ${date1.day}'.toString();
     // Size size = MediaQuery.of(context).size;
+
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+
         home: Scaffold(
+            appBar: AppBar (
+
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios_new,color: Colors.white,),
+                onPressed: ()=> Navigator.pop(context),
+
+              ),
+              backgroundColor:Color.fromRGBO(64, 168, 88, 1),
+              centerTitle: true,
+              title: Text ('Sign Up'),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(25),
+                ),
+              ),
+
+            ),
+
             body: Padding(
                 padding: EdgeInsets.all(20),
                 child: ListView(
                   children: <Widget>[
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(Icons.arrow_back_ios),
-                      alignment: Alignment.topLeft,
-                    ),
-                    Container(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 38,
-                          ),
-                        )),
+
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
+                      height: MediaQuery.of(context).size.height * 0.015,
                     ),
+                    Center(
+                      child:Text(
+                        'Please fill in the following form',
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w500,
+
+                          fontSize: 16,
+                        ),),
+
+                    ),
+
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.04,
+                    ),
+
                     Container(
-                      // height: MediaQuery.of(context).size.height*0.8,
                       margin: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width * 0.04,
-                          0,
-                          MediaQuery.of(context).size.width * 0.04,
-                          0),
+                        MediaQuery.of(context).size.width * 0.0,
+                        0,
+                        MediaQuery.of(context).size.width * 0.0,
+                        0,
+                      ),
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(246, 248, 252, 5),
                         borderRadius: BorderRadius.circular(20),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       color: Colors.black26,
-                        //       // blurRadius: 6,
-                        //       offset: Offset(2, 2),
-                        //
-                        //
-                        //   ),
-
-                        // ],
+                        border: Border.all(
+                          color: Color.fromRGBO(64, 168, 88, 1),
+                          width: 1,
+                        ),
                       ),
                       padding: EdgeInsets.all(1),
                       child: TextField(
-                        // controller: fullName,
                         controller: name,
                         decoration: InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.green)),
-                            focusColor: Colors.green,
-                            labelStyle: TextStyle(color: Colors.green),
-                            hintText: 'Full Name',
-                            prefixIcon: Icon(
-                              Icons.account_circle_rounded,
-                              color: Colors.green,
-                            )),
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          border: InputBorder.none,
+                          labelStyle: TextStyle(color: Colors.green),
+                          labelText: 'Full Name',
+                          prefixIcon: Icon(
+                            Icons.account_circle_rounded,
+                            color: Colors.green,
+                          ),
+
+                        ),
                         onChanged: (String value) {
                           setState(() {
                             fullName = value;
@@ -368,41 +383,40 @@ class _Sign_UpState extends State<Sign_Up> {
                         },
                       ),
                     ),
+
+
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.03,
                     ),
                     Container(
-                      // height: MediaQuery.of(context).size.height*0.8,
                       margin: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width * 0.04,
-                          0,
-                          MediaQuery.of(context).size.width * 0.04,
-                          0),
+                        MediaQuery.of(context).size.width * 0.0,
+                        0,
+                        MediaQuery.of(context).size.width * 0.0,
+                        0,
+                      ),
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(246, 248, 252, 5),
                         borderRadius: BorderRadius.circular(20),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       color: Colors.black26,
-                        //       // blurRadius: 6,
-                        //       offset: Offset(2, 2),
-                        //
-                        //
-                        //   ),
-
-                        // ],
+                        border: Border.all(
+                          color: Color.fromRGBO(64, 168, 88, 1),
+                          width: 1,
+                        ),
                       ),
                       padding: EdgeInsets.all(1),
                       child: TextField(
                         controller: email,
                         decoration: InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.green)),
-                            focusColor: Colors.green,
-                            labelStyle: TextStyle(color: Colors.green),
-                            hintText: 'Email',
-                            prefixIcon: Icon(Icons.alternate_email_outlined,
-                                color: Colors.green)),
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          border: InputBorder.none,
+                          labelStyle: TextStyle(color: Colors.green),
+                          labelText: 'Email',
+                          prefixIcon: Icon(
+                            Icons.alternate_email_outlined,
+                            color: Colors.green,
+                          ),
+                        ),
                         onChanged: (String value) {
                           setState(() {
                             Email = value;
@@ -414,36 +428,34 @@ class _Sign_UpState extends State<Sign_Up> {
                       height: MediaQuery.of(context).size.height * 0.03,
                     ),
                     Container(
-                      // height: MediaQuery.of(context).size.height*0.8,
                       margin: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width * 0.04,
-                          0,
-                          MediaQuery.of(context).size.width * 0.04,
-                          0),
+                        MediaQuery.of(context).size.width * 0.00,
+                        0,
+                        MediaQuery.of(context).size.width * 0.00,
+                        0,
+                      ),
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(246, 248, 252, 5),
                         borderRadius: BorderRadius.circular(20),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       color: Colors.black26,
-                        //       // blurRadius: 6,
-                        //       offset: Offset(2, 2),
-                        //
-                        //
-                        //   ),
-
-                        // ],
+                        border: Border.all(
+                          color: Color.fromRGBO(64, 168, 88, 1),
+                          width: 1,
+                        ),
                       ),
                       padding: EdgeInsets.all(1),
                       child: TextField(
                         controller: mobile,
                         decoration: InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.green)),
-                            focusColor: Colors.green,
-                            labelStyle: TextStyle(color: Colors.green),
-                            hintText: 'Mobile Number',
-                            prefixIcon: Icon(Icons.phone, color: Colors.green)),
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          border: InputBorder.none,
+                          labelStyle: TextStyle(color: Colors.green),
+                          labelText: 'Mobile Number',
+                          prefixIcon: Icon(
+                            Icons.phone,
+                            color: Colors.green,
+                          ),
+                        ),
                         onChanged: (String value) {
                           setState(() {
                             mobileNumber = value;
@@ -455,25 +467,19 @@ class _Sign_UpState extends State<Sign_Up> {
                       height: MediaQuery.of(context).size.height * 0.03,
                     ),
                     Container(
-                      // height: MediaQuery.of(context).size.height*0.8,
                       margin: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width * 0.04,
-                          0,
-                          MediaQuery.of(context).size.width * 0.04,
-                          0),
+                        MediaQuery.of(context).size.width * 0.00,
+                        0,
+                        MediaQuery.of(context).size.width * 0.00,
+                        0,
+                      ),
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(246, 248, 252, 5),
                         borderRadius: BorderRadius.circular(20),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       color: Colors.black26,
-                        //       // blurRadius: 6,
-                        //       offset: Offset(2, 2),
-                        //
-                        //
-                        //   ),
-
-                        // ],
+                        border: Border.all(
+                          color: Color.fromRGBO(64, 168, 88, 1),
+                          width: 1,
+                        ),
                       ),
                       padding: EdgeInsets.all(1),
                       child: TextField(
@@ -481,13 +487,16 @@ class _Sign_UpState extends State<Sign_Up> {
                         obscureText: true,
                         cursorColor: Colors.green,
                         decoration: InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.green)),
-                            focusColor: Colors.green,
-                            labelStyle: TextStyle(color: Colors.green),
-                            hintText: 'New Password',
-                            prefixIcon:
-                                Icon(Icons.password, color: Colors.green)),
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          border: InputBorder.none,
+                          labelStyle: TextStyle(color: Colors.green),
+                          labelText: 'Password',
+                          prefixIcon: Icon(
+                            Icons.password,
+                            color: Colors.green,
+                          ),
+                        ),
                         onChanged: (String value) {
                           setState(() {
                             Password = value;
@@ -498,185 +507,200 @@ class _Sign_UpState extends State<Sign_Up> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.03,
                     ),
-                    Container(
-                      // height: MediaQuery.of(context).size.height*0.8,
-                      margin: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width * 0.04,
-                          0,
-                          MediaQuery.of(context).size.width * 0.04,
-                          0),
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(246, 248, 252, 5),
-                        borderRadius: BorderRadius.circular(20),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       color: Colors.black26,
-                        //       // blurRadius: 6,
-                        //       offset: Offset(2, 2),
-                        //
-                        //
-                        //   ),
+                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          // height: MediaQuery.of(context).size.height*0.8,
+                          margin: EdgeInsets.fromLTRB(
+                              MediaQuery.of(context).size.width * 0.02,
+                              0,
+                              MediaQuery.of(context).size.width * 0.00,
+                              0),
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(246, 248, 252, 5),
+                            borderRadius: BorderRadius.circular(20),
 
-                        // ],
-                      ),
-                      padding: EdgeInsets.all(1),
-                      child: Row(
-                        children: [
-                          Text('  Date of Birth:  ',
+                          ),
+                          child: Text('Date of Birth:  ',
                               style: TextStyle(
-                                  color: Colors.black87,
+                                  color: Color.fromRGBO(64, 168, 88, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15)),
-                          IconButton(
-                              onPressed: () {
-                                selectDate(context);
-                              },
-                              icon: Icon(
-                                Icons.date_range,
-                                color: Colors.green,
-                              )),
-                          Text(
-                            ('${date1.year} - ${date1.month} - ${date1.day}')
-                                .toString(),
-                            style: TextStyle(color: Colors.black87),
-                          )
-                        ],
-                      ),
-                    ),
+
+
+                        ),
+                        Row(
+                          children: [
+
+                            IconButton(
+                                onPressed: () {
+                                  selectDate(context);
+                                },
+                                icon: Icon(
+                                  Icons.date_range,
+                                  color: Colors.black,
+                                )),
+                            Text(
+                              ('${date1.year} - ${date1.month} - ${date1.day}')
+                                  .toString(),
+                              style: TextStyle(color: Colors.black87),
+                            )
+
+                          ],
+                        )
+
+                      ],),
+
+
+
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.04,
                     ),
-                    Container(
-                      // height: MediaQuery.of(context).size.height*0.8,
-                      margin: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width * 0.04,
-                          0,
-                          MediaQuery.of(context).size.width * 0.04,
-                          0),
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(246, 248, 252, 5),
-                        borderRadius: BorderRadius.circular(20),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       color: Colors.black26,
-                        //       // blurRadius: 6,
-                        //       offset: Offset(2, 2),
-                        //
-                        //
-                        //   ),
 
-                        // ],
-                      ),
-                      padding: EdgeInsets.all(1),
-                      child: Row(
-                        children: [
-                          Text('  Location :  ',
-                              style: TextStyle(
-                                  color: Colors.black87,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15)),
-                          DropdownButtonHideUnderline(
-                            child: DropdownButton2(
-                              isExpanded: true,
-                              hint: Row(
-                                children: const [
-                                  Center(
-                                    child: Text(
-                                      'Choose Your Location',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
+                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          // height: MediaQuery.of(context).size.height*0.8,
+                          margin: EdgeInsets.fromLTRB(
+                              MediaQuery.of(context).size.width * 0.02,
+                              0,
+                              MediaQuery.of(context).size.width * 0.00,
+                              0),
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(246, 248, 252, 5),
+                            borderRadius: BorderRadius.circular(20),
+
+                          ),
+                          child: Row(
+                            children: [
+                              Container(child: Text('Location :',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(64, 168, 88, 1),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),),
+                              Row(
+
+                                children: [
+                                  Padding(padding: EdgeInsets.only(right: 25)),
+                                  DropdownButtonHideUnderline(
+                                    child: DropdownButton2(
+                                      isExpanded: true,
+                                      hint: Row(
+                                        children: const [
+                                          Center(
+                                            child: Text(
+                                              'Choose your location',
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      overflow: TextOverflow.ellipsis,
+                                      items: truckId
+                                          .map((item) => DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(
+                                          item,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            // fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ))
+                                          .toList(),
+                                      value: location,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          location = value as String;
+                                          // truck = TruckIDValue.toString();
+
+                                        });
+                                      },
+                                      buttonStyleData: ButtonStyleData(
+                                        height:
+                                        MediaQuery.of(context).size.height * 0.07,
+                                        width: MediaQuery.of(context).size.width * 0.57,
+                                        padding:
+                                        const EdgeInsets.only(left: 10, right: 5),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(14),
+                                          // border: Border.all(
+                                          //   color: Colors.black26,
+                                          // ),
+                                          color: Colors.white,
+                                        ),
+                                        elevation: 0,
+                                      ),
+                                      iconStyleData: const IconStyleData(
+                                        icon: Icon(
+                                          Icons.keyboard_arrow_down,
+                                        ),
+                                        iconSize: 25,
+                                        iconEnabledColor: Colors.black,
+                                        iconDisabledColor: Colors.grey,
+                                      ),
+                                      dropdownStyleData: DropdownStyleData(
+                                        maxHeight:
+                                        MediaQuery.of(context).size.height * 0.2,
+                                        width: MediaQuery.of(context).size.width * 0.47,
+                                        padding: null,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(14),
+                                          color: Colors.white,
+                                        ),
+                                        elevation: 8,
+                                        offset: const Offset(0, 0),
+                                        scrollbarTheme: ScrollbarThemeData(
+                                          radius: const Radius.circular(40),
+                                          thickness:
+                                          MaterialStateProperty.all<double>(6),
+                                          thumbVisibility:
+                                          MaterialStateProperty.all<bool>(true),
+                                        ),
+                                      ),
+                                      menuItemStyleData: const MenuItemStyleData(
+                                        height: 40,
+                                        padding: EdgeInsets.only(left: 14, right: 14),
+                                      ),
                                     ),
                                   ),
                                 ],
                               ),
-                              items: truckId
-                                  .map((item) => DropdownMenuItem<String>(
-                                value: item,
-                                child: Text(
-                                  item,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    // fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ))
-                                  .toList(),
-                              value: location,
-                              onChanged: (value) {
-                                setState(() {
-                                  location = value as String;
-                                  // truck = TruckIDValue.toString();
 
-                                });
-                              },
-                              buttonStyleData: ButtonStyleData(
-                                height:
-                                MediaQuery.of(context).size.height * 0.07,
-                                width: MediaQuery.of(context).size.width * 0.53,
-                                padding:
-                                const EdgeInsets.only(left: 14, right: 14),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(14),
-                                  // border: Border.all(
-                                  //   color: Colors.black26,
-                                  // ),
-                                  color: Colors.white,
-                                ),
-                                elevation: 0,
-                              ),
-                              iconStyleData: const IconStyleData(
-                                icon: Icon(
-                                  Icons.keyboard_arrow_down,
-                                ),
-                                iconSize: 25,
-                                iconEnabledColor: Colors.black,
-                                iconDisabledColor: Colors.grey,
-                              ),
-                              dropdownStyleData: DropdownStyleData(
-                                maxHeight:
-                                MediaQuery.of(context).size.height * 0.2,
-                                width: MediaQuery.of(context).size.width * 0.47,
-                                padding: null,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(14),
-                                  color: Colors.white,
-                                ),
-                                elevation: 8,
-                                offset: const Offset(0, 0),
-                                scrollbarTheme: ScrollbarThemeData(
-                                  radius: const Radius.circular(40),
-                                  thickness:
-                                  MaterialStateProperty.all<double>(6),
-                                  thumbVisibility:
-                                  MaterialStateProperty.all<bool>(true),
-                                ),
-                              ),
-                              menuItemStyleData: const MenuItemStyleData(
-                                height: 40,
-                                padding: EdgeInsets.only(left: 14, right: 14),
-                              ),
-                            ),
+
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
+                        ),
+
+                      ],),
+
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.04,
                     ),
                     Column(
+
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text("Select your Gender:",
-                            style: TextStyle(
-                                color: Colors.green,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold)),
+                        Container(    margin: EdgeInsets.fromLTRB(
+                            MediaQuery.of(context).size.width * 0.02,
+                            0,
+                            MediaQuery.of(context).size.width * 0.00,
+                            0),
+                          child:     Text("Select your Gender:",
+                              style: TextStyle(
+                                  color: Colors.green,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold)),
+
+                        ),
+
+                        SizedBox(height: 8,),
                         RadioButtonGroup(
                             activeColor: Colors.green,
                             labels: <String>["Male", "Female"],
@@ -698,7 +722,7 @@ class _Sign_UpState extends State<Sign_Up> {
                           return "";
                         } else {
                           disableButton();
-                          return "Please fill all fields , make sure your mobile number is 11 digits";
+                          return "Please fill all fields, make sure your mobile number is 11 digits";
                         }
                       })(),
                       style: TextStyle(color: Colors.redAccent),
@@ -707,9 +731,9 @@ class _Sign_UpState extends State<Sign_Up> {
                         margin: EdgeInsets.symmetric(vertical: 12),
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(29),
+                          borderRadius: BorderRadius.circular(25),
                           child: SizedBox(
-                              height: 60,
+                              height: 55,
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.green),

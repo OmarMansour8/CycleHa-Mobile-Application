@@ -80,53 +80,99 @@ class _settingState extends State<setting> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+            appBar: AppBar (
+
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios_new,color: Colors.white,),
+                onPressed: ()=> Navigator.pop(context),
+
+              ),
+              backgroundColor:Color.fromRGBO(64, 168, 88, 1),
+              centerTitle: true,
+              title: Text ('Settings'),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(25),
+                ),
+              ),
+
+            ),
             body: SafeArea(
                 child: ListView(padding: EdgeInsets.all(20), children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
-                    },
-                    icon: Icon(Icons.arrow_back_ios),
-                    alignment: Alignment.topLeft,
-                  ),
-                  Container(
-                      alignment: Alignment.topCenter,
-                      padding: EdgeInsets.all(1),
-                      child: Text(
-                        'Settings',
-                        style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      )),
-                  SizedBox(height: 30, width: 30),
-                  SizedBox(height: 10, width: 10),
-                  ListTile(
-                      title: Text('Change Password'),
-                      subtitle: Text(''),
-                      leading: Icon(Icons.password),
-                      trailing: Icon(Icons.arrow_forward_ios, color: Colors.green),
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Change_Password(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
-                      }),
-                  SizedBox(height: 10, width: 10),
 
-                  ListTile(
-                      title: Text('Logout'),
-                      subtitle: Text(''),
-                      leading: Icon(Icons.logout),
-                      trailing: Icon(Icons.arrow_forward_ios, color: Colors.green),
-                      onTap: () {
-                        Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => Sign_In1()));
-                      }),
+                  SizedBox(height: 10, width: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Change_Password(
+                                  Email: Email,
+                                  Password: Password,
+                                  fullName: fullName,
+                                  mobileNumber: mobileNumber,
+                                  gender: gender,
+                                  dateOfBirth: dateOfBirth,
+                                  user_points: user_points,
+                                  items_recycled: items_recycled,
+                                  data: data,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(children: [
+                                Padding(padding: EdgeInsets.only(left: 10)),
+                                Icon(Icons.password,size: 28),
+                                SizedBox(width: 20),
+                                Text('Change Password',style: TextStyle(fontSize: 17)),
+                              ],),
+                              Container(
+                                child:Icon(Icons.arrow_forward_ios, color: Colors.green),
+
+                              )
+
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 10),
+                  Divider(thickness: 2),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Sign_In1()),
+                            );
+                          },
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(children: [
+                                Padding(padding: EdgeInsets.only(left: 10)),
+                                Icon(Icons.logout,size: 28),
+                                SizedBox(width: 20),
+                                Text('Logout',style: TextStyle(fontSize: 18)),
+                              ],),
+                              Container(
+                                child: Icon(Icons.arrow_forward_ios, color: Colors.green),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   SizedBox(height: 10, width: 10),
                 ]))));
   }

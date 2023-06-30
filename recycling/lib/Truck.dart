@@ -261,16 +261,16 @@ class _TruckState extends State<Truck> {
 
     // print("truckdata $truckData1");
     for (int i = 0; i < truckData1.length; i++) {
-        if(truckData1[i]["Truck_ID"]!="Not Yet") {
-          _ID.add(truckData1[i]["Truck_ID"]);
-          Bin.add(truckData1[i]["Truck_Location"]);
-          _driverID.add(truckData1[i]["Driver_Id"]);
-          binUsedList.add([]);
-        }
-        else if(truckData1[i]["Truck_ID"]=="Not Yet")
-        {
-          _driverID.add(truckData1[i]["Driver_Id"]);
-        }
+      if(truckData1[i]["Truck_ID"]!="Not Yet") {
+        _ID.add(truckData1[i]["Truck_ID"]);
+        Bin.add(truckData1[i]["Truck_Location"]);
+        _driverID.add(truckData1[i]["Driver_Id"]);
+        binUsedList.add([]);
+      }
+      else if(truckData1[i]["Truck_ID"]=="Not Yet")
+      {
+        _driverID.add(truckData1[i]["Driver_Id"]);
+      }
     }
     for (int i = 0; i < driversData.length; i++) {
       _driverIDRefrence.add(driversData[i]["Driver_Id"]);
@@ -298,7 +298,7 @@ class _TruckState extends State<Truck> {
           binUsedList[i].add(BinData[y]["Bin_ID"]);
         }
       }
-      }
+    }
     print('bin data1 $binUsedList');
     for (int i = 0; i < binUsedList.length; i++) {
       print("omaromar ${binUsedList[i]}");
@@ -314,8 +314,8 @@ class _TruckState extends State<Truck> {
       print("dkhlt $i");
       Widg.add(
         Container(
-            // color:Colors.white,
-            // height: MediaQuery.of(context).size.height * 0.4,
+          // color:Colors.white,
+          // height: MediaQuery.of(context).size.height * 0.4,
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.all(MediaQuery.of(context).size.height * 0.015),
             decoration: BoxDecoration(
@@ -341,7 +341,7 @@ class _TruckState extends State<Truck> {
                     Text(
                       "${_ID[i]}",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     )
                   ],
                 ),
@@ -369,7 +369,7 @@ class _TruckState extends State<Truck> {
                               Container(
                                 child: CircleAvatar(
                                   backgroundImage:
-                                      AssetImage("images/avatar.jpg"),
+                                  AssetImage("images/avatar.jpg"),
                                   radius: 35,
                                 ),
                               )
@@ -428,11 +428,11 @@ class _TruckState extends State<Truck> {
                     SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                     Column(
                       children: [
-                          for(int y = 0 ; y <binUsedList[i].length;y++)
-                            Text(
-                              "${binUsedList[i][y]}",
-                              style: TextStyle(fontSize: 16),
-                            )
+                        for(int y = 0 ; y <binUsedList[i].length;y++)
+                          Text(
+                            "${binUsedList[i][y]}",
+                            style: TextStyle(fontSize: 16),
+                          )
                       ],
                       //[[1],[2,3]]
                     )
@@ -468,7 +468,7 @@ class _TruckState extends State<Truck> {
       scrollable: true,
       actions: [
         ElevatedButton(onPressed: (){
-        addNewTruck();
+          addNewTruck();
 
           Navigator.pop(context);
 
@@ -492,7 +492,7 @@ class _TruckState extends State<Truck> {
       scrollable: true,
       actions: [
         ElevatedButton(onPressed: (){
-        addNewDriver();
+          addNewDriver();
 
           Navigator.pop(context);
 
@@ -530,27 +530,27 @@ class _TruckState extends State<Truck> {
               SizedBox(height: MediaQuery.of(context).size.height*0.03,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
+                children: [
 
-            ElevatedButton(onPressed: (){
-              showAlertDialog(context);
-
-
-            },
-                style: ElevatedButton.styleFrom(backgroundColor: color1),
-                child: Text('Truck')),
-
-            ElevatedButton(onPressed: (){
-              showAlertDialog5(context);
-
-              // Navigator.pop(context);
+                  ElevatedButton(onPressed: (){
+                    showAlertDialog(context);
 
 
-            },
-                style: ElevatedButton.styleFrom(backgroundColor: color1),
-                child: Text('Driver')),
-          ],
-        ),]),
+                  },
+                      style: ElevatedButton.styleFrom(backgroundColor: color1),
+                      child: Text('Truck')),
+
+                  ElevatedButton(onPressed: (){
+                    showAlertDialog5(context);
+
+                    // Navigator.pop(context);
+
+
+                  },
+                      style: ElevatedButton.styleFrom(backgroundColor: color1),
+                      child: Text('Driver')),
+                ],
+              ),]),
       ),
       scrollable: true,
       // actions: [
@@ -606,6 +606,8 @@ class _TruckState extends State<Truck> {
                   focusColor: color1,
                   labelStyle: TextStyle(color: color1),
                   hintText: 'Truck ID',
+
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
                   prefixIcon:Icon(Icons.delete,color: color1,)
               ),
               onChanged: (String value){
@@ -635,6 +637,8 @@ class _TruckState extends State<Truck> {
                   focusColor: color1,
                   labelStyle: TextStyle(color: color1),
                   hintText: 'Truck Capacity',
+
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
                   prefixIcon:Icon(Icons.fire_truck,color:color1)
               ),
               onChanged: (String value){
@@ -663,6 +667,8 @@ class _TruckState extends State<Truck> {
                   focusColor: color1,
                   labelStyle: TextStyle(color: color1),
                   hintText: 'Truck Location',
+
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
                   prefixIcon:Icon(Icons.location_city,color: color1)
               ),
               onChanged: (String value){
@@ -719,7 +725,7 @@ class _TruckState extends State<Truck> {
               buttonStyleData: ButtonStyleData(
                 height:
                 MediaQuery.of(context).size.height * 0.07,
-                width: MediaQuery.of(context).size.width * 0.53,
+                width: MediaQuery.of(context).size.width * 0.58,
                 padding:
                 const EdgeInsets.only(left: 14, right: 14),
                 decoration: BoxDecoration(
@@ -816,6 +822,8 @@ class _TruckState extends State<Truck> {
                   focusColor: color1,
                   labelStyle: TextStyle(color: color1),
                   hintText: 'Driver Name',
+
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
                   prefixIcon:Icon(Icons.delete,color: color1,)
               ),
               onChanged: (String value){
@@ -845,6 +853,8 @@ class _TruckState extends State<Truck> {
                   focusColor: color1,
                   labelStyle: TextStyle(color: color1),
                   hintText: 'Driver Mobile Number',
+
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
                   prefixIcon:Icon(Icons.fire_truck,color:color1)
               ),
               onChanged: (String value){
@@ -1023,7 +1033,7 @@ class _TruckState extends State<Truck> {
                       color: Colors.grey[100],
                       child: Column(children: [
                         Container(
-                            // color: Colors.white,
+                          // color: Colors.white,
                             height: MediaQuery.of(context).size.height * 0.18,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
@@ -1034,7 +1044,7 @@ class _TruckState extends State<Truck> {
                               children: [
                                 SizedBox(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.03,
+                                  MediaQuery.of(context).size.height * 0.03,
                                 ),
                                 Container(
                                     height: MediaQuery.of(context).size.height *
@@ -1045,8 +1055,8 @@ class _TruckState extends State<Truck> {
                                       children: [
                                         SizedBox(
                                           width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
+                                              .size
+                                              .width *
                                               0.2,
                                         ),
                                         IconButton(
@@ -1058,8 +1068,8 @@ class _TruckState extends State<Truck> {
                                         ),
                                         SizedBox(
                                           width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
+                                              .size
+                                              .width *
                                               0.1,
                                         ),
                                         Text(
@@ -1293,7 +1303,7 @@ class _TruckState extends State<Truck> {
                       activeColor: Colors.black,
                       iconSize: 24,
                       padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                       duration: Duration(milliseconds: 400),
                       tabBackgroundColor: Colors.grey[100]!,
                       color: Colors.black,
@@ -1387,7 +1397,7 @@ class _TruckState extends State<Truck> {
                     color: Colors.grey[100],
                     child: Column(children: [
                       Container(
-                          // color: Colors.white,
+                        // color: Colors.white,
                           height: MediaQuery.of(context).size.height * 0.18,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
@@ -1398,19 +1408,19 @@ class _TruckState extends State<Truck> {
                             children: [
                               SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.03,
+                                MediaQuery.of(context).size.height * 0.03,
                               ),
                               Container(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.1,
+                                  MediaQuery.of(context).size.height * 0.1,
                                   // alignment: Alignment.center,
 
                                   child: Row(
                                     children: [
                                       SizedBox(
                                         width:
-                                            MediaQuery.of(context).size.width *
-                                                0.2,
+                                        MediaQuery.of(context).size.width *
+                                            0.2,
                                       ),
                                       IconButton(
                                         onPressed: () {},
@@ -1442,7 +1452,7 @@ class _TruckState extends State<Truck> {
                                   )),
                               SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.035,
+                                MediaQuery.of(context).size.height * 0.035,
                               ),
                               Row(
                                 children: [
@@ -1638,7 +1648,7 @@ class _TruckState extends State<Truck> {
               child: SafeArea(
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
                   child: GNav(
                     rippleColor: Colors.grey[300]!,
                     hoverColor: Colors.grey[100]!,
@@ -1676,8 +1686,8 @@ class _TruckState extends State<Truck> {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => Truck()));
                         if (_index == 2)
-                        Navigator.push(
-                            context, MaterialPageRoute(builder: (context) =>AdminUserProfile()));
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) =>AdminUserProfile()));
                       });
                       // if (_index == 3)                    });
                     },

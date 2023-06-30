@@ -587,16 +587,16 @@ class _AdminBinState extends State<AdminBin> {
 
 
         },
-            child: Text('Yes'),style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrangeAccent),),
+          child: Text('Yes'),style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrangeAccent),),
         ElevatedButton(onPressed: (){
           Navigator.pop(context);
-          },
+        },
             child: Text('No'),style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrangeAccent)),
       ],
     );
     showDialog(context: context,
         builder: (BuildContext context){
-      return alertDialog;});}
+          return alertDialog;});}
   String dropdownvalue = 'Item 1';
   var Item ;
 
@@ -624,6 +624,7 @@ class _AdminBinState extends State<AdminBin> {
               decoration: InputDecoration(
                   focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.redAccent)),
                   focusColor: Colors.redAccent,
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
                   labelStyle: TextStyle(color: Colors.redAccent),
                   hintText: 'Bin ID',
                   prefixIcon:Icon(Icons.delete,color: Colors.redAccent,)
@@ -654,6 +655,8 @@ class _AdminBinState extends State<AdminBin> {
               decoration: InputDecoration(focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.redAccent)),
                   focusColor: Colors.redAccent,
                   labelStyle: TextStyle(color: Colors.redAccent),
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
+
                   hintText: 'Bin Area',
                   prefixIcon:Icon(Icons.fire_truck_outlined,color: Colors.redAccent)
               ),
@@ -682,6 +685,8 @@ class _AdminBinState extends State<AdminBin> {
                   focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.redAccent)),
                   focusColor: Colors.redAccent,
                   labelStyle: TextStyle(color: Colors.redAccent),
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
+
                   hintText: 'Bin Location',
                   prefixIcon:Icon(Icons.location_city,color: Colors.redAccent)
               ),
@@ -716,6 +721,8 @@ class _AdminBinState extends State<AdminBin> {
                   focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.redAccent)),
                   focusColor: Colors.redAccent,
                   labelStyle: TextStyle(color: Colors.redAccent),
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
+
                   hintText: 'Location Latitude',
                   prefixIcon:Icon(Icons.password,color: Colors.redAccent)
               ),
@@ -750,6 +757,8 @@ class _AdminBinState extends State<AdminBin> {
                   focusColor: Colors.redAccent,
                   labelStyle: TextStyle(color: Colors.redAccent),
                   hintText: 'Location Longitude',
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
+
                   prefixIcon:Icon(Icons.password,color: Colors.redAccent)
               ),
               onChanged: (String value){
@@ -804,7 +813,7 @@ class _AdminBinState extends State<AdminBin> {
               buttonStyleData: ButtonStyleData(
                 height:
                 MediaQuery.of(context).size.height * 0.07,
-                width: MediaQuery.of(context).size.width * 0.53,
+                width: MediaQuery.of(context).size.width * 0.58,
                 padding:
                 const EdgeInsets.only(left: 14, right: 14),
                 decoration: BoxDecoration(
@@ -893,7 +902,7 @@ class _AdminBinState extends State<AdminBin> {
               buttonStyleData: ButtonStyleData(
                 height:
                 MediaQuery.of(context).size.height * 0.07,
-                width: MediaQuery.of(context).size.width * 0.53,
+                width: MediaQuery.of(context).size.width * 0.58,
                 padding:
                 const EdgeInsets.only(left: 14, right: 14),
                 decoration: BoxDecoration(
@@ -940,7 +949,7 @@ class _AdminBinState extends State<AdminBin> {
           ),
         ],
       ),
-       scrollable: true,
+      scrollable: true,
       actions: [
         ElevatedButton(onPressed: (){
           if(binId.text!=""&&binArea.text!=""&&binLocation.text!=""&&locationlat.text!=""&&locationlng.text!=""&&truck!=""&&driver!="") {
@@ -958,7 +967,7 @@ class _AdminBinState extends State<AdminBin> {
                 fontSize: 16.9
             );
           }
-          },
+        },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
             child: Text('Add')),],);
     showDialog(context: context,
@@ -1029,9 +1038,7 @@ class _AdminBinState extends State<AdminBin> {
                                                       fontSize: 34,
                                                       fontWeight: FontWeight.bold),
                                                 ),
-                                                SizedBox(
-                                                  width:MediaQuery.of(context).size.width * 0.1 ,
-                                                ),
+
                                                 // IconButton(
                                                 //   onPressed: (){
                                                 //
@@ -1040,7 +1047,7 @@ class _AdminBinState extends State<AdminBin> {
                                                 //     size: 38,),
                                                 // ),
                                                 SizedBox(
-                                                  width:MediaQuery.of(context).size.width * 0.2 ,
+                                                  width:MediaQuery.of(context).size.width * 0.25 ,
                                                 ),
                                                 IconButton(onPressed: (){showAlertDialog(context);}, icon: Icon(Icons.add,size: 38,))
                                               ],
@@ -1178,14 +1185,14 @@ class _AdminBinState extends State<AdminBin> {
                                 Column(
                                   children: [
                                     Container(
-                                      width:MediaQuery.of(context).size.width ,
-                                      height: MediaQuery.of(context).size.height * 0.6,
-                                      child: Center(
-                                         child: CircularProgressIndicator(
-                                        strokeWidth: 4,
-                                        color: Colors.black,
-                                      ),
-                                      )
+                                        width:MediaQuery.of(context).size.width ,
+                                        height: MediaQuery.of(context).size.height * 0.6,
+                                        child: Center(
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 4,
+                                            color: Colors.black,
+                                          ),
+                                        )
                                     )
                                   ],
                                 )
@@ -1315,9 +1322,7 @@ class _AdminBinState extends State<AdminBin> {
                                                     fontSize: 34,
                                                     fontWeight: FontWeight.bold),
                                               ),
-                                              SizedBox(
-                                                width:MediaQuery.of(context).size.width * 0.2 ,
-                                              ),
+
                                               // IconButton(
                                               //   onPressed: (){
                                               //
@@ -1326,7 +1331,7 @@ class _AdminBinState extends State<AdminBin> {
                                               //     size: 38,),
                                               // ),
                                               SizedBox(
-                                                width:MediaQuery.of(context).size.width * 0.1 ,
+                                                width:MediaQuery.of(context).size.width * 0.25 ,
                                               ),
                                               IconButton(onPressed: (){showAlertDialog(context);}, icon: Icon(Icons.add,size: 38,))
                                             ],

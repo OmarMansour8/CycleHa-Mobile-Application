@@ -81,11 +81,11 @@ class _personal_infoState extends State<personal_info> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+
       theme: ThemeData(),
       home: Scaffold(
-        body: SafeArea(
-          child: Column(
+        body: ListView(children: [
+          Column(
             children: [
               Container(
                 width: 400,
@@ -94,13 +94,11 @@ class _personal_infoState extends State<personal_info> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(60),
                       bottomRight: Radius.circular(60)),
-                  color: Colors.green,
+                  color: Color.fromRGBO(64, 168, 88, 1),
                 ),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 5,
-                    ),
+
                     Row(
                       children: [
                         SizedBox(
@@ -118,33 +116,30 @@ class _personal_infoState extends State<personal_info> {
                       ],
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                      Container(
-                        width: 115,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("images/avatar.jpg"),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.circular(100)),
-                        height: 115,
-                      ),
-                    ]),
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.only(left: 132, top: 0),
-                          child: Text(
-                            "Account info",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                            ),
+                          Container(
+                            width: 115,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage("images/avatar.jpg"),
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: BorderRadius.circular(100)),
+                            height: 115,
                           ),
-                        )
-                      ],
+                        ]),
+                    SizedBox(height: 5,),
+                    Center(
+                      child: Text(
+                        "Account info",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                        ),
+                      ),
                     )
+
                   ],
                 ),
               ),
@@ -358,6 +353,8 @@ class _personal_infoState extends State<personal_info> {
               ),
             ],
           ),
+        ],
+
         ),
       ),
     );

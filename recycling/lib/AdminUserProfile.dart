@@ -110,7 +110,7 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
           plasticCount+=0;
         }
         else{
-        plasticCount+=int.parse(data1[i]["Item_Amount"]);}
+          plasticCount+=int.parse(data1[i]["Item_Amount"]);}
         // metalCount+=int.parse(data2[i]["Item_Amount"]);
       }}
     if(metalEnter){
@@ -120,7 +120,7 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
           metalCount+=0;
         }
         else{
-        metalCount+=int.parse(data2[i]["Item_Amount"]);}
+          metalCount+=int.parse(data2[i]["Item_Amount"]);}
       }}
     items_recycled = plasticCount+metalCount;
     // user_points = (plasticCount*plasticPoints);
@@ -383,149 +383,149 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
 
     return Scaffold(
 
-            body: Stack(children: <Widget>[
-              ListView(shrinkWrap: true, children: <Widget>[
-                Container(
-                    color: Colors.grey[100],
-                    child: Column(children: [
-                      Column(
-                            children: [
-                              SizedBox(
-                                height:
-                                MediaQuery.of(context).size.height * 0.03,
-                              ),
-                              Container(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.1,
-                                  // alignment: Alignment.center,
+      body: Stack(children: <Widget>[
+        ListView(shrinkWrap: true, children: <Widget>[
+          Container(
+              color: Colors.grey[100],
+              child: Column(children: [
+                Column(
+                  children: [
+                    SizedBox(
+                      height:
+                      MediaQuery.of(context).size.height * 0.03,
+                    ),
+                    Container(
+                        height:
+                        MediaQuery.of(context).size.height * 0.1,
+                        // alignment: Alignment.center,
 
-                                  child: Row(
-                                    children: [
-                                      SizedBox(
-                                        width:
-                                        MediaQuery.of(context).size.width *
-                                            0.2,
-                                      ),
-                                      Icon(
-                                        Icons.person,
-                                        size: 38,
-                                      ),
-                                      SizedBox(
-                                        width:
-                                        MediaQuery.of(context).size.width *
-                                            0.1,
-                                      ),
-                                      Text(
-                                        "Users",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 34,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width:
+                              MediaQuery.of(context).size.width *
+                                  0.1,
+                            ),
+                            Icon(
+                              Icons.person,
+                              size: 38,
+                            ),
+                            SizedBox(
+                              width:
+                              MediaQuery.of(context).size.width *
+                                  0.1,
+                            ),
+                            Text(
+                              "Users",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 34,
+                                  fontWeight: FontWeight.bold),
+                            ),
 
-                                      SizedBox(
-                                        width:
-                                        MediaQuery.of(context).size.width *
-                                            0.2,
-                                      ),
-                                      IconButton(
-                                        onPressed:(){
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Sign_In1()
-                                            ), // MaterialPageRoute
-                                          );
-                                        },
-                                        icon:
-                                        Icon(Icons.login,
-                                        size: 38,
-                                      ),)
-                                    ],
-                                  )),
-                              SizedBox(
-                                height:
-                                MediaQuery.of(context).size.height * 0.005,
-                              ),
+                            SizedBox(
+                              width:
+                              MediaQuery.of(context).size.width *
+                                  0.2,
+                            ),
+                            IconButton(
+                              onPressed:(){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Sign_In1()
+                                  ), // MaterialPageRoute
+                                );
+                              },
+                              icon:
+                              Icon(Icons.login,
+                                size: 38,
+                              ),)
+                          ],
+                        )),
+                    SizedBox(
+                      height:
+                      MediaQuery.of(context).size.height * 0.005,
+                    ),
 
-                                       Container(
-                                         width: MediaQuery.of(context).size.width-50,
-                                         child: TextField(
-                                           controller: mobilenumber,
+                    Container(
+                      width: MediaQuery.of(context).size.width-50,
+                      child: TextField(
+                        controller: mobilenumber,
 
-                                         decoration: InputDecoration(
-                                           focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent)),
-                                           focusColor: Colors.deepOrangeAccent,
-                                           labelStyle: TextStyle(color: Colors.deepOrangeAccent),
-                                           labelText: 'User Mobile Number',
-                                           prefixIcon: Icon(Icons.account_circle,color: Colors.deepOrangeAccent,),),
-                                       ),),
-
-
+                        decoration: InputDecoration(
+                          focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent)),
+                          focusColor: Colors.deepOrangeAccent,
+                          labelStyle: TextStyle(color: Colors.deepOrangeAccent),
+                          labelText: 'User Mobile Number',
+                          prefixIcon: Icon(Icons.account_circle,color: Colors.deepOrangeAccent,),),
+                      ),),
 
 
-                              SizedBox(
-                                height:
-                                MediaQuery.of(context).size.height * 0.035,
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width:
-                                    MediaQuery.of(context).size.width * 0.07,
-                                  ),
-                                  Container(
-                                      margin: EdgeInsets.symmetric(vertical: 8),
-                                      width: MediaQuery.of(context).size.width * 0.3,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
-                                        child: SizedBox(height:
-                                        MediaQuery.of(context).size.height * 0.07, child:  ElevatedButton(
-
-                                          onPressed: () {
-                                            mobileNumber = mobilenumber.text;
-                                            setState(() {
-                                              getUserData(mobilenumber.text);
-                                            });
 
 
-                                          },
-                                          child: Text(
-                                            'Search',
-                                            style:
-                                            TextStyle(color: Colors.white, fontSize: 18),
-                                          ),
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.deepOrangeAccent,
-                                          ),
-                                        )),
-                                      ))
+                    SizedBox(
+                      height:
+                      MediaQuery.of(context).size.height * 0.035,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width:
+                          MediaQuery.of(context).size.width * 0.07,
+                        ),
+                        Container(
+                            margin: EdgeInsets.symmetric(vertical: 8),
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: SizedBox(height:
+                              MediaQuery.of(context).size.height * 0.07, child:  ElevatedButton(
 
-                                ],
-                              )
+                                onPressed: () {
+                                  mobileNumber = mobilenumber.text;
+                                  setState(() {
+                                    getUserData(mobilenumber.text);
+                                  });
+
+
+                                },
+                                child: Text(
+                                  'Search',
+                                  style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.deepOrangeAccent,
+                                ),
+                              )),
+                            ))
+
+                      ],
+                    )
 
 
 //01016606186
-                            ],
+                  ],
+                ),
+                FutureBuilder( future: getUserData(mobileNumber),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+
+                        return Container(
+                          // color:Colors.white,
+                          height: MediaQuery.of(context).size.height * 0.4,
+                          child: Center(
+                            child: Text("No Data to show",style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                            ),),
                           ),
-                      FutureBuilder( future: getUserData(mobileNumber),
-    builder: (context, snapshot) {
-    if (!snapshot.hasData) {
-
-      return Container(
-        // color:Colors.white,
-        height: MediaQuery.of(context).size.height * 0.4,
-        child: Center(
-          child: Text("No Data to show",style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold
-          ),),
-        ),
-          );
+                        );
 
 
-    }
+                      }
 
                       return Container(
                         // color:Colors.white,
@@ -702,92 +702,92 @@ class _AdminUserProfileState extends State<AdminUserProfile> {
                             ],
                           ));
 
-                      })
-                      // Container(
-                      //     height: MediaQuery.of(context).size.height*0.47,
-                      //     child: Center(
-                      //   child: Text("No Data to show",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
-                      // ))
+                    })
+                // Container(
+                //     height: MediaQuery.of(context).size.height*0.47,
+                //     child: Center(
+                //   child: Text("No Data to show",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
+                // ))
 
-                    ]))
-              ])
-            ]),
+              ]))
+        ])
+      ]),
 
-            bottomNavigationBar: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    topLeft: Radius.circular(20)),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 20,
-                    color: Colors.black.withOpacity(.1),
-                  )
-                ],
-              ),
-              child: SafeArea(
-                child: Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-                  child: GNav(
-                    rippleColor: Colors.grey[300]!,
-                    hoverColor: Colors.grey[100]!,
-                    gap: 8,
-                    activeColor: Colors.black,
-                    iconSize: 24,
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                    duration: Duration(milliseconds: 400),
-                    tabBackgroundColor: Colors.grey[100]!,
-                    color: Colors.black,
-                    tabs: [
-                      GButton(
-                        icon: Icons.delete,
-                        text: 'Bin',
-                      ),
-                      GButton(
-                        icon: Icons.fire_truck,
-                        text: 'Truck',
-                      ),
-                      GButton(
-                        icon: Icons.person,
-                        text: 'user',
-                      ),
-                    ],
-                    selectedIndex: _index,
-                    onTabChange: (index) {
-                      setState(() {
-                        _index = index;
-                        if (_index == 0)
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AdminBin()));
-                        if (_index == 1)
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Truck()));
-                        if (_index == 2)
-                          Navigator.push(
-                              context, MaterialPageRoute(builder: (context) =>AdminUserProfile()));
-                        // Navigator.push(
-                        //     context, MaterialPageRoute(builder: (context) =>
-                        //     MyProfile(Email: Email,
-                        //         Password: Password,
-                        //         fullName: fullName,
-                        //         mobileNumber: mobileNumber,
-                        //         gender: gender,
-                        //         dateOfBirth: dateOfBirth,
-                        //         user_points: user_points,
-                        //         items_recycled: items_recycled,
-                        //         data: data)));
-                      });
-                      // if (_index == 3)                    });
-                    },
-                  ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(20),
+              topLeft: Radius.circular(20)),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 20,
+              color: Colors.black.withOpacity(.1),
+            )
+          ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding:
+            const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+            child: GNav(
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[100]!,
+              gap: 8,
+              activeColor: Colors.black,
+              iconSize: 24,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              duration: Duration(milliseconds: 400),
+              tabBackgroundColor: Colors.grey[100]!,
+              color: Colors.black,
+              tabs: [
+                GButton(
+                  icon: Icons.delete,
+                  text: 'Bin',
                 ),
-              ),
+                GButton(
+                  icon: Icons.fire_truck,
+                  text: 'Truck',
+                ),
+                GButton(
+                  icon: Icons.person,
+                  text: 'user',
+                ),
+              ],
+              selectedIndex: _index,
+              onTabChange: (index) {
+                setState(() {
+                  _index = index;
+                  if (_index == 0)
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdminBin()));
+                  if (_index == 1)
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Truck()));
+                  if (_index == 2)
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) =>AdminUserProfile()));
+                  // Navigator.push(
+                  //     context, MaterialPageRoute(builder: (context) =>
+                  //     MyProfile(Email: Email,
+                  //         Password: Password,
+                  //         fullName: fullName,
+                  //         mobileNumber: mobileNumber,
+                  //         gender: gender,
+                  //         dateOfBirth: dateOfBirth,
+                  //         user_points: user_points,
+                  //         items_recycled: items_recycled,
+                  //         data: data)));
+                });
+                // if (_index == 3)                    });
+              },
             ),
+          ),
+        ),
+      ),
 
-        );
+    );
   }
 }

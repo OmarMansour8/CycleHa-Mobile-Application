@@ -15,7 +15,7 @@ class Change_Password extends StatefulWidget {
   String gender = '';
   String dateOfBirth = '';
   var user_points;
- var data;
+  var data;
   var items_recycled;
 
 
@@ -155,124 +155,143 @@ class _Change_PasswordState extends State<Change_Password> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+            appBar: AppBar (
+
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios_new,color: Colors.white,),
+                onPressed: ()=> Navigator.pop(context),
+
+              ),
+              backgroundColor:Color.fromRGBO(64, 168, 88, 1),
+              centerTitle: true,
+              title: Text ('Change password'),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(25),
+                ),
+              ),
+
+            ),
             body: Padding(
                 padding: EdgeInsets.all(20),
 
                 child: ListView(
                     children: <Widget>[
-                      IconButton(onPressed: (){Navigator.pop(context);}, icon:Icon(Icons.arrow_back_ios),alignment: Alignment.topLeft,),
-                      Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.all(10),
-                          child: Text(
-                            'Change your Password',
-                            style: TextStyle(
-                                color: Colors.green,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
-                          )),
+
                       //old Password Field
                       Container(
-                        margin: EdgeInsets.all(15),
+                        margin: EdgeInsets.all(2),
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 6,
-                                  offset: Offset(0,2)
-                              ),]),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 6,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                        ),
                         padding: EdgeInsets.all(1),
                         child: TextField(
                           obscureText: true,
                           decoration: InputDecoration(
-                              focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
-                              focusColor: Colors.green,
-                              labelStyle: TextStyle(color: Colors.green),
-                              hintText: 'Old Password',
-                              prefixIcon:Icon(Icons.password,color: Colors.green)
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            border: InputBorder.none,
+                            labelStyle: TextStyle(color: Colors.green),
+                            hintText: 'Old Password',
+                            prefixIcon: Icon(Icons.password, color: Colors.green),
                           ),
-                          onChanged: (val){
+                          onChanged: (String value) {
                             setState(() {
-                              currentPassword = val;
-                              if(currentPassword==Password&&newPassword==confirmPassword&&newPassword!=''&&confirmPassword!=''&&newPassword!=currentPassword){
+                              currentPassword = value;
+                              if (currentPassword == Password &&
+                                  newPassword == confirmPassword &&
+                                  newPassword != '' &&
+                                  confirmPassword != '' &&
+                                  newPassword != currentPassword) {
                                 enableButton();
-                                }
-                              else{
+                              } else {
                                 disableButton();
-                               }
-
+                              }
                             });
-                          }
-
-                          ,
+                          },
                         ),
                       ),
+                      SizedBox(height: 20,),
                       //new Password Field
                       Container(
-                        margin: EdgeInsets.all(15),
+                        margin: EdgeInsets.all(2),
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 6,
-                                  offset: Offset(0,2)
-                              ),]),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 6,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                        ),
                         padding: EdgeInsets.all(1),
                         child: TextField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
-                                focusColor: Colors.green,
-                                labelStyle: TextStyle(color: Colors.green),
-                                hintText: 'New Password',
-                                prefixIcon:Icon(Icons.password  ,color: Colors.green)
-                            ),
-                            onChanged: (val) {
-                              setState(() {
-                                newPassword=val;
-                              });
-                            }
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            border: InputBorder.none,
+                            labelStyle: TextStyle(color: Colors.green),
+                            hintText: 'New Password',
+                            prefixIcon: Icon(Icons.password, color: Colors.green),
+                          ),
+                          onChanged: (String value) {
+                            setState(() {
+                              newPassword = value;
+                            });
+                          },
                         ),
                       ),
+
+                      SizedBox(height: 20,),
                       //Confirm Password Field
                       Container(
-                        margin: EdgeInsets.all(15),
+                        margin: EdgeInsets.all(2),
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 6,
-                                  offset: Offset(0,2)
-                              ),]),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 6,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                        ),
                         padding: EdgeInsets.all(1),
                         child: TextField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                focusedBorder:UnderlineInputBorder(borderSide: BorderSide(color: Colors.green)),
-                                focusColor: Colors.green,
-                                labelStyle: TextStyle(color: Colors.green),
-                                hintText: 'Confirm Password',
-                                prefixIcon:Icon(Icons.password,color: Colors.green)
-                            ),
-                            onChanged: (val) {
-                              setState(() {
-                                confirmPassword = val;
-                              });
-
-                            }
-
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            border: InputBorder.none,
+                            labelStyle: TextStyle(color: Colors.green),
+                            hintText: 'Confirm Password',
+                            prefixIcon: Icon(Icons.password, color: Colors.green),
+                          ),
+                          onChanged: (String value) {
+                            setState(() {
+                              confirmPassword = value;
+                            });
+                          },
                         ),
                       ),
+                      SizedBox(height: 20,),
                       //error msg
+
                       Row(
                           children:[
-                            SizedBox(width: 25,),
+                            SizedBox(width: 2,),
                             Text((() {
                               if(currentPassword==Password&&newPassword==confirmPassword&&newPassword!=''&&confirmPassword!=''&&newPassword!=currentPassword){
                                 enableButton();
@@ -282,19 +301,28 @@ class _Change_PasswordState extends State<Change_Password> {
                                 return "Old password must be correct and\nnew password must match in both fields ";}
                             })(),style: TextStyle(color: Colors.redAccent),),
                           ]),
-                      SizedBox(height: 80,),
+                      SizedBox(height: 60,),
 
                       //save button
 
-                      SizedBox(height: 60, child: ElevatedButton(onPressed:buttonEnabled ? (){
-
-                        showAlertDialog(context);
-                        // updateData(newPassword);
-                        changePassword(newPassword);
-
-
-
-                      }:null, child: Text('Confirm'),style: ElevatedButton.styleFrom(primary: Colors.green),),
+                      SizedBox(height: 60,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: ElevatedButton(
+                            onPressed: buttonEnabled ? () {
+                              showAlertDialog(context);
+                              // updateData(newPassword);
+                              changePassword(newPassword);
+                            } : null,
+                            child: Text('Confirm'),
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.green,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                          ),
+                        ),
                       )]
                 )
 

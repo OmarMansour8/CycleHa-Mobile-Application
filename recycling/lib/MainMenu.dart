@@ -153,446 +153,446 @@ class _homePageState extends State<homePage> {
   Widget build(BuildContext context) {
 
     return FutureBuilder(
-    future: getItemCount(mobileNumber),
-    builder: (context, snapshot) {
-      if (!snapshot.hasData) {
-        // Future hasn't finished yet, return a placeholder
-        return Scaffold(
+        future: getItemCount(mobileNumber),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            // Future hasn't finished yet, return a placeholder
+            return Scaffold(
 //         //
-          body:
+              body:
 
-          SingleChildScrollView(
-
-          child:Column(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width ,
-                height: MediaQuery.of(context).size.height*0.46,
-                decoration: BoxDecoration(
-                  color:Colors.green
-                    // gradient: LinearGradient(
-                    //   begin: Alignment.topCenter,
-                    //   end: Alignment.bottomCenter,
-                    //   stops: [
-                    //     0.3,
-                    //
-                    //     // 0.6,
-                    //     0.7,
-                    //   ],
-                    //   colors: [
-                    //     color,
-                    //
-                    //     Colors.green
-                    //
-                    //
-                    //   ],
-                    // )
-                ),
+              SingleChildScrollView(
 
                 child:Column(
                   children: [
-                    SizedBox(height: MediaQuery.of(context).size.height*0.045,),
-                    Row(
-                      children: [
-                        SizedBox(width: MediaQuery.of(context).size.width*0.035 ,),
-                        Container(
-                          child:Text("Hello,",style: TextStyle(fontSize: 20,color: Colors.white),),
+                    Container(
+                      width: MediaQuery.of(context).size.width ,
+                      height: MediaQuery.of(context).size.height*0.46,
+                      decoration: BoxDecoration(
+                          color:Colors.green
+                        // gradient: LinearGradient(
+                        //   begin: Alignment.topCenter,
+                        //   end: Alignment.bottomCenter,
+                        //   stops: [
+                        //     0.3,
+                        //
+                        //     // 0.6,
+                        //     0.7,
+                        //   ],
+                        //   colors: [
+                        //     color,
+                        //
+                        //     Colors.green
+                        //
+                        //
+                        //   ],
+                        // )
+                      ),
 
-                        ),
-                        SizedBox(width: MediaQuery.of(context).size.width*0.68,),
-                        IconButton(
-                            onPressed: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => Sign_In1()));
-                            },
-                            icon: Icon(
-                              Icons.logout,
-                              size: 20,
-                              color: Colors.white,
-                            )),
-                      ],
-                    ),
+                      child:Column(
+                        children: [
+                          SizedBox(height: MediaQuery.of(context).size.height*0.045,),
+                          Row(
+                            children: [
+                              SizedBox(width: MediaQuery.of(context).size.width*0.035 ,),
+                              Container(
+                                child:Text("Hello,",style: TextStyle(fontSize: 20,color: Colors.white),),
 
-                    Row(
-                      children: [
-                        SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                        Container(
-                            child:Text("$fullName",style: TextStyle(fontSize: 16,color: Colors.white),)
-                        ),
-                      ],
+                              ),
+                              SizedBox(width: MediaQuery.of(context).size.width*0.68,),
+                              IconButton(
+                                  onPressed: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) => Sign_In1()));
+                                  },
+                                  icon: Icon(
+                                    Icons.logout,
+                                    size: 20,
+                                    color: Colors.white,
+                                  )),
+                            ],
+                          ),
+
+                          Row(
+                            children: [
+                              SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                              Container(
+                                  child:Text("$fullName",style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),)
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.height*0.025,),
+                          Row(
+                            children: [
+                              SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                              Container(
+                                  child:Text("Your phone number:",style: TextStyle(fontSize: 17,color: Colors.white),)
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+                          Row(
+                            children: [
+                              SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                              Container(
+                                  child:Text("$mobileNumber",style: TextStyle(fontSize: 18,color: Colors.white),)
+                              ),
+                            ],
+                          ),
+                          SizedBox(height:MediaQuery.of(context).size.height*0.035 ,),
+                          // Row(
+                          //   children: [
+                          //     SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                          //     Container(
+                          //         child:Text("our competitions:",style: TextStyle(fontSize: 12,color: Colors.white),)
+                          //     ),
+                          //   ],
+                          // ),
+                          SizedBox(height:MediaQuery.of(context).size.height*0.009 ,),
+
+                          Container(
+
+                              width: MediaQuery.of(context).size.width-20,
+                              height:MediaQuery.of(context).size.height*0.14 ,
+                              margin: EdgeInsets.all(10),
+                              padding: EdgeInsets.all(10) ,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                color: Colors.white.withOpacity(0.0),
+                              ),
+                              child:CarouselSlider(
+                                items: [
+                                  // Container(
+                                  //   width: MediaQuery.of(context).size.width,
+                                  //   decoration: BoxDecoration(
+                                  //     borderRadius: BorderRadius.circular(8.0),
+                                  //   ),
+                                  //   child: Image.asset('images/recycling.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                                  //
+                                  // ),
+                                  // Container(
+                                  //   width: MediaQuery.of(context).size.width,
+                                  //   decoration: BoxDecoration(
+                                  //     borderRadius: BorderRadius.circular(8.0),
+                                  //   ),
+                                  //   child:Image.asset('images/omar.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                                  //
+                                  // ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    child:Image.asset('images/quote1.jpg',height: 240,width: 330,fit: BoxFit.fitWidth,alignment: Alignment.center),
+
+                                  ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    child:Image.asset('images/quote2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+
+                                  ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    child:Image.asset('images/quote3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+
+                                  ),
+                                  // Container(
+                                  //   width: MediaQuery.of(context).size.width,
+                                  //   decoration: BoxDecoration(
+                                  //     borderRadius: BorderRadius.circular(8.0),
+                                  //   ),
+                                  //   child:Image.asset('images/omar3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                                  //
+                                  // ),
+
+                                ],
+                                options: CarouselOptions(
+                                  height: 300.0,
+                                  enlargeCenterPage: true,
+                                  autoPlay: true,
+                                  aspectRatio: 16 / 9,
+                                  autoPlayCurve: Curves.fastOutSlowIn,
+                                  enableInfiniteScroll: true,
+                                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                                  viewportFraction: 0.8,
+                                ),
+                              )
+                          )
+
+                        ],
+
+                      ),
+
+
+
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height*0.025,),
-                    Row(
-                      children: [
-                        SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                        Container(
-                            child:Text("Your phone number:",style: TextStyle(fontSize: 10,color: Colors.white),)
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-                    Row(
-                      children: [
-                        SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                        Container(
-                            child:Text("$mobileNumber",style: TextStyle(fontSize: 22,color: Colors.white),)
-                        ),
-                      ],
-                    ),
-                    SizedBox(height:MediaQuery.of(context).size.height*0.035 ,),
-                    // Row(
-                    //   children: [
-                    //     SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                    //     Container(
-                    //         child:Text("our competitions:",style: TextStyle(fontSize: 12,color: Colors.white),)
-                    //     ),
-                    //   ],
-                    // ),
-                    SizedBox(height:MediaQuery.of(context).size.height*0.009 ,),
 
                     Container(
 
-                        width: MediaQuery.of(context).size.width-20,
-                        height:MediaQuery.of(context).size.height*0.14 ,
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.all(10) ,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Colors.white.withOpacity(0.0),
-                        ),
-                        child:CarouselSlider(
-                          items: [
-                            // Container(
-                            //   width: MediaQuery.of(context).size.width,
-                            //   decoration: BoxDecoration(
-                            //     borderRadius: BorderRadius.circular(8.0),
-                            //   ),
-                            //   child: Image.asset('images/recycling.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-                            //
-                            // ),
-                            // Container(
-                            //   width: MediaQuery.of(context).size.width,
-                            //   decoration: BoxDecoration(
-                            //     borderRadius: BorderRadius.circular(8.0),
-                            //   ),
-                            //   child:Image.asset('images/omar.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-                            //
-                            // ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/quote1.jpg',height: 240,width: 330,fit: BoxFit.fitWidth,alignment: Alignment.center),
-
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/quote2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/quote3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
-                            // Container(
-                            //   width: MediaQuery.of(context).size.width,
-                            //   decoration: BoxDecoration(
-                            //     borderRadius: BorderRadius.circular(8.0),
-                            //   ),
-                            //   child:Image.asset('images/omar3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-                            //
-                            // ),
-
-                          ],
-                          options: CarouselOptions(
-                            height: 300.0,
-                            enlargeCenterPage: true,
-                            autoPlay: true,
-                            aspectRatio: 16 / 9,
-                            autoPlayCurve: Curves.fastOutSlowIn,
-                            enableInfiniteScroll: true,
-                            autoPlayAnimationDuration: Duration(milliseconds: 800),
-                            viewportFraction: 0.8,
+                      width: MediaQuery.of(context).size.width ,
+                      height: MediaQuery.of(context).size.height*0.4232,
+                      decoration: BoxDecoration(
+                          color: Colors.green
+                      ),
+                      child:  Container(
+                          width: MediaQuery.of(context).size.width ,
+                          height: MediaQuery.of(context).size.height*0.4332,
+                          margin:EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.02 ,0 , MediaQuery.of(context).size.width*0.02 , MediaQuery.of(context).size.width*0.02),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25),bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25)),
                           ),
-                        )
-                    )
 
-                  ],
+                          child:Column(
+                            children: [
+                              SizedBox(height: MediaQuery.of(context).size.height*0.035,),
+                              Row(
+                                children: [
 
-                ),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width-20,
+                                      height: MediaQuery.of(context).size.height*0.35,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30),bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Row(
 
-
-
-              ),
-
-              Container(
-
-                width: MediaQuery.of(context).size.width ,
-                height: MediaQuery.of(context).size.height*0.4232,
-                decoration: BoxDecoration(
-                    color: Colors.green
-                ),
-                child:  Container(
-                    width: MediaQuery.of(context).size.width ,
-                    height: MediaQuery.of(context).size.height*0.4332,
-                    margin:EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.02 ,0 , MediaQuery.of(context).size.width*0.02 , MediaQuery.of(context).size.width*0.02),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25),bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25)),
-                    ),
-
-                    child:Column(
-                      children: [
-                        SizedBox(height: MediaQuery.of(context).size.height*0.035,),
-                        Row(
-                          children: [
-
-                            Container(
-                                width: MediaQuery.of(context).size.width-20,
-                                height: MediaQuery.of(context).size.height*0.35,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30),bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Row(
-
-                                      children: [
-                                        SizedBox(
-                                          width:MediaQuery.of(context).size.width*0.08,
-                                        ),
-                                        Text("Your Points",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold)),
-                                      ],
-
-                                    ),
-                                    SizedBox(height: MediaQuery.of(context).size.height*0.08,),
-                                    Row(
-                                      children: [
-                                        Container(
-                                            width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.width*0.056,
-                                            child :Center(
-
-                                                child: CircularProgressIndicator(
-                                                  strokeWidth: 4,
-                                                  color: Colors.green,
-                                                ),
-
-
-                                            )
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(height: MediaQuery.of(context).size.height*0.09,),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.width*0.056,
-                                          child: Center(
-                                              child: Container(
-                                                width: MediaQuery.of(context).size.width*0.8,
-                                                decoration: BoxDecoration(
-                                                  color:Colors.green,
-                                                //     gradient: LinearGradient(
-                                                //     colors: [
-                                                //       Colors.green,
-                                                //       Colors.lightGreen
-                                                //     ],
-                                                //     begin: Alignment.topLeft,
-                                                //     end: Alignment.bottomRight,
-                                                //     stops:[
-                                                //       0.1,
-                                                //       0.7
-                                                //     ]
-                                                // ),
-                                                    borderRadius: BorderRadius.circular(10)
-
-                                                ),
-                                                child:ElevatedButton(
-                                                    style: ElevatedButton.styleFrom(backgroundColor: Colors.green,shadowColor: Colors.transparent,),
-
-                                                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));},
-                                                    child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
-
-                                              )
+                                            children: [
+                                              SizedBox(
+                                                width:MediaQuery.of(context).size.width*0.08,
+                                              ),
+                                              Text("Your Points",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold)),
+                                            ],
 
                                           ),
-                                        )
+                                          SizedBox(height: MediaQuery.of(context).size.height*0.08,),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                  width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.width*0.056,
+                                                  child :Center(
 
-                                      ],
-                                    )
-                                  ],
-                                )
+                                                    child: CircularProgressIndicator(
+                                                      strokeWidth: 4,
+                                                      color: Colors.green,
+                                                    ),
 
-                            )
-                          ],
-                        )
+
+                                                  )
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(height: MediaQuery.of(context).size.height*0.09,),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.width*0.056,
+                                                child: Center(
+                                                    child: Container(
+                                                      width: MediaQuery.of(context).size.width*0.8,
+                                                      decoration: BoxDecoration(
+                                                          color:Colors.green,
+                                                          //     gradient: LinearGradient(
+                                                          //     colors: [
+                                                          //       Colors.green,
+                                                          //       Colors.lightGreen
+                                                          //     ],
+                                                          //     begin: Alignment.topLeft,
+                                                          //     end: Alignment.bottomRight,
+                                                          //     stops:[
+                                                          //       0.1,
+                                                          //       0.7
+                                                          //     ]
+                                                          // ),
+                                                          borderRadius: BorderRadius.circular(10)
+
+                                                      ),
+                                                      child:ElevatedButton(
+                                                          style: ElevatedButton.styleFrom(backgroundColor: Colors.green,shadowColor: Colors.transparent,),
+
+                                                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));},
+                                                          child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
+
+                                                    )
+
+                                                ),
+                                              )
+
+                                            ],
+                                          )
+                                        ],
+                                      )
+
+                                  )
+                                ],
+                              )
+
+                            ],
+                          )
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height*0.04,
+                      decoration: BoxDecoration(
+                          color: Colors.green
+                      ),
+                    )
+                  ],
+                ),),
+              bottomNavigationBar: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 20,
+                      color: Colors.black.withOpacity(.1),
+                    )
+                  ],
+                ),
+                child: SafeArea(
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+                    child: GNav(
+                      rippleColor: Colors.grey[300]!,
+                      hoverColor: Colors.grey[100]!,
+                      gap: 8,
+                      activeColor: Colors.black,
+                      iconSize: 24,
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      duration: Duration(milliseconds: 400),
+                      tabBackgroundColor: Colors.grey[100]!,
+                      color: Colors.black,
+                      tabs: [
+                        GButton(
+                          icon: Icons.home,
+                          text: 'Home',
+                        ),
+                        GButton(
+                          icon: Icons.location_on_outlined,
+                          text: 'Map',
+                        ),
+                        GButton(
+                          icon: Icons.more_horiz,
+                          text: 'More',
+                        ),
 
                       ],
-                    )
+                      selectedIndex: _index,
+                      onTabChange: (index) {
+                        setState(() {
+                          _index = index;
+                          if (_index == 0)
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)));
+                          if (_index == 1)
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));
+                          if (_index == 2)
+                            Navigator.push(
+                                context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location: location)));
+                          // Navigator.push(
+                          //     context, MaterialPageRoute(builder: (context) =>
+                          //     MyProfile(Email: Email,
+                          //         Password: Password,
+                          //         fullName: fullName,
+                          //         mobileNumber: mobileNumber,
+                          //         gender: gender,
+                          //         dateOfBirth: dateOfBirth,
+                          //         user_points: user_points,
+                          //         items_recycled: items_recycled,
+                          //         data: data)));
+                        });
+                        // if (_index == 3)                    });
+                      },
+                    ),
+                  ),
                 ),
               ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height*0.04,
-                decoration: BoxDecoration(
-                    color: Colors.green
-                ),
-              )
-            ],
-          ),),
-          bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 20,
-                  color: Colors.black.withOpacity(.1),
-                )
-              ],
-            ),
-            child: SafeArea(
-              child: Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-                child: GNav(
-                  rippleColor: Colors.grey[300]!,
-                  hoverColor: Colors.grey[100]!,
-                  gap: 8,
-                  activeColor: Colors.black,
-                  iconSize: 24,
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  duration: Duration(milliseconds: 400),
-                  tabBackgroundColor: Colors.grey[100]!,
-                  color: Colors.black,
-                  tabs: [
-                    GButton(
-                      icon: Icons.home,
-                      text: 'Home',
-                    ),
-                    GButton(
-                      icon: Icons.location_on_outlined,
-                      text: 'Map',
-                    ),
-                    GButton(
-                      icon: Icons.more_horiz,
-                      text: 'More',
-                    ),
+              // bottomNavigationBar: BottomNavigationBar(
+              //     type: BottomNavigationBarType.fixed,
+              //     items: [
+              //       BottomNavigationBarItem(
+              //         label: "Home",
+              //         icon: Icon(Icons.home),
+              //       ),
+              //       /*  BottomNavigationBarItem(
+              //       label: "Offers",
+              //       icon: Icon(Icons.local_offer),
+              //     ),*/
+              //       BottomNavigationBarItem(
+              //         label: "Map",
+              //         icon: Icon(Icons.location_on),
+              //       ),
+              //       BottomNavigationBarItem(
+              //         label: "More",
+              //         icon: Icon(Icons.more_horiz),
+              //       ),
+              //     ],
+              //     currentIndex: _index,
+              //     unselectedItemColor: Colors.black54,
+              //     selectedItemColor: Colors.green,
+              //     unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+              //     selectedLabelStyle:
+              //     TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              //     backgroundColor: Colors.white,
+              //     onTap: (index) {
+              //       setState(() {
+              //         _index = index;
+              //         if (_index == 0)
+              //           Navigator.push(
+              //               context,
+              //               MaterialPageRoute(
+              //                   builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+              //         if (_index == 1)
+              //           Navigator.push(
+              //               context,
+              //               MaterialPageRoute(
+              //                   builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+              //         if (_index == 2)
+              //           Navigator.push(
+              //               context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
+              //
+              //         // if (_index == 3)
+              //         //   Navigator.push(
+              //         //       context,
+              //         //       MaterialPageRoute(
+              //         //           builder: (context) => AddToCart(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
+              //       });
+              //     }),
 
-                  ],
-                  selectedIndex: _index,
-                  onTabChange: (index) {
-                    setState(() {
-                      _index = index;
-                      if (_index == 0)
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)));
-                      if (_index == 1)
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));
-                      if (_index == 2)
-                        Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location: location)));
-                      // Navigator.push(
-                      //     context, MaterialPageRoute(builder: (context) =>
-                      //     MyProfile(Email: Email,
-                      //         Password: Password,
-                      //         fullName: fullName,
-                      //         mobileNumber: mobileNumber,
-                      //         gender: gender,
-                      //         dateOfBirth: dateOfBirth,
-                      //         user_points: user_points,
-                      //         items_recycled: items_recycled,
-                      //         data: data)));
-                    });
-                    // if (_index == 3)                    });
-                  },
-                ),
-              ),
-            ),
-          ),    
-          // bottomNavigationBar: BottomNavigationBar(
-          //     type: BottomNavigationBarType.fixed,
-          //     items: [
-          //       BottomNavigationBarItem(
-          //         label: "Home",
-          //         icon: Icon(Icons.home),
-          //       ),
-          //       /*  BottomNavigationBarItem(
-          //       label: "Offers",
-          //       icon: Icon(Icons.local_offer),
-          //     ),*/
-          //       BottomNavigationBarItem(
-          //         label: "Map",
-          //         icon: Icon(Icons.location_on),
-          //       ),
-          //       BottomNavigationBarItem(
-          //         label: "More",
-          //         icon: Icon(Icons.more_horiz),
-          //       ),
-          //     ],
-          //     currentIndex: _index,
-          //     unselectedItemColor: Colors.black54,
-          //     selectedItemColor: Colors.green,
-          //     unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-          //     selectedLabelStyle:
-          //     TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-          //     backgroundColor: Colors.white,
-          //     onTap: (index) {
-          //       setState(() {
-          //         _index = index;
-          //         if (_index == 0)
-          //           Navigator.push(
-          //               context,
-          //               MaterialPageRoute(
-          //                   builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
-          //         if (_index == 1)
-          //           Navigator.push(
-          //               context,
-          //               MaterialPageRoute(
-          //                   builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
-          //         if (_index == 2)
-          //           Navigator.push(
-          //               context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data)));
-          //
-          //         // if (_index == 3)
-          //         //   Navigator.push(
-          //         //       context,
-          //         //       MaterialPageRoute(
-          //         //           builder: (context) => AddToCart(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, cart: cart, totalAmount: totalAmount, orders: orders)));
-          //       });
-          //     }),
-
-        );
-      }
-      print("items: $items_recycled");
-       return Scaffold(
+            );
+          }
+          print("items: $items_recycled");
+          return Scaffold(
 //         //
-    body:
-        SingleChildScrollView(
-          child:
+            body:
+            SingleChildScrollView(
+              child:
 
-    Column(
-      children: [
-                Container(
-                  width: MediaQuery.of(context).size.width ,
-                  height: MediaQuery.of(context).size.height*0.46,
-                  decoration: BoxDecoration(
-                    color:Colors.green
+              Column(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width ,
+                    height: MediaQuery.of(context).size.height*0.46,
+                    decoration: BoxDecoration(
+                        color:Colors.green
                       // gradient: LinearGradient(
                       //   begin: Alignment.topCenter,
                       //   end: Alignment.bottomCenter,
@@ -610,342 +610,342 @@ class _homePageState extends State<homePage> {
                       //
                       //   ],
                       // )
-                  ),
+                    ),
 
-                  child:Column(
-                    children: [
-                      SizedBox(height: MediaQuery.of(context).size.height*0.045,),
-                      Row(
-                        children: [
-                          SizedBox(width: MediaQuery.of(context).size.width*0.035 ,),
-                          Container(
-                          child:Text("Hello,",style: TextStyle(fontSize: 20,color: Colors.white),),
-
-                        ),
-                          SizedBox(width: MediaQuery.of(context).size.width*0.68,),
-                          IconButton(
-                              onPressed: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) => Sign_In1()));
-                              },
-                              icon: Icon(
-                                Icons.logout,
-                                size: 20,
-                                color: Colors.white,
-                              )),
-                        ],
-                      ),
-
-                      Row(
-                        children: [
-                          SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                          Container(
-                              child:Text("$fullName",style: TextStyle(fontSize: 16,color: Colors.white),)
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.of(context).size.height*0.025,),
-                      Row(
-                        children: [
-                          SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                          Container(
-                              child:Text("Your phone number:",style: TextStyle(fontSize: 10,color: Colors.white),)
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-                      Row(
-                        children: [
-                          SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                          Container(
-                              child:Text("$mobileNumber",style: TextStyle(fontSize: 22,color: Colors.white),)
-                          ),
-                        ],
-                      ),
-                      SizedBox(height:MediaQuery.of(context).size.height*0.035 ,),
-                      // Row(
-                      //   children: [
-                      //     SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
-                      //     Container(
-                      //         child:Text("our competitions:",style: TextStyle(fontSize: 12,color: Colors.white),)
-                      //     ),
-                      //   ],
-                      // ),
-                      SizedBox(height:MediaQuery.of(context).size.height*0.009 ,),
-
-                      Container(
-
-                        width: MediaQuery.of(context).size.width-20,
-                        height:MediaQuery.of(context).size.height*0.14 ,
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.all(10) ,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                           color: Colors.white.withOpacity(0.0),
-                        ),
-                        child:CarouselSlider(
-                          items: [
-                            // Container(
-                            //   width: MediaQuery.of(context).size.width,
-                            //   decoration: BoxDecoration(
-                            //     borderRadius: BorderRadius.circular(8.0),
-                            //   ),
-                            //   child: Image.asset('images/recycling.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-                            //
-                            // ),
-                            // Container(
-                            //   width: MediaQuery.of(context).size.width,
-                            //   decoration: BoxDecoration(
-                            //     borderRadius: BorderRadius.circular(8.0),
-                            //   ),
-                            //   child:Image.asset('images/omar.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-                            //
-                            // ),
+                    child:Column(
+                      children: [
+                        SizedBox(height: MediaQuery.of(context).size.height*0.045,),
+                        Row(
+                          children: [
+                            SizedBox(width: MediaQuery.of(context).size.width*0.035 ,),
                             Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/quote1.jpg',height: 240,width: 330,fit: BoxFit.fitWidth,alignment: Alignment.center),
+                              child:Text("Hello,",style: TextStyle(fontSize: 20,color: Colors.white),),
 
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/quote2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/quote3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child:Image.asset('images/omar2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
-
-                            ),
-
+                            SizedBox(width: MediaQuery.of(context).size.width*0.68,),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) => Sign_In1()));
+                                },
+                                icon: Icon(
+                                  Icons.logout,
+                                  size: 20,
+                                  color: Colors.white,
+                                )),
                           ],
-                          options: CarouselOptions(
-                            height: 300.0,
-                            enlargeCenterPage: true,
-                            autoPlay: true,
-                            aspectRatio: 16 / 9,
-                            autoPlayCurve: Curves.fastOutSlowIn,
-                            enableInfiniteScroll: true,
-                            autoPlayAnimationDuration: Duration(milliseconds: 800),
-                            viewportFraction: 0.8,
-                          ),
-                        )
-                      )
-
-                    ],
-
-                  ),
-
-
-
-                ),
-
-      Container(
-
-        width: MediaQuery.of(context).size.width ,
-        height: MediaQuery.of(context).size.height*0.435,
-        decoration: BoxDecoration(
-            color: Colors.green
-        ),
-        child:  Container(
-            width: MediaQuery.of(context).size.width ,
-            height: MediaQuery.of(context).size.height*0.4332,
-            margin:EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.02 ,0 , MediaQuery.of(context).size.width*0.02 , MediaQuery.of(context).size.width*0.02),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25),bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25)),
-          ),
-
-            child:Column(
-              children: [
-                SizedBox(height: MediaQuery.of(context).size.height*0.035,),
-                Row(
-                  children: [
-
-                    Container(
-                      width: MediaQuery.of(context).size.width-20,
-                      height: MediaQuery.of(context).size.height*0.35,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30),bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
                         ),
-                      child: Column(
-                        children: [
-                          Row(
 
-                            children: [
-                              SizedBox(
-                                width:MediaQuery.of(context).size.width*0.08,
-                              ),
-                              Text("Your Points",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold)),
-                            ],
+                        Row(
+                          children: [
+                            SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                            Container(
+                                child:Text("$fullName",style: TextStyle(fontSize: 16,color: Colors.white),)
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: MediaQuery.of(context).size.height*0.025,),
+                        Row(
+                          children: [
+                            SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                            Container(
+                                child:Text("Your phone number:",style: TextStyle(fontSize: 10,color: Colors.white),)
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+                        Row(
+                          children: [
+                            SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                            Container(
+                                child:Text("$mobileNumber",style: TextStyle(fontSize: 22,color: Colors.white),)
+                            ),
+                          ],
+                        ),
+                        SizedBox(height:MediaQuery.of(context).size.height*0.035 ,),
+                        // Row(
+                        //   children: [
+                        //     SizedBox(width: MediaQuery.of(context).size.width*0.04 ,),
+                        //     Container(
+                        //         child:Text("our competitions:",style: TextStyle(fontSize: 12,color: Colors.white),)
+                        //     ),
+                        //   ],
+                        // ),
+                        SizedBox(height:MediaQuery.of(context).size.height*0.009 ,),
 
-                          ),
-                          SizedBox(height: MediaQuery.of(context).size.height*0.05,),
-                          Row(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.width*0.056,
-                                child :Center(
-                                  child: Text("${user_points.toString()}",style:TextStyle(fontSize: 70,fontWeight: FontWeight.bold,color: Colors.black26)),
+                        Container(
 
-                                )
-                              )
-                            ],
-                          ),
-                          SizedBox(height: MediaQuery.of(context).size.height*0.07,),
-                          Row(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.width*0.056,
-                                child: Center(
-                                 child: Container(
-                                     width: MediaQuery.of(context).size.width*0.8,
-                                   decoration: BoxDecoration(
-                                     color:Colors.green,
-                                   //     gradient: LinearGradient(
-                                   //     colors: [
-                                   //       Colors.green,
-                                   //       Colors.lightGreen
-                                   //     ],
-                                   //     begin: Alignment.topLeft,
-                                   //     end: Alignment.bottomRight,
-                                   //     stops:[
-                                   //       0.1,
-                                   //       0.7
-                                   //     ]
-                                   // ),
-                                     borderRadius: BorderRadius.circular(10)
-
-                                   ),
-                                    child:ElevatedButton(
-                                      style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,shadowColor: Colors.transparent,),
-
-                                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));},
-                                      child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
-
-                                  )
+                            width: MediaQuery.of(context).size.width-20,
+                            height:MediaQuery.of(context).size.height*0.14 ,
+                            margin: EdgeInsets.all(10),
+                            padding: EdgeInsets.all(10) ,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              color: Colors.white.withOpacity(0.0),
+                            ),
+                            child:CarouselSlider(
+                              items: [
+                                // Container(
+                                //   width: MediaQuery.of(context).size.width,
+                                //   decoration: BoxDecoration(
+                                //     borderRadius: BorderRadius.circular(8.0),
+                                //   ),
+                                //   child: Image.asset('images/recycling.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                                //
+                                // ),
+                                // Container(
+                                //   width: MediaQuery.of(context).size.width,
+                                //   decoration: BoxDecoration(
+                                //     borderRadius: BorderRadius.circular(8.0),
+                                //   ),
+                                //   child:Image.asset('images/omar.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
+                                //
+                                // ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child:Image.asset('images/quote1.jpg',height: 240,width: 330,fit: BoxFit.fitWidth,alignment: Alignment.center),
 
                                 ),
-                              )
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child:Image.asset('images/quote2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
 
-                            ],
-                          )
-                        ],
-                      )
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child:Image.asset('images/quote3.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
 
-                    )
-                  ],
-                )
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child:Image.asset('images/omar2.jpg',height: 240,width: 330,fit: BoxFit.cover,alignment: Alignment.center),
 
-              ],
-            )
-        ),
-      ),Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height*0.028,
-          decoration: BoxDecoration(
-            color: Colors.green
-          ),
-        )
-      ],
-    ),),
+                                ),
 
-         bottomNavigationBar: Container(
-           decoration: BoxDecoration(
-             color: Colors.white,
-             borderRadius: BorderRadius.only(
-                 topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-             boxShadow: [
-               BoxShadow(
-                 blurRadius: 20,
-                 color: Colors.black.withOpacity(.1),
-               )
-             ],
-           ),
-           child: SafeArea(
-             child: Padding(
-               padding:
-               const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-               child: GNav(
-                 rippleColor: Colors.grey[300]!,
-                 hoverColor: Colors.grey[100]!,
-                 gap: 8,
-                 activeColor: Colors.black,
-                 iconSize: 24,
-                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                 duration: Duration(milliseconds: 400),
-                 tabBackgroundColor: Colors.grey[100]!,
-                 color: Colors.black,
-                 tabs: [
-                   GButton(
-                     icon: Icons.home,
-                     text: 'Home',
-                   ),
-                   GButton(
-                     icon: Icons.location_on_outlined,
-                     text: 'Map',
-                   ),
-                   GButton(
-                     icon: Icons.more_horiz,
-                     text: 'More',
-                   ),
+                              ],
+                              options: CarouselOptions(
+                                height: 300.0,
+                                enlargeCenterPage: true,
+                                autoPlay: true,
+                                aspectRatio: 16 / 9,
+                                autoPlayCurve: Curves.fastOutSlowIn,
+                                enableInfiniteScroll: true,
+                                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                                viewportFraction: 0.8,
+                              ),
+                            )
+                        )
 
-                 ],
-                 selectedIndex: _index,
-                 onTabChange: (index) {
-                   setState(() {
-                     _index = index;
-                     if (_index == 0)
-                       Navigator.push(
-                           context,
-                           MaterialPageRoute(
-                               builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)));
-                     if (_index == 1)
-                       Navigator.push(
-                           context,
-                           MaterialPageRoute(
-                               builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));
-                     if (_index == 2)
-                       Navigator.push(
-                           context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location: location)));
-                     // Navigator.push(
-                     //     context, MaterialPageRoute(builder: (context) =>
-                     //     MyProfile(Email: Email,
-                     //         Password: Password,
-                     //         fullName: fullName,
-                     //         mobileNumber: mobileNumber,
-                     //         gender: gender,
-                     //         dateOfBirth: dateOfBirth,
-                     //         user_points: user_points,
-                     //         items_recycled: items_recycled,
-                     //         data: data)));
-                   });
-                   // if (_index == 3)                    });
-                 },
-               ),
-             ),
-           ),
-         ),
+                      ],
 
-      );
-    }
-);
+                    ),
+
+
+
+                  ),
+
+                  Container(
+
+                    width: MediaQuery.of(context).size.width ,
+                    height: MediaQuery.of(context).size.height*0.435,
+                    decoration: BoxDecoration(
+                        color: Colors.green
+                    ),
+                    child:  Container(
+                        width: MediaQuery.of(context).size.width ,
+                        height: MediaQuery.of(context).size.height*0.4332,
+                        margin:EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.02 ,0 , MediaQuery.of(context).size.width*0.02 , MediaQuery.of(context).size.width*0.02),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25),bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25)),
+                        ),
+
+                        child:Column(
+                          children: [
+                            SizedBox(height: MediaQuery.of(context).size.height*0.035,),
+                            Row(
+                              children: [
+
+                                Container(
+                                    width: MediaQuery.of(context).size.width-20,
+                                    height: MediaQuery.of(context).size.height*0.35,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30),bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+
+                                          children: [
+                                            SizedBox(
+                                              width:MediaQuery.of(context).size.width*0.08,
+                                            ),
+                                            Text("Your Points",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold)),
+                                          ],
+
+                                        ),
+                                        SizedBox(height: MediaQuery.of(context).size.height*0.05,),
+                                        Row(
+                                          children: [
+                                            Container(
+                                                width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.width*0.056,
+                                                child :Center(
+                                                  child: Text("${user_points.toString()}",style:TextStyle(fontSize: 70,fontWeight: FontWeight.bold,color: Colors.black26)),
+
+                                                )
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(height: MediaQuery.of(context).size.height*0.07,),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: MediaQuery.of(context).size.width-MediaQuery.of(context).size.width*0.056,
+                                              child: Center(
+                                                  child: Container(
+                                                    width: MediaQuery.of(context).size.width*0.8,
+                                                    decoration: BoxDecoration(
+                                                        color:Colors.green,
+                                                        //     gradient: LinearGradient(
+                                                        //     colors: [
+                                                        //       Colors.green,
+                                                        //       Colors.lightGreen
+                                                        //     ],
+                                                        //     begin: Alignment.topLeft,
+                                                        //     end: Alignment.bottomRight,
+                                                        //     stops:[
+                                                        //       0.1,
+                                                        //       0.7
+                                                        //     ]
+                                                        // ),
+                                                        borderRadius: BorderRadius.circular(10)
+
+                                                    ),
+                                                    child:ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,shadowColor: Colors.transparent,),
+
+                                                        onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));},
+                                                        child:Text('Find nearby recycle bins',style: TextStyle(color: Colors.black,fontSize: 19),)),
+
+                                                  )
+
+                                              ),
+                                            )
+
+                                          ],
+                                        )
+                                      ],
+                                    )
+
+                                )
+                              ],
+                            )
+
+                          ],
+                        )
+                    ),
+                  ),Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height*0.028,
+                    decoration: BoxDecoration(
+                        color: Colors.green
+                    ),
+                  )
+                ],
+              ),),
+
+            bottomNavigationBar: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 20,
+                    color: Colors.black.withOpacity(.1),
+                  )
+                ],
+              ),
+              child: SafeArea(
+                child: Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+                  child: GNav(
+                    rippleColor: Colors.grey[300]!,
+                    hoverColor: Colors.grey[100]!,
+                    gap: 8,
+                    activeColor: Colors.black,
+                    iconSize: 24,
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    duration: Duration(milliseconds: 400),
+                    tabBackgroundColor: Colors.grey[100]!,
+                    color: Colors.black,
+                    tabs: [
+                      GButton(
+                        icon: Icons.home,
+                        text: 'Home',
+                      ),
+                      GButton(
+                        icon: Icons.location_on_outlined,
+                        text: 'Map',
+                      ),
+                      GButton(
+                        icon: Icons.more_horiz,
+                        text: 'More',
+                      ),
+
+                    ],
+                    selectedIndex: _index,
+                    onTabChange: (index) {
+                      setState(() {
+                        _index = index;
+                        if (_index == 0)
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => homePage(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, location: location)));
+                        if (_index == 1)
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => maps(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location23: location)));
+                        if (_index == 2)
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => MyProfile(Email: Email, Password: Password, fullName: fullName, mobileNumber: mobileNumber, gender: gender, dateOfBirth: dateOfBirth, user_points: user_points, items_recycled: items_recycled, data: data, metalCount: metalCount, plasticCount: plasticCount, location: location)));
+                        // Navigator.push(
+                        //     context, MaterialPageRoute(builder: (context) =>
+                        //     MyProfile(Email: Email,
+                        //         Password: Password,
+                        //         fullName: fullName,
+                        //         mobileNumber: mobileNumber,
+                        //         gender: gender,
+                        //         dateOfBirth: dateOfBirth,
+                        //         user_points: user_points,
+                        //         items_recycled: items_recycled,
+                        //         data: data)));
+                      });
+                      // if (_index == 3)                    });
+                    },
+                  ),
+                ),
+              ),
+            ),
+
+          );
+        }
+    );
   }}
 //
