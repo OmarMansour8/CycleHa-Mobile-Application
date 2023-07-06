@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
@@ -7,6 +8,8 @@ import 'package:recycling/MainMenu.dart';
 import 'package:recycling/SignIn.dart';
 import 'package:http/http.dart' as http;
 import 'sSignInPage.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
+import 'package:regexed_validator/regexed_validator.dart';
 
 class Sign_Up extends StatefulWidget {
   const Sign_Up({Key? key}) : super(key: key);
@@ -32,6 +35,9 @@ class _Sign_UpState extends State<Sign_Up> {
   TextEditingController mobile = new TextEditingController();
   TextEditingController pass = new TextEditingController();
   bool visible = false;
+  enableButton(){
+    buttonEnabled = true;
+  }
 
 //    Future getUserData(String mobile) async{
 //    var url =  Uri.parse(
@@ -217,12 +223,15 @@ class _Sign_UpState extends State<Sign_Up> {
     'Zamalek',
     // added Madinty to the list
   ];
+  Color divierColor= Colors.transparent;
+  Color divierColor1= Colors.transparent;
+  Color divierColor2= Colors.transparent;
+  Color divierColor3= Colors.transparent;
+  bool ver1 = false;
 
   String? _selectedLocation;
 
-  enableButton() {
-    buttonEnabled = true;
-  }
+
 
   disableButton() {
     buttonEnabled = false;
@@ -296,7 +305,7 @@ class _Sign_UpState extends State<Sign_Up> {
     // Email = getUserData("User_Email").toString();
     // getData();
 
-
+    disableButton();
     dateOfBirth = '${date1.year} - ${date1.month} - ${date1.day}'.toString();
     // Size size = MediaQuery.of(context).size;
 
@@ -370,6 +379,7 @@ class _Sign_UpState extends State<Sign_Up> {
                           border: InputBorder.none,
                           labelStyle: TextStyle(color: Colors.green),
                           labelText: 'Full Name',
+                          hintText: "Adam Alan",
                           prefixIcon: Icon(
                             Icons.account_circle_rounded,
                             color: Colors.green,
@@ -377,17 +387,53 @@ class _Sign_UpState extends State<Sign_Up> {
 
                         ),
                         onChanged: (String value) {
+                          final nameRegex = RegExp(r'^[A-Z][a-z]* [A-Z][a-z]+$');
+                          // if (nameRegex.hasMatch(value)) {
+                          //   setState(() {
+                          //     divierColor = Colors.transparent;
+                          //     fullName = value;
+                          //   });
+                          // }
+
                           setState(() {
-                            fullName = value;
+                            if (nameRegex.hasMatch(value)) {
+                                divierColor = Colors.transparent;
+                                fullName = value;
+                            }
+                            else if(name.text==""){
+                              divierColor = Colors.transparent;
+                            }
+                            else{
+                              divierColor = Colors.red;
+                            }
                           });
+
+
                         },
                       ),
                     ),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height*0.002,
+                    // ),
+                    SizedBox(height: 5,),
 
+                    Row(children: [
+                      SizedBox(width: 10,),
+                      Text("Invalid Format",style: TextStyle(color: divierColor),),
 
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.03,
+                    ],),
+                    Divider(
+                      height: 10,
+                      color: divierColor,
+                      thickness: 1,
+                      indent : 10,
+                      endIndent : 10,
                     ),
+
+
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * 0.03,
+                    // ),
                     Container(
                       margin: EdgeInsets.fromLTRB(
                         MediaQuery.of(context).size.width * 0.0,
@@ -412,21 +458,56 @@ class _Sign_UpState extends State<Sign_Up> {
                           border: InputBorder.none,
                           labelStyle: TextStyle(color: Colors.green),
                           labelText: 'Email',
+                          hintText: 'abc@example.com',
                           prefixIcon: Icon(
                             Icons.alternate_email_outlined,
                             color: Colors.green,
                           ),
                         ),
                         onChanged: (String value) {
+                          final nameRegex =  RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+                          // if (nameRegex.hasMatch(value)) {
+                          //   setState(() {
+                          //     divierColor = Colors.transparent;
+                          //     fullName = value;
+                          //   });
+                          // }
+
                           setState(() {
-                            Email = value;
+                            if (nameRegex.hasMatch(value)) {
+                              divierColor1 = Colors.transparent;
+                              Email = value;
+                            }
+                            else if(email.text==""){
+                              divierColor1 = Colors.transparent;
+                            }
+                            else{
+                              divierColor1 = Colors.red;
+                            }
                           });
+
+
                         },
                       ),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.03,
+                    SizedBox(height: 5,),
+
+                    Row(children: [
+                      SizedBox(width: 10,),
+                      Text("Invalid Email Format",style: TextStyle(color: divierColor1),),
+
+                    ],),
+                    Divider(
+                      height: 10,
+                      color: divierColor1,
+                      thickness: 1,
+                      indent : 10,
+                      endIndent : 10,
                     ),
+
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * 0.03,
+                    // ),
                     Container(
                       margin: EdgeInsets.fromLTRB(
                         MediaQuery.of(context).size.width * 0.00,
@@ -451,21 +532,56 @@ class _Sign_UpState extends State<Sign_Up> {
                           border: InputBorder.none,
                           labelStyle: TextStyle(color: Colors.green),
                           labelText: 'Mobile Number',
+                          hintText:'012345567890',
                           prefixIcon: Icon(
                             Icons.phone,
                             color: Colors.green,
                           ),
                         ),
                         onChanged: (String value) {
+                          final nameRegex = RegExp(r'^01[0125]\d{8}$');
+                          // if (nameRegex.hasMatch(value)) {
+                          //   setState(() {
+                          //     divierColor = Colors.transparent;
+                          //     fullName = value;
+                          //   });
+                          // }
+
                           setState(() {
-                            mobileNumber = value;
+                            if (nameRegex.hasMatch(value)) {
+                              divierColor2 = Colors.transparent;
+                              mobileNumber = value;
+                            }
+                            else if(mobile.text==""){
+                              divierColor2 = Colors.transparent;
+                            }
+                            else{
+                              divierColor2 = Colors.red;
+                            }
                           });
+
+
                         },
                       ),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.03,
+                    SizedBox(height: 5,),
+
+                    Row(children: [
+                      SizedBox(width: 10,),
+                      Text("Invalid Mobile Number Format",style: TextStyle(color: divierColor2),),
+
+                    ],),
+                    Divider(
+                      height: 10,
+                      color: divierColor2,
+                      thickness: 1,
+                      indent : 10,
+                      endIndent : 10,
                     ),
+
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * 0.03,
+                    // ),
                     Container(
                       margin: EdgeInsets.fromLTRB(
                         MediaQuery.of(context).size.width * 0.00,
@@ -492,21 +608,56 @@ class _Sign_UpState extends State<Sign_Up> {
                           border: InputBorder.none,
                           labelStyle: TextStyle(color: Colors.green),
                           labelText: 'Password',
+                          hintText: '********',
                           prefixIcon: Icon(
                             Icons.password,
                             color: Colors.green,
                           ),
                         ),
                         onChanged: (String value) {
+                          final nameRegex = RegExp(r'^.{8,}$');
+                          // if (nameRegex.hasMatch(value)) {
+                          //   setState(() {
+                          //     divierColor = Colors.transparent;
+                          //     fullName = value;
+                          //   });
+                          // }
+
                           setState(() {
-                            Password = value;
+                            if (nameRegex.hasMatch(value)) {
+                              divierColor3 = Colors.transparent;
+                              Password = value;
+                            }
+                            else if(pass.text==""){
+                              divierColor3 = Colors.transparent;
+                            }
+                            else{
+                              divierColor3 = Colors.red;
+                            }
                           });
+
+
                         },
                       ),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.03,
+                    SizedBox(height: 5,),
+
+                    Row(children: [
+                      SizedBox(width: 10,),
+                      Text("Must Contain at Least 8 Characters",style: TextStyle(color: divierColor3),),
+
+                    ],),
+                    Divider(
+                      height: 10,
+                      color: divierColor3,
+                      thickness: 1,
+                      indent : 10,
+                      endIndent : 10,
                     ),
+
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * 0.03,
+                    // ),
                     Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
@@ -711,8 +862,7 @@ class _Sign_UpState extends State<Sign_Up> {
                             })
                       ],
                     ),
-                    Text(
-                      (() {
+                    Text((() {
                         if (fullName != '' &&
                             Email != '' &&
                             mobileNumber != '' &&
@@ -727,6 +877,14 @@ class _Sign_UpState extends State<Sign_Up> {
                       })(),
                       style: TextStyle(color: Colors.redAccent),
                     ),
+                    Text((() {
+                      if(divierColor==Colors.transparent&&divierColor1==Colors.transparent&&divierColor2==Colors.transparent&&divierColor3==Colors.transparent&&name.text!=""&&email.text!=""&&pass.text!=""&&mobile.text!=""&&location!=""&&gender!=""){
+                        enableButton();
+                        return "";}
+                      else{
+                        disableButton();
+                        return "";}
+                    })(),style: TextStyle(color: Colors.redAccent),),
                     Container(
                         margin: EdgeInsets.symmetric(vertical: 12),
                         width: MediaQuery.of(context).size.width * 0.9,
@@ -737,7 +895,7 @@ class _Sign_UpState extends State<Sign_Up> {
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.green),
-                                  onPressed: () {
+                                  onPressed: buttonEnabled ? () {
                                     if (name.text == "" ||
                                         email.text == "" ||
                                         mobile.text == "" ||
@@ -757,7 +915,7 @@ class _Sign_UpState extends State<Sign_Up> {
                                     }
 
                                     // userRegistration();
-                                  },
+                                  } : null,
                                   child: Text(
                                     'Sign Up',
                                     style: TextStyle(
