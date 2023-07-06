@@ -220,11 +220,11 @@ class _AdminBinState extends State<AdminBin> {
 
     for(int i = 0 ; i<PlasticCapacity.length;i++){
       if(PlasticCapacity[i]==""){
-        PlasticCapacity[i]="-";
+        PlasticCapacity[i]="Low";
 
       }
       if(MetalCapacity[i]==""){
-        MetalCapacity[i]="-";
+        MetalCapacity[i]="Low";
       }
     }
     print("plastic $PlasticCapacity");
@@ -306,17 +306,18 @@ class _AdminBinState extends State<AdminBin> {
                 height: MediaQuery.of(context).size.height * 0.025,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.1,
-                  ),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.1,
+                  // ),
                   Text(
                     "Plastic Capacity : ",
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.28,
-                  ),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.28,
+                  // ),
                   Text(
                     "${PlasticCapacity[i]}",
                     style: new TextStyle(
@@ -328,17 +329,19 @@ class _AdminBinState extends State<AdminBin> {
                 height: MediaQuery.of(context).size.height * 0.019,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+
                 children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.1,
-                  ),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.1,
+                  // ),
                   Text(
                     "Metal Capacity   : ",
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.28,
-                  ),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.28,
+                  // ),
                   Text(
                     "${MetalCapacity[i]}",
                     style: new TextStyle(
@@ -396,11 +399,11 @@ class _AdminBinState extends State<AdminBin> {
 
     for(int i = 0 ; i<PlasticCapacity.length;i++){
       if(PlasticCapacity[i]==""){
-        PlasticCapacity[i]="-";
+        PlasticCapacity[i]="Low";
 
       }
       if(MetalCapacity[i]==""){
-        MetalCapacity[i]="-";
+        MetalCapacity[i]="Low";
       }
     }
     print("plastic $PlasticCapacity");
@@ -777,7 +780,7 @@ class _AdminBinState extends State<AdminBin> {
                 children: const [
                   Center(
                     child: Text(
-                      'Choose Truck Collector',
+                      'Choose Truck',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
