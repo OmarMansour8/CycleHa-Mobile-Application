@@ -1,35 +1,47 @@
-# recycling-project
+# ♻️ Smart Recycling Bin – IoT & Mobile Application
 
- Smart Recycling Bin with Mobile Application Integration is a project that aims to promote proper waste management and encourage people to recycle. The system uses a camera to identify and segregate plastic and metal waste, and a mobile application to track user points and locate nearby bins, The hardware component of the system consists of a bin with a camera and sensors that can recognize and sort plastic and metal waste, The bin uses a microcontroller to process the data from the sensors and communicate with the mobile application, The software component of the system includes a mobile application that users can download and install on their smartphones. 
+A smart, environmentally-driven solution that automates the process of identifying and sorting recyclable waste. Users earn points for their recycling activity, which are managed and displayed through a dedicated mobile application. The system bridges hardware automation with mobile UX to promote sustainability in a gamified and user-friendly way.
 
-# Mobile Application Features:
+## 🧠 Project Concept
 
-- User registration and login: The application should allow users to create an account and log in to access their profile and points.
+Traditionally, recycling required user effort and awareness, often resulting in low participation. This smart bin changes that by automating waste sorting and offering users a points-based reward system, making recycling efficient and engaging.
 
-- Points system: The application should have a points system to reward users for using the recycling bin. Users can earn points every time
-  they use the bin to recycle plastic or metal. The points earned can be used to redeem rewards or discounts on products and services.
+Users can:
+- Drop recyclable items into the smart bin
+- Earn points automatically
+- Track their points and recycling activity through the mobile app
 
-- Bin locator: The application should have a map feature that shows the location of the nearest bin. This feature can help users locate
-  the nearest bin and plan their recycling activities.
+## 📱 Mobile Application Features
 
-- Bin status: The application should show the status of the nearest bin, whether it is full or empty. Users can avoid going to a full bin
-  and can save time by going to an empty bin.
+- **Sign Up / Login:** Secure user authentication system to track individual progress
+- **Dashboard:** Displays total earned points and basic user metrics
+- **Recycling Log:** History of recycled items and transactions
+- **Gamification:** Points system to encourage continuous engagement
+- **User Profile:** View and manage personal details
 
-- Notifications: The application should send notifications to users when they earn points, when they reach a certain number of points, and
-  when there are new bins available in their area.
+## 🤖 Hardware Integration
 
-- User profile: The application should have a user profile section where users can view their points, rewards, and recycling history.
-  Users can also update their profile information, such as name, email, and address.
+- **Raspberry Pi 4** used as the control unit for the physical bin
+- **Sensors** (e.g., IR, weight, material-specific sensors) to detect and classify recyclable materials
+- **Automated Sorting Mechanism** directs items to proper compartments
 
-- Feedback and support: The application should allow users to provide feedback and report issues with the recycling bin or the
-  application. Users can also contact support for assistance or to ask questions.
+## 🔧 Backend & Communication
 
-- Social sharing: The application can have a social sharing feature that allows users to share their recycling achievements on social
-  media platforms.
+- **Database:** MySQL via phpMyAdmin to store user data, item types, and point totals
+- **Backend:** Built using **PHP**
+- **APIs:** Secure and lightweight **RESTful APIs** using **JSON** for data communication between:
+  - Raspberry Pi
+  - Backend
+  - Mobile application
 
-# Technologies Used
-1) Dart programming language.
-2) Flutter Framework.
-3) phpMyAdmin database for storing user data.
+## 🛠️ Tech Stack
+
+- **Mobile App:** Flutter (Dart)
+- **IoT Device:** Raspberry Pi 4
+- **Backend:** PHP, MySQL (phpMyAdmin)
+- **APIs:** RESTful APIs using JSON
+- **Version Control:** Git & GitHub
+
+
 
 
